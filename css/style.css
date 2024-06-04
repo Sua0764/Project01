@@ -1,0 +1,90 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  color: inherit;
+}
+
+body {
+  font-size: 18px;
+}
+
+.container {
+  width: 100%;
+}
+.box1 {
+  width: 100%;
+  height: 500px;
+  background-color: black;
+}
+.box2 {
+  width: 100%;
+  height: 500px;
+  background-color: white;
+}
+.box3 {
+  width: 100%;
+  height: 500px;
+  background-color: black;
+}
+.wbox {
+  width: 70%;
+  margin: 0 auto;
+}
+.mainMenu {
+  display: grid;
+  grid-template-columns: 2fr 6.2fr 1.8fr;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+}
+
+.mainMenu > div {
+  color: white;
+  margin-top: 30px;
+}
+
+.centerMenu {
+  padding: 40px;
+}
+
+.rightMenu {
+  padding: 10px;
+}
+
+.mainMenu > div > span:hover {
+  color: gray;
+}
+
+.title {
+  background-color: black;
+  font-size: 80px;
+  font-weight: bold;
+  color: white;
+  padding-top: 200px;
+}
+
+.subMenu {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.subMenu > div {
+  padding: 40px 20px 40px 0px;
+}
+
+.subMenu > div:hover {
+  color: gray;
+}
+
+.logo,
+.cartIcon,
+.mypageIcon {
+  width: 25px;
+  height: 25px;
+}
