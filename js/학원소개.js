@@ -1,10 +1,13 @@
+//연혁 hidden,
+//강사진 unhidden
+
 document.querySelector(".teacherBtn").addEventListener("click", () => {
   document.querySelector(".teacherBox").classList.remove("hidden");
   document.querySelector(".historyBox").classList.add("hidden");
 });
 
-//연혁 hidden,
-//강사소개 unhidden
+//강사진 hidden,
+//연혁 unhidden
 
 document.querySelector(".historyBtn").addEventListener("click", () => {
   document.querySelector(".teacherBox").classList.add("hidden");
@@ -12,7 +15,7 @@ document.querySelector(".historyBtn").addEventListener("click", () => {
 });
 
 //강사소개 hidden,
-//연혁 unhidden
+//강사소개 unhidden
 
 document.querySelector(".teacherInfo").addEventListener("click", () => {
   document.querySelector(".teacherBox").classList.add("hidden");
