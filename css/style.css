@@ -21,13 +21,14 @@ body {
 }
 .box2 {
   width: 100%;
-  height: 1200px;
+  height: auto;
   background-color: white;
 }
 .box3 {
   width: 100%;
   height: 500px;
   background-color: black;
+  margin-top: 50px;
 }
 .wbox {
   width: 70%;
@@ -141,15 +142,20 @@ body {
 }
 
 .teacherPicture {
-  background-color: gray;
+  background-color: rgb(160, 131, 187);
   height: 350px;
   width: 300px;
+  overflow: hidden;
 }
 
-.teacherPicture:hover {
-  background-color: rgb(143, 99, 143);
-  height: 350px;
-  width: 300px;
+.teacherPicture img {
+  transition: all 0.2s linear;
+  width: inherit;
+}
+
+.teacherPicture:hover img {
+  transform: scale(1.2);
+  opacity: 0.5;
 }
 
 .teacherName {
@@ -174,8 +180,35 @@ body {
   margin-top: 30px;
 }
 
-.singleTeacherPicture {
-  background-color: gray;
-  height: 350px;
-  width: 300px;
+.singleTeacher {
+  display: grid;
+  grid-template-columns: 40% 60%;
+}
+
+.singleTeacher1 {
+  background-color: white;
+}
+
+.singleTeacher1 img {
+  height: 450px;
+  width: 400px;
+  width: inherit;
+}
+
+.singleTeacherText {
+  font-size: 10px;
+  padding: 50px 50px 30px 0px;
+  line-height: 30px;
+  margin: 30px 50px 0px 0px;
+}
+
+.singleTeacher1 > div {
+  font-size: 20px;
+  padding: 10px 0px 0px 0px;
+}
+
+.singleTeacher2 > div {
+  font-size: 20px;
+  padding: 0px 50px 30px 0px;
+  line-height: 40px;
 }
