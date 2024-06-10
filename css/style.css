@@ -326,7 +326,7 @@ body {
 }
 
 .lectureEnrollInfo {
-  height: 70px;
+  height: 100px;
   width: 400px;
 }
 
@@ -336,9 +336,11 @@ body {
   width: 400px;
 }
 
-.lectureEnrollname,
+.lectureEnrollname {
+  font-size: 20px;
+  padding: 5px 0px 5px 0px;
+}
 .teacherEnrollname {
-  display: inline;
   font-size: 20px;
   padding: 5px 0px 5px 0px;
 }
@@ -350,9 +352,13 @@ body {
   border-radius: 5px;
   text-align: center;
   line-height: 35px;
-  display: inline-block;
   float: right;
   margin: 5px 0px 5px 0px;
+}
+
+.cartEnrollBtn:hover {
+  background-color: black;
+  color: white;
 }
 
 /* 나의 진도율 페이지 설정 */
@@ -436,12 +442,12 @@ body {
 }
 
 .progressInfo {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 35% 65%;
 }
 
-.progressInfoSubject {
-  font-size: 40px;
+.progressInfoStudent {
+  font-size: 30px;
   padding: 0px 10px;
   margin: 40px;
   color: black;
