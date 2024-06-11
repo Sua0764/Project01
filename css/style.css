@@ -6,6 +6,144 @@
   color: inherit;
 }
 
+/*메인페이지*/
+
+.mainBody {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #111;
+  width: 100%;
+  overflow: hidden;
+}
+
+.main {
+  position: relative;
+}
+
+.mainBox {
+  position: absolute;
+}
+
+.mainTitle1 {
+  width: 100%;
+  color: white;
+  font-size: 80px;
+  font-weight: bolder;
+  letter-spacing: 35px;
+  margin: 30px;
+  left: 380px;
+  bottom: -60px;
+}
+.mainTitle2 {
+  width: 100%;
+  color: white;
+  font-size: 80px;
+  font-weight: bolder;
+  letter-spacing: 35px;
+  margin: 30px;
+  left: 960px;
+  top: 80px;
+}
+
+.circleRing {
+  top: -220px;
+  left: 670px;
+}
+
+.ring {
+  position: relative;
+  width: 600px;
+  height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ring i {
+  position: absolute;
+  inset: 0;
+  border: 2px solid #fff;
+  transition: 0.5s;
+}
+.ring i:nth-child(1) {
+  border-radius: 38% 62% 63% 37% / 41% 44% 56% 59%;
+  animation: animate 6s linear infinite;
+}
+.ring i:nth-child(2) {
+  border-radius: 41% 44% 56% 59%/38% 62% 63% 37%;
+  animation: animate 4s linear infinite;
+}
+.ring i:nth-child(3) {
+  border-radius: 41% 44% 56% 59%/38% 62% 63% 37%;
+  animation: animate2 10s linear infinite;
+}
+/* .ring:hover i {
+  border: 6px solid var(--clr);
+  filter: drop-shadow(0 0 20px var(--clr));
+} */
+@keyframes animate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes animate2 {
+  0% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.menuBtn {
+  height: 200px;
+  width: 100px;
+  color: white;
+  font-size: 35px;
+  line-height: 40px;
+  bottom: 200px;
+  left: 100px;
+}
+
+.menuBtn:hover ~ .menu {
+  display: block;
+}
+
+.menuBtn:hover {
+  display: none;
+}
+
+.menu {
+  color: white;
+  font-size: 20px;
+  bottom: 220px;
+  left: 100px;
+  display: none;
+}
+
+.menu > div > a:hover {
+  color: gray;
+  cursor: pointer;
+}
+
+.menu > div {
+  padding: 0px 0px 10px 0px;
+}
+
+.loginBtn {
+  color: white;
+  font-weight: bold;
+  font-size: 30px;
+  letter-spacing: 5px;
+  line-height: 30px;
+  bottom: 330px;
+  left: 900px;
+}
+
 /* 전체 설정*/
 body {
   font-size: 18px;
