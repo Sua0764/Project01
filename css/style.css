@@ -96,12 +96,12 @@ body {
 /* 연혁 페이지 설정*/
 
 .historyTitle {
-  font-size: 40px;
+  font-size: 50px;
   font-weight: bold;
   display: flex;
   justify-content: center;
-  padding: 30px;
-  margin-top: 30px;
+  padding: 50px;
+  margin: 50px;
 }
 
 .historyImg {
@@ -117,7 +117,9 @@ body {
 }
 
 .historyText1 {
-  margin: 30px 30px 30px 30px;
+  margin: 30px 40px 30px 40px;
+  font-size: 20px;
+  line-height: 40px;
 }
 
 /* 강사진 페이지 설정*/
@@ -164,10 +166,6 @@ body {
 
 .teacherSubject {
   margin: 5px 0px 5px 0px;
-}
-
-.hidden {
-  display: none;
 }
 
 /* 강사 프로필 설정 */
@@ -218,7 +216,10 @@ body {
 .courseBox,
 .detailedBox,
 .tasteBox,
-.pirceGuideBox {
+.pirceGuideBox,
+.noticeBox1,
+.inquiryBox1,
+.reivewWrite {
   font-size: 40px;
   margin: 30px 0px 30px 0px;
   padding: 30px 0px 30px 0px;
@@ -308,6 +309,163 @@ body {
   display: flex;
   justify-content: end;
 }
+.noticeBox2 {
+  width: 100%;
+}
+.noticeBox3 {
+  width: 210px;
+  margin-left: 20px;
+}
+#noticeCheckbox {
+  width: 33px;
+  height: 33px;
+}
+#noticeCheckbox > td {
+  border: none;
+}
+.notice2Box {
+  display: grid;
+  grid-template-columns: 5fr 1fr;
+  padding: 0px;
+}
+.noticeBox4 {
+  width: 180px;
+  height: 60px;
+  border: 1px solid black;
+  text-align: center;
+  padding: 15px;
+  margin-top: 30px;
+  margin-left: auto;
+}
+.noticeWriteBox1 {
+  width: 100%;
+  height: 100px;
+  font-size: 35px;
+  border: 1px solid black;
+  border-radius: 20px;
+  padding: 25px;
+  text-align: center;
+}
+.noticeWriteBox2 {
+  width: 100%;
+  height: 800px;
+  border: 1px solid black;
+  border-radius: 20px;
+  margin-top: 30px;
+}
+.noticeWriteBox3 {
+  width: 200px;
+  height: 70px;
+  background-color: black;
+  color: white;
+  border-radius: 20px;
+  text-align: center;
+  margin-top: 40px;
+  padding: 15px;
+  font-size: 25px;
+  font-weight: bold;
+}
+.noticePopupBox1 {
+  width: 900px;
+  height: 1000px;
+  background-color: #5f5f5f;
+  border-radius: 25px;
+  margin: 0 auto;
+  padding: 30px;
+}
+.noticePopupBox2 {
+  width: 400px;
+  height: 150px;
+  font-size: 80px;
+  margin: 60px 0 0 20px;
+  color: white;
+  font-weight: bold;
+  border: 1px solid white;
+  padding: 20px;
+}
+.noticePopupBox3 {
+  width: 800px;
+  height: 680px;
+  border: 1px solid white;
+  margin: 20px 0 0 20px;
+  padding: 20px;
+}
+.noticePopupBoxWrite {
+  width: 100%;
+  height: 430px;
+  font-size: 70px;
+  color: white;
+  font-weight: bold;
+}
+.noticePopupBoxImg {
+  display: flex;
+  justify-content: end;
+}
+.inquiryBox2 {
+  width: 160px;
+  height: 50px;
+  background-color: grey;
+  color: white;
+  font-size: 24px;
+  padding: 8px;
+  text-align: center;
+  margin-left: auto;
+}
+.inquiryBox3 {
+  width: 100%;
+  height: 70px;
+  border: 1px solid black;
+  font-size: 32px;
+  text-align: center;
+  margin: 20px 0 20px 0;
+  padding: 10px;
+}
+.inquiryBox4 {
+  width: 100%;
+  height: 900px;
+  border: 1px solid black;
+  padding: 30px 100px 30px 100px;
+}
+.inquiryBox5 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.inquiryBox5_1 {
+  width: 135px;
+  height: 60px;
+  border: 1px solid black;
+  font-size: 32px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 60px;
+}
+.inquiryBox5_2 {
+  width: 875px;
+  height: 60px;
+  border: 1px solid black;
+  font-size: 32px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 60px;
+}
+.inquiryBox6 {
+  width: 100%;
+  height: 750px;
+  border: 1px solid black;
+  margin-top: 20px;
+}
+.inquiryBox7 {
+  width: 260px;
+  height: 60px;
+  background-color: black;
+  color: white;
+  font-size: 32px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 60px;
+  border-radius: 25px;
+  margin: 20px auto;
+}
 
 /* 수강신청 페이지 설정 */
 
@@ -320,38 +478,55 @@ body {
   margin-top: 30px;
 }
 
-.enrollment {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+.enrollment > div {
+  border: 2px solid black;
+  border-radius: 5px;
+  margin: 0px 0px 30px 0px;
+  display: flex;
 }
 
 .lectureEnrollInfo {
-  height: 100px;
-  width: 400px;
+  width: 810px;
+  margin: 30px;
 }
 
 .lectureEnrollimg {
   background-color: gray;
-  height: 400px;
+  height: 300px;
   width: 400px;
+  border-radius: 10px;
+  margin: 30px;
 }
 
 .lectureEnrollname {
-  font-size: 20px;
+  font-size: 30px;
   padding: 5px 0px 5px 0px;
+  margin: 30px 0px 0px 0px;
 }
+
 .teacherEnrollname {
   font-size: 20px;
   padding: 5px 0px 5px 0px;
+  margin: 0px 0px 30px 0px;
+}
+
+/* .enrollPrice {
+  padding: 30px 20px 20px 0px;
+} */
+
+.enrollPrice > div {
+  display: inline-block;
+  padding: 20px 40px 20px 0px;
+  margin-right: 50px;
 }
 
 .cartEnrollBtn {
-  height: 40px;
+  height: 50px;
   width: 150px;
   border: 2px solid black;
-  border-radius: 5px;
+  border-radius: 10px;
   text-align: center;
-  line-height: 35px;
+  line-height: 45px;
   float: right;
   margin: 5px 0px 5px 0px;
 }
@@ -505,4 +680,258 @@ body {
   justify-content: center;
   padding: 30px 0px;
   margin: 30px;
+}
+
+/* 수강후기 */
+
+.reviewBox {
+  width: 100%;
+  height: 300px;
+  background-color: #2f2f2f;
+}
+.reviewBox2-content {
+  width: 100%;
+  height: 300px;
+  background-color: #f5f5f5;
+  border-radius: 25px;
+  position: relative;
+  top: -150px;
+  padding: 35px;
+}
+.reviewBox3 {
+  display: grid;
+  grid-template-columns: 2fr 1fr 3fr;
+  justify-items: center;
+}
+.reviewBox4 {
+  width: 192px;
+  height: 47px;
+  border: 1px solid black;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 47px;
+}
+#reviewBox3-1 {
+  width: 288px;
+  height: 70px;
+  border: 1px solid black;
+  text-align: center;
+  font-size: 32px;
+  font-weight: bold;
+  line-height: 70px;
+  margin-top: 50px;
+}
+#reviewBox3-2 {
+  width: 210px;
+  height: 70px;
+  border: 1px solid black;
+  text-align: center;
+  font-size: 32px;
+  font-weight: bold;
+  line-height: 70px;
+  margin-top: 50px;
+}
+.reviewBoxStarGrid {
+  display: grid;
+  grid-template-columns: 1fr 2.5fr;
+  margin-top: 5px;
+}
+.reviewBoxStar {
+  margin-top: 15px;
+}
+#reviewBoxStar1-1 {
+  width: 294px;
+  height: 13px;
+  background-color: #3d3d3d;
+  border-radius: 25px;
+  margin-top: 10px;
+}
+.reviewBoxStar2-1 {
+  width: 294px;
+  height: 13px;
+  background-color: #d9d9d9;
+  border-radius: 25px;
+  margin-top: 10px;
+  position: relative;
+}
+#reviewBoxStar2-1 {
+  width: 254px;
+  height: 13px;
+  background-color: #3d3d3d;
+  border-radius: 25px;
+  margin-top: 10px;
+  position: absolute;
+  top: -10px;
+}
+#reviewBoxStar2-2 {
+  width: 190px;
+  height: 13px;
+  background-color: #3d3d3d;
+  border-radius: 25px;
+  margin-top: 10px;
+  position: absolute;
+  top: -10px;
+}
+#reviewBoxStar2-3 {
+  width: 150px;
+  height: 13px;
+  background-color: #3d3d3d;
+  border-radius: 25px;
+  margin-top: 10px;
+  position: absolute;
+  top: -10px;
+}
+#reviewBoxStar2-4 {
+  width: 87px;
+  height: 13px;
+  background-color: #3d3d3d;
+  border-radius: 25px;
+  margin-top: 10px;
+  position: absolute;
+  top: -10px;
+}
+.reviewStar {
+  font-size: 22px;
+}
+.reviewBox5 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  width: 850px;
+  height: 90px;
+  border-radius: 50px;
+  margin: auto;
+  text-align: center;
+  line-height: 90px;
+  background-color: #d9d9d9;
+  font-size: 32px;
+  position: relative;
+  top: -110px;
+}
+.reviewBox5 > div:hover {
+  color: white;
+  background-color: #2f2f2f;
+  border-radius: 50px;
+}
+.reviewBox6 {
+  width: 85%;
+  margin: auto;
+}
+#reviewBox6-1 {
+  width: 230px;
+  height: 56px;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 56px;
+  border: 1px solid black;
+  position: relative;
+  top: -30px;
+}
+.reviewBox7 {
+  width: 100%;
+  height: 360px;
+  border-radius: 25px;
+  background-color: #d9d9d9;
+  padding: 50px;
+  margin-bottom: 40px;
+}
+.reviewBox7Grid {
+  display: grid;
+  grid-template-columns: 1fr 8fr 1fr;
+}
+#reviewBox7Grid-1 {
+  width: 143px;
+  height: 43px;
+  border: 1px solid black;
+  text-align: center;
+  line-height: 43px;
+}
+#reviewBox7Grid-2 {
+  width: 143px;
+  height: 26px;
+  border: 1px solid black;
+  text-align: center;
+  line-height: 26px;
+  margin-top: 5px;
+}
+#reviewBox7Grid-3 {
+  width: 140px;
+  height: 26px;
+  border: 1px solid black;
+  text-align: center;
+  margin-top: 15px;
+}
+#reviewBox7Grid-4 {
+  width: 143px;
+  font-size: 24px;
+  text-align: center;
+}
+.reviewBox8 {
+  width: 100%;
+  height: 133px;
+  border: 1px solid black;
+  margin: 20px 50px 0 0;
+}
+.reviewBox9Grid {
+  display: grid;
+  grid-template-columns: 8fr 2fr;
+  margin-top: 30px;
+}
+.reviewBox9Grid-1 {
+  width: 62px;
+  height: 25px;
+  border: 1px solid black;
+  text-align: center;
+  font-weight: bold;
+  margin: 0 15px 0 15px;
+}
+.reviewBox9Grid-3 {
+  width: 62px;
+  height: 25px;
+  border: 1px solid black;
+  text-align: center;
+  font-weight: bold;
+  margin: 0 15px 0 15px;
+}
+.reviewBox9Grid-2 {
+  display: flex;
+}
+.reivewWriteBox1 {
+  width: 100%;
+  height: 97px;
+  text-align: center;
+  line-height: 97px;
+  border: 1px solid black;
+  font-size: 46px;
+  font-weight: bold;
+  border-radius: 25px;
+}
+.reivewWriteBox2 {
+  width: 100%;
+  height: 782px;
+  border: 1px solid black;
+  border-radius: 25px;
+  margin-top: 30px;
+  padding: 20px;
+}
+.reivewWriteBoxStar {
+  font-size: 70px;
+  margin-bottom: 20px;
+}
+.reivewWriteBox3 {
+  width: 200px;
+  height: 70px;
+  background-color: black;
+  color: white;
+  font-size: 32px;
+  font-weight: bold;
+  border-radius: 25px;
+  margin-top: 30px;
+  text-align: center;
+  line-height: 70px;
+}
+
+.hidden {
+  display: none;
 }
