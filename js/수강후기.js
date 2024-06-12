@@ -7,3 +7,8 @@ document.querySelector(".reviewBtn").addEventListener("click", () => {
   document.querySelector(".reivew").classList.remove("hidden");
   document.querySelector(".reivewWriteBox").classList.add("hidden");
 });
+
+document.querySelector(".reviewBtn").addEventListener("click", () => {
+  document.querySelector(".reivew").classList.remove("hidden");
+  document.querySelector(".reivewWriteBox").classList.add("hidden");
+});
