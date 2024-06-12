@@ -13,7 +13,7 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: black;
+  background: #111;
   width: 100%;
   overflow: hidden;
 }
@@ -48,8 +48,8 @@
 }
 
 .circleRing {
-  top: -210px;
-  left: 670px;
+  top: -240px;
+  left: 630px;
 }
 
 .ring {
@@ -108,40 +108,65 @@
   bottom: 340px;
   left: 100px;
   position: relative;
-}
-
-.menuContainer:hover .menu {
-  transform: translateY(0);
-  opacity: 1;
-  /* pointer-events: auto; */
-}
-
-.menuContainer:hover .menuBtn {
-  color: black;
-  transition: color 0.5s cubic-bezier(0, 0, 0, 0);
-}
-
-.menuContent:hover {
-  color: gray;
+  cursor: pointer; /* Pointer cursor for button */
 }
 
 .menu {
-  height: 200px;
-  width: 150px;
+  height: 1000px;
+  width: 500px;
   color: black;
-  font-size: 18px;
+  font-size: 30px;
+  font-weight: 500;
   position: absolute;
-  bottom: 220px;
-  left: 100px;
+  bottom: -490px;
+  left: 0px;
   transform: translateX(-100%);
   opacity: 0;
-  padding: 5px;
+  padding: 10px;
   transition: transform 1s cubic-bezier(0.25, 1, 0.5, 1),
     opacity 1s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-.menu > div {
-  padding: 12px 8px 0px 15px;
+.menu.active {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.menuContents {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  padding: 20px;
+}
+
+.menuContents > div {
+  padding: 30px 30px 0px 30px;
+}
+
+.menuContents > div:hover {
+  color: rgb(0, 0, 77);
+  font-weight: 600;
+}
+
+.closeBtn {
+  height: 50px;
+  width: 50px;
+  background-color: gray;
+  margin: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.closeBtn > img {
+  height: 20px;
+  width: 20px;
+}
+
+.closeBtn:hover {
+  background-color: black;
+  cursor: pointer;
 }
 
 .menu::before {
