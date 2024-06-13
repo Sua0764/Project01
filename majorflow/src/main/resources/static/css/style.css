@@ -1,0 +1,1455 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  color: inherit;
+}
+
+/*메인페이지*/
+
+.mainBody {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #111;
+  width: 100%;
+  overflow: hidden;
+}
+
+.main {
+  position: relative;
+}
+
+.mainBox {
+  position: absolute;
+}
+
+.mainTitle1 {
+  width: 100%;
+  color: white;
+  font-size: 60px;
+  font-weight: bolder;
+  letter-spacing: 40px;
+  margin: 30px;
+  left: 380px;
+  bottom: 20px;
+}
+.mainTitle2 {
+  width: 100%;
+  color: white;
+  font-size: 60px;
+  font-weight: bolder;
+  letter-spacing: 40px;
+  margin: 30px;
+  left: 1050px;
+  top: 80px;
+}
+
+.circleRing {
+  top: -240px;
+  left: 630px;
+}
+
+.ring {
+  position: relative;
+  width: 500px;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ring i {
+  position: absolute;
+  inset: 0;
+  border: 2px solid #fff;
+  transition: 0.5s;
+}
+.ring i:nth-child(1) {
+  border-radius: 38% 62% 63% 37% / 41% 44% 56% 59%;
+  animation: animate 6s linear infinite;
+}
+.ring i:nth-child(2) {
+  border-radius: 41% 44% 56% 59%/38% 62% 63% 37%;
+  animation: animate 4s linear infinite;
+}
+.ring i:nth-child(3) {
+  border-radius: 41% 44% 56% 59%/38% 62% 63% 37%;
+  animation: animate2 10s linear infinite;
+}
+/* .ring:hover i {
+  border: 6px solid var(--clr);
+  filter: drop-shadow(0 0 20px var(--clr));
+} */
+@keyframes animate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes animate2 {
+  0% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.menuBtn {
+  height: 300px;
+  width: 150px;
+  color: white;
+  font-size: 35px;
+  line-height: 40px;
+  bottom: 340px;
+  left: 100px;
+  position: relative;
+  cursor: pointer; /* Pointer cursor for button */
+}
+
+.menu {
+  height: 1000px;
+  width: 500px;
+  color: black;
+  font-size: 30px;
+  font-weight: 500;
+  position: absolute;
+  bottom: -500px;
+  left: 0px;
+  transform: translateX(-100%);
+  opacity: 0;
+  padding: 10px;
+  transition: transform 1s cubic-bezier(0.25, 1, 0.5, 1),
+    opacity 1s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.menu.active {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.menuContents {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  padding: 20px;
+}
+
+.menuContents > div {
+  padding: 30px 30px 0px 30px;
+}
+
+.menuContents > div:hover {
+  color: rgb(0, 0, 77);
+  font-weight: 600;
+}
+
+.closeBtn {
+  height: 50px;
+  width: 50px;
+  background-color: gray;
+  margin: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.closeBtn > img {
+  height: 20px;
+  width: 20px;
+}
+
+.closeBtn:hover {
+  background-color: black;
+  cursor: pointer;
+}
+
+.menu::before {
+  content: "";
+  position: absolute;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  background-color: white;
+  transition: all 1s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.loginBtn {
+  color: white;
+  font-weight: 500;
+  font-size: 30px;
+  letter-spacing: 5px;
+  line-height: 30px;
+  bottom: 360px;
+  left: 900px;
+}
+
+.loginBtn:hover {
+  color: gray;
+}
+
+/* 전체 설정*/
+body {
+  font-size: 18px;
+}
+
+.container {
+  width: 100%;
+}
+.box1 {
+  width: 100%;
+  height: 500px;
+  background-color: black;
+}
+.box2 {
+  width: 100%;
+  height: auto;
+  background-color: white;
+}
+.box3 {
+  width: 100%;
+  height: 500px;
+  background-color: black;
+  margin-top: 50px;
+}
+.wbox {
+  width: 70%;
+  margin: 0 auto;
+}
+
+/* 상단 메뉴바 설정*/
+.mainMenu {
+  display: grid;
+  grid-template-columns: 2fr 5fr 3fr;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+}
+
+.mainMenu > div {
+  color: white;
+  margin-top: 30px;
+}
+
+.centerMenu {
+  padding: 40px;
+}
+
+.rightMenu {
+  padding: 10px;
+}
+
+.mainMenu > div > span:hover {
+  color: gray;
+}
+
+.title {
+  background-color: black;
+  font-size: 80px;
+  font-weight: bold;
+  color: white;
+  padding-top: 200px;
+}
+
+.subMenu {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.subMenu > div {
+  padding: 40px 20px 40px 0px;
+}
+
+.subMenu > div:hover {
+  color: gray;
+}
+
+.logo,
+.cartIcon,
+.mypageIcon {
+  width: 25px;
+  height: 25px;
+}
+
+/* 연혁 페이지 설정*/
+
+.historyTitle {
+  font-size: 50px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  padding: 50px;
+  margin: 50px;
+}
+
+.historyImg {
+  background-color: gray;
+  height: 600px;
+  width: 500px;
+  margin: 30px 30px 30px 0px;
+}
+
+.historyBox1 {
+  display: grid;
+  grid-template-columns: 40% 60%;
+}
+
+.historyText1 {
+  margin: 30px 40px 30px 40px;
+  font-size: 20px;
+  line-height: 40px;
+}
+
+/* 강사진 페이지 설정*/
+.teacherTitle {
+  font-size: 40px;
+  font-weight: bold;
+  display: flex;
+  justify-content: left;
+  padding: 30px 0px;
+  margin-top: 30px;
+}
+
+.teacher {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.teacherInfo {
+  height: 400px;
+  width: 250px;
+  margin: 30px;
+}
+
+.teacherPicture {
+  background-color: rgb(160, 131, 187);
+  height: 350px;
+  width: 300px;
+  overflow: hidden;
+}
+
+.teacherPicture img {
+  transition: all 0.2s linear;
+  width: inherit;
+}
+
+.teacherPicture:hover img {
+  transform: scale(1.2);
+  opacity: 0.5;
+}
+
+.teacherName {
+  margin: 10px 0px 5px 0px;
+}
+
+.teacherSubject {
+  margin: 5px 0px 5px 0px;
+}
+
+/* 강사 프로필 설정 */
+.singleTeacherTitle {
+  font-size: 40px;
+  font-weight: bold;
+  display: flex;
+  justify-content: left;
+  padding: 30px 0px;
+  margin-top: 30px;
+}
+
+.singleTeacher {
+  display: grid;
+  grid-template-columns: 40% 60%;
+}
+
+.singleTeacher1 {
+  background-color: white;
+}
+
+.singleTeacher1 img {
+  height: 450px;
+  width: 400px;
+  width: inherit;
+}
+
+.singleTeacherText {
+  font-size: 10px;
+  padding: 50px 50px 30px 0px;
+  line-height: 30px;
+  margin: 30px 50px 0px 0px;
+}
+
+.singleTeacher1 > div {
+  font-size: 20px;
+  padding: 10px 0px 0px 0px;
+}
+
+.singleTeacher2 > div {
+  font-size: 20px;
+  padding: 0px 50px 30px 0px;
+  line-height: 40px;
+}
+
+/*수강안내*/
+
+.courseBox,
+.detailedBox,
+.tasteBox,
+.pirceGuideBox,
+.noticeBox1,
+.inquiryBox1,
+.reivewWrite {
+  font-size: 40px;
+  margin: 30px 0px 30px 0px;
+  padding: 30px 0px 30px 0px;
+  font-weight: bold;
+}
+
+.allCourse {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+}
+.allCourseClick {
+  margin: 20px 0 20px 0;
+}
+
+.allCourseClickImg {
+  background-color: gray;
+  width: 300px;
+  height: 300px;
+}
+.detailedBox2 {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1.8fr 1.2fr;
+}
+.detailedBox2Img {
+  width: 700px;
+  height: 650px;
+  background-color: grey;
+  margin-bottom: 30px;
+}
+.detailedBox2Text {
+  width: 600px;
+  height: 650px;
+}
+.detailedBox2Text2 {
+  width: 100%;
+  height: 800px;
+}
+
+.tasteCourse {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.tasteCourseClick {
+  margin: 20px 0 20px 0;
+}
+.tasteCourseClickAvi {
+  background-color: gray;
+  width: 500px;
+  height: 300px;
+}
+.coursePriceGuide {
+  width: 100%;
+  height: 800px;
+  border: 1px solid black;
+}
+.horizontal-line {
+  width: 90%;
+  height: 2px;
+  background-color: #000;
+  margin: 40px 800px 5px 80px;
+}
+#priceGuide1 {
+  font-size: 70px;
+  margin: 20px 0 10px 100px;
+}
+#priceGuide2 {
+  font-size: 70px;
+  margin: 20px 0 10px 100px;
+}
+.priceGuide3 {
+  font-size: 40px;
+  margin: 20px 0 0px 100px;
+}
+.priceGuide4 {
+  font-size: 90px;
+  margin: 0px 80px 10px 0px;
+  font-weight: bold;
+  display: flex;
+  justify-content: end;
+}
+#priceGuide5 {
+  font-size: 25px;
+  margin: 40px 80px 10px 0px;
+  display: flex;
+  justify-content: end;
+}
+.noticeBox2 {
+  width: 100%;
+}
+.noticeBox3 {
+  width: 210px;
+  margin-left: 20px;
+}
+#noticeCheckbox {
+  width: 33px;
+  height: 33px;
+}
+#noticeCheckbox > td {
+  border: none;
+}
+.notice2Box {
+  display: grid;
+  grid-template-columns: 5fr 1fr;
+  padding: 0px;
+}
+.noticeBox4 {
+  width: 180px;
+  height: 60px;
+  border: 1px solid black;
+  text-align: center;
+  padding: 15px;
+  margin-top: 30px;
+  margin-left: auto;
+}
+.noticeWriteBox1 {
+  width: 100%;
+  height: 100px;
+  font-size: 35px;
+  border: 1px solid black;
+  border-radius: 20px;
+  padding: 25px;
+  text-align: center;
+}
+.noticeWriteBox2 {
+  width: 100%;
+  height: 800px;
+  border: 1px solid black;
+  border-radius: 20px;
+  margin-top: 30px;
+}
+.noticeWriteBox3 {
+  width: 200px;
+  height: 70px;
+  background-color: black;
+  color: white;
+  border-radius: 20px;
+  text-align: center;
+  margin-top: 40px;
+  padding: 15px;
+  font-size: 25px;
+  font-weight: bold;
+}
+.noticePopupBox1 {
+  width: 900px;
+  height: 1000px;
+  background-color: #5f5f5f;
+  border-radius: 25px;
+  margin: 0 auto;
+  padding: 30px;
+}
+.noticePopupBox2 {
+  width: 400px;
+  height: 150px;
+  font-size: 80px;
+  margin: 60px 0 0 20px;
+  color: white;
+  font-weight: bold;
+  border: 1px solid white;
+  padding: 20px;
+}
+.noticePopupBox3 {
+  width: 800px;
+  height: 680px;
+  border: 1px solid white;
+  margin: 20px 0 0 20px;
+  padding: 20px;
+}
+.noticePopupBoxWrite {
+  width: 100%;
+  height: 430px;
+  font-size: 70px;
+  color: white;
+  font-weight: bold;
+}
+.noticePopupBoxImg {
+  display: flex;
+  justify-content: end;
+}
+.inquiryBox2 {
+  width: 160px;
+  height: 50px;
+  background-color: grey;
+  color: white;
+  font-size: 24px;
+  padding: 8px;
+  text-align: center;
+  margin-left: auto;
+}
+.inquiryBox3 {
+  width: 100%;
+  height: 70px;
+  border: 1px solid black;
+  font-size: 32px;
+  text-align: center;
+  margin: 20px 0 20px 0;
+  padding: 10px;
+}
+.inquiryBox4 {
+  width: 100%;
+  height: 900px;
+  border: 1px solid black;
+  padding: 30px 100px 30px 100px;
+}
+.inquiryBox5 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.inquiryBox5_1 {
+  width: 135px;
+  height: 60px;
+  border: 1px solid black;
+  font-size: 32px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 60px;
+}
+.inquiryBox5_2 {
+  width: 875px;
+  height: 60px;
+  border: 1px solid black;
+  font-size: 32px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 60px;
+}
+.inquiryBox6 {
+  width: 100%;
+  height: 750px;
+  border: 1px solid black;
+  margin-top: 20px;
+}
+.inquiryBox7 {
+  width: 260px;
+  height: 60px;
+  background-color: black;
+  color: white;
+  font-size: 32px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 60px;
+  border-radius: 25px;
+  margin: 20px auto;
+}
+
+/* 수강신청 페이지 설정 */
+
+.enrollmentTitle {
+  font-size: 40px;
+  font-weight: bold;
+  display: flex;
+  justify-content: left;
+  padding: 30px 0px;
+  margin-top: 30px;
+}
+
+.enrollment > div {
+  border: 2px solid black;
+  border-radius: 5px;
+  margin: 0px 0px 30px 0px;
+  display: flex;
+}
+
+.lectureEnrollInfo {
+  width: 810px;
+  margin: 30px;
+}
+
+.lectureEnrollimg {
+  background-color: gray;
+  height: 300px;
+  width: 400px;
+  border-radius: 10px;
+  margin: 30px;
+}
+
+.lectureEnrollname {
+  font-size: 30px;
+  padding: 5px 0px 5px 0px;
+  margin: 30px 0px 0px 0px;
+}
+
+.teacherEnrollname {
+  font-size: 20px;
+  padding: 5px 0px 5px 0px;
+  margin: 0px 0px 30px 0px;
+}
+
+/* .enrollPrice {
+  padding: 30px 20px 20px 0px;
+} */
+
+.enrollPrice > div {
+  display: inline-block;
+  padding: 20px 40px 20px 0px;
+  margin-right: 50px;
+}
+
+.cartEnrollBtn {
+  height: 50px;
+  width: 150px;
+  border: 2px solid black;
+  border-radius: 10px;
+  text-align: center;
+  line-height: 45px;
+  float: right;
+  margin: 5px 0px 5px 0px;
+}
+
+.cartEnrollBtn:hover {
+  background-color: black;
+  color: white;
+}
+
+/* 나의 진도율 페이지 설정 */
+
+.progressTitle {
+  font-size: 40px;
+  font-weight: bold;
+  display: flex;
+  justify-content: left;
+  padding: 30px 0px;
+  margin-top: 30px;
+  border-bottom: 2px solid black;
+}
+
+.selectSearchBox {
+  display: flex;
+  justify-content: center;
+}
+
+.selectSubjectBtn {
+  height: 50px;
+  width: 200px;
+  border: 2px solid black;
+  border-radius: 5px;
+  text-align: left;
+  line-height: 45px;
+  font-size: 20px;
+  padding: 0px 10px;
+  margin: 30px 10px;
+  color: gray;
+}
+
+.searchSubjectBtn {
+  height: 50px;
+  width: 400px;
+  border: 2px solid black;
+  border-radius: 5px;
+  text-align: left;
+  line-height: 45px;
+  font-size: 20px;
+  padding: 0px 10px;
+  margin: 30px 10px;
+  color: gray;
+}
+
+.searchIcon {
+  height: 50px;
+  width: 50px;
+  margin: 30px 0px;
+  background-color: gray;
+}
+
+.progressTitleBox {
+  display: flex;
+  justify-content: left;
+}
+
+.progressSubjectName {
+  font-size: 40px;
+  font-weight: bold;
+  display: flex;
+  justify-content: left;
+  padding: 30px 0px;
+  margin: 30px;
+}
+
+.progressSubjectInfo {
+  font-size: 40px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  padding: 30px 0px;
+  margin: 30px;
+}
+
+.progressInfoBox {
+  height: 700px;
+  border: 2px solid black;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.progressInfo {
+  display: grid;
+  grid-template-columns: 35% 65%;
+}
+
+.progressInfoStudent {
+  font-size: 30px;
+  padding: 0px 10px;
+  margin: 40px;
+  color: black;
+  font-weight: bold;
+}
+
+.progressInfoGraph {
+  height: 50px;
+  width: 700px;
+  border: 2px solid black;
+  border-radius: 10px;
+  margin: 40px;
+}
+
+.progressInfoGraphColor {
+  height: 50px;
+  width: 500px;
+  border: 2px solid black;
+  border-radius: 10px;
+  background-color: #000;
+}
+
+/* 성적확인 페이지 설정 */
+.gradeTitle {
+  font-size: 40px;
+  font-weight: bold;
+  display: flex;
+  justify-content: left;
+  padding: 30px 0px;
+  margin-top: 30px;
+  border-bottom: 2px solid black;
+}
+
+.gradeInfoBox {
+  height: 700px;
+  border: 2px solid black;
+  border-radius: 5px;
+  padding: 20px;
+  margin-top: 40px;
+}
+
+.gradeSubjectName {
+  font-size: 40px;
+  font-weight: bold;
+  display: flex;
+  justify-content: left;
+  padding: 30px 0px;
+  margin: 30px;
+}
+
+.gradeSubjectInfo {
+  font-size: 40px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  padding: 30px 0px;
+  margin: 30px;
+}
+
+/* 수강후기 */
+
+.reviewBox {
+  width: 100%;
+  height: 300px;
+  background-color: #2f2f2f;
+}
+.reviewBox2-content {
+  width: 100%;
+  height: 300px;
+  background-color: #f5f5f5;
+  border-radius: 25px;
+  position: relative;
+  top: -150px;
+  padding: 35px;
+}
+.reviewBox3 {
+  display: grid;
+  grid-template-columns: 2fr 1fr 3fr;
+  justify-items: center;
+}
+.reviewBox4 {
+  width: 192px;
+  height: 47px;
+  border: 1px solid black;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 47px;
+}
+#reviewBox3-1 {
+  width: 288px;
+  height: 70px;
+  border: 1px solid black;
+  text-align: center;
+  font-size: 32px;
+  font-weight: bold;
+  line-height: 70px;
+  margin-top: 50px;
+}
+#reviewBox3-2 {
+  width: 210px;
+  height: 70px;
+  border: 1px solid black;
+  text-align: center;
+  font-size: 32px;
+  font-weight: bold;
+  line-height: 70px;
+  margin-top: 50px;
+}
+.reviewBoxStarGrid {
+  display: grid;
+  grid-template-columns: 1fr 2.5fr;
+  margin-top: 5px;
+}
+.reviewBoxStar {
+  margin-top: 15px;
+}
+#reviewBoxStar1-1 {
+  width: 294px;
+  height: 13px;
+  background-color: #3d3d3d;
+  border-radius: 25px;
+  margin-top: 10px;
+}
+.reviewBoxStar2-1 {
+  width: 294px;
+  height: 13px;
+  background-color: #d9d9d9;
+  border-radius: 25px;
+  margin-top: 10px;
+  position: relative;
+}
+#reviewBoxStar2-1 {
+  width: 254px;
+  height: 13px;
+  background-color: #3d3d3d;
+  border-radius: 25px;
+  margin-top: 10px;
+  position: absolute;
+  top: -10px;
+}
+#reviewBoxStar2-2 {
+  width: 190px;
+  height: 13px;
+  background-color: #3d3d3d;
+  border-radius: 25px;
+  margin-top: 10px;
+  position: absolute;
+  top: -10px;
+}
+#reviewBoxStar2-3 {
+  width: 150px;
+  height: 13px;
+  background-color: #3d3d3d;
+  border-radius: 25px;
+  margin-top: 10px;
+  position: absolute;
+  top: -10px;
+}
+#reviewBoxStar2-4 {
+  width: 87px;
+  height: 13px;
+  background-color: #3d3d3d;
+  border-radius: 25px;
+  margin-top: 10px;
+  position: absolute;
+  top: -10px;
+}
+.reviewStar {
+  font-size: 22px;
+}
+.reviewBox5 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  width: 850px;
+  height: 90px;
+  border-radius: 50px;
+  margin: auto;
+  text-align: center;
+  line-height: 90px;
+  background-color: #d9d9d9;
+  font-size: 32px;
+  position: relative;
+  top: -110px;
+}
+.reviewBox5 > div:hover {
+  color: white;
+  background-color: #2f2f2f;
+  border-radius: 50px;
+}
+.reviewBox6 {
+  width: 85%;
+  margin: auto;
+}
+#reviewBox6-1 {
+  width: 230px;
+  height: 56px;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 56px;
+  border: 1px solid black;
+  position: relative;
+  top: -30px;
+}
+.reviewBox7 {
+  width: 100%;
+  height: 360px;
+  border-radius: 25px;
+  background-color: #d9d9d9;
+  padding: 50px;
+  margin-bottom: 40px;
+}
+.reviewBox7Grid {
+  display: grid;
+  grid-template-columns: 1fr 8fr 1fr;
+}
+#reviewBox7Grid-1 {
+  width: 143px;
+  height: 43px;
+  border: 1px solid black;
+  text-align: center;
+  line-height: 43px;
+}
+#reviewBox7Grid-2 {
+  width: 143px;
+  height: 26px;
+  border: 1px solid black;
+  text-align: center;
+  line-height: 26px;
+  margin-top: 5px;
+}
+#reviewBox7Grid-3 {
+  width: 140px;
+  height: 26px;
+  border: 1px solid black;
+  text-align: center;
+  margin-top: 15px;
+}
+#reviewBox7Grid-4 {
+  width: 143px;
+  font-size: 24px;
+  text-align: center;
+}
+.reviewBox8 {
+  width: 100%;
+  height: 133px;
+  border: 1px solid black;
+  margin: 20px 50px 0 0;
+}
+.reviewBox9Grid {
+  display: grid;
+  grid-template-columns: 8fr 2fr;
+  margin-top: 30px;
+}
+.reviewBox9Grid-1 {
+  width: 62px;
+  height: 25px;
+  border: 1px solid black;
+  text-align: center;
+  font-weight: bold;
+  margin: 0 15px 0 15px;
+}
+.reviewBox9Grid-3 {
+  width: 62px;
+  height: 25px;
+  border: 1px solid black;
+  text-align: center;
+  font-weight: bold;
+  margin: 0 15px 0 15px;
+}
+.reviewBox9Grid-2 {
+  display: flex;
+}
+.reivewWriteBox1 {
+  width: 100%;
+  height: 97px;
+  text-align: center;
+  line-height: 97px;
+  border: 1px solid black;
+  font-size: 46px;
+  font-weight: bold;
+  border-radius: 25px;
+}
+.reivewWriteBox2 {
+  width: 100%;
+  height: 782px;
+  border: 1px solid black;
+  border-radius: 25px;
+  margin-top: 30px;
+  padding: 20px;
+}
+.reivewWriteBoxStar {
+  font-size: 70px;
+  margin-bottom: 20px;
+}
+.reivewWriteBox3 {
+  width: 200px;
+  height: 70px;
+  background-color: black;
+  color: white;
+  font-size: 32px;
+  font-weight: bold;
+  border-radius: 25px;
+  margin-top: 30px;
+  text-align: center;
+  line-height: 70px;
+}
+
+/* 로그인 화면 */
+
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap");
+
+.loginBody {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #111;
+  width: 100%;
+  overflow: hidden;
+}
+.ring {
+  position: relative;
+  width: 600px;
+  height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ring i {
+  position: absolute;
+  inset: 0;
+  border: 2px solid #fff;
+  transition: 0.5s;
+}
+.ring i:nth-child(1) {
+  border-radius: 38% 62% 63% 37% / 41% 44% 56% 59%;
+  animation: animate 6s linear infinite;
+}
+.ring i:nth-child(2) {
+  border-radius: 41% 44% 56% 59%/38% 62% 63% 37%;
+  animation: animate 4s linear infinite;
+}
+.ring i:nth-child(3) {
+  border-radius: 41% 44% 56% 59%/38% 62% 63% 37%;
+  animation: animate2 10s linear infinite;
+}
+@keyframes animate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes animate2 {
+  0% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.login {
+  position: absolute;
+  width: 300px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 15px;
+}
+.login h2 {
+  font-size: 2em;
+  color: #fff;
+}
+.login .inputBx {
+  position: relative;
+  width: 100%;
+}
+.login .inputBx input {
+  position: relative;
+  width: 100%;
+  padding: 12px 20px;
+  background: transparent;
+  border: 2px solid #fff;
+  border-radius: 40px;
+  font-size: 1.2em;
+  color: #fff;
+  box-shadow: none;
+  outline: none;
+}
+.login .inputBx input::placeholder {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: medium;
+}
+.login .links {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #fff;
+}
+.login .links .find-password {
+  color: #fff;
+  text-decoration: underline;
+  font-size: 14px;
+  padding: 5px 10px 0px 10px;
+}
+
+.login .links .signup-link {
+  padding: 0 20px;
+}
+
+.login .sign-inBx input[type="submit"] {
+  width: 100%;
+  background: rgb(94, 94, 94);
+  border: none;
+  cursor: pointer;
+  font-size: medium;
+  transition: 0.3s;
+}
+.login .sign-inBx {
+  position: relative;
+  width: 100%;
+}
+
+.login .sign-inBx input {
+  position: relative;
+  width: 100%;
+  padding: 12px 20px;
+  background: transparent;
+  border: 2px solid #fff;
+  border-radius: 40px;
+  font-size: 1.2em;
+  color: #fff;
+  box-shadow: none;
+  outline: none;
+}
+.login .sign-inBx input:hover {
+  background: rgb(51, 51, 51);
+}
+
+/* 회원가입 추후에 수정필요 */
+
+.signup {
+  background-color: #2a2a2a;
+  width: 1920px;
+  height: 1600px;
+  padding: 30px 360px 30px 360px;
+}
+.signup > div {
+  color: white;
+}
+.signupBox1 {
+  font-size: 64px;
+  font-weight: 700;
+  color: white;
+  margin: 0 0 30px 0;
+}
+.signupBox2 {
+  width: 1200px;
+  height: 207px;
+  border: 1px solid white;
+  margin: auto;
+}
+.signupBox2-1 {
+  font-size: 40px;
+  font-weight: 400px;
+  margin: 40px 0 0 75px;
+  color: white;
+}
+.signupBox2-2 {
+  font-size: 40px;
+  font-weight: 400px;
+  margin: 20px 0 20px 400px;
+  color: white;
+}
+.signupBoxGrid {
+  margin: 20px 63px 20px 63px;
+}
+.signupBox3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin-bottom: 10px;
+}
+.signupBox3-1 {
+  width: 167px;
+  height: 50px;
+  font-size: 24px;
+  line-height: 50px;
+  margin-right: 10px;
+}
+.signupBox3-2 {
+  width: 264px;
+  height: 50px;
+  margin-right: 10px;
+}
+.signupBox3-3 {
+  width: 649px;
+  height: 50px;
+  line-height: 50px;
+  font-size: 16px;
+}
+.signupBox3-4 {
+  width: 328px;
+  height: 50px;
+  background-color: white;
+  color: black;
+  line-height: 50px;
+  display: grid;
+  grid-template-columns: 2fr 3fr 2fr 3fr;
+  align-items: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+.signupBox3-5 {
+  width: 805px;
+  height: 50px;
+  margin-right: 10px;
+}
+.signupBox3-6 {
+  box-sizing: border-box;
+}
+.el_ttl {
+  font-size: 18px;
+  font-weight: bold;
+}
+.el_result {
+  height: 20px;
+}
+.el_btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  outline: unset;
+  border: unset;
+
+  padding: 10px;
+  background: #333333;
+  border-radius: 5px;
+  color: #ffffff;
+
+  font-family: Noto Sans KR;
+  letter-spacing: -0.04em;
+  text-align: left;
+
+  width: fit-content;
+  height: 37px;
+  font-family: Noto Sans KR;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  letter-spacing: -0.04em;
+  text-align: left;
+
+  word-break: keep-all;
+}
+.el_btn--outline {
+  background: unset;
+  border: 1px solid #333333;
+  color: #333333;
+  font-family: Noto Sans KR;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  letter-spacing: -0.04em;
+  text-align: left;
+  background-color: #ffffff;
+}
+.el_input {
+  padding: 10px;
+  /* max-width: 320px; */
+  width: 100%;
+  height: 37px;
+  border: 1px solid #d4d4d4;
+  border-radius: 5px;
+  color: #000;
+  background-color: unset;
+
+  font-family: Noto Sans KR;
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 17px;
+  letter-spacing: -0.04em;
+  text-align: left;
+}
+.el_input::placeholder {
+  color: #d4d4d4;
+}
+.el_input:disabled {
+  background-color: #f0f0f0;
+}
+.bl_stack {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.bl_stack--row {
+  flex-direction: row;
+}
+.form {
+  margin-bottom: 20px;
+  height: fit-content;
+}
+.hp_shrink-0 {
+  flex-shrink: 0;
+}
+.signupBoxCheckBox-1 {
+  width: 95px;
+  height: 34px;
+  border: 1px solid black;
+  text-align: center;
+  line-height: 34px;
+  font-weight: bold;
+  margin: 0 10px;
+}
+.signupBoxCheckBoxGrid {
+  display: flex;
+  margin-right: 45px;
+  margin-bottom: 18px;
+}
+.signupBox4 {
+  width: 141px;
+  height: 48px;
+  text-align: center;
+  background-color: white;
+  border-radius: 50px;
+  color: black;
+  margin: 43px auto;
+  font-weight: 700;
+  line-height: 48px;
+}
+
+.hidden {
+  display: none;
+}

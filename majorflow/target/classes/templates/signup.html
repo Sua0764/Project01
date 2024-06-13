@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="kr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <title>회원가입</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.7.2/dist/axios.min.js"></script>
+  </head>
+
+  <body>
+    <div class="signup">
+      <div class="signupBox">
+        <div class="signupBox1">회원가입</div>
+        <div class="signupBox2">
+          <div class="signupBox2-1">회원가입</div>
+          <div class="signupBox2-2">기본 정보</div>
+        </div>
+        <div class="signupBoxGrid">
+          <div class="signupBox3">
+            <div class="signupBox3-1">아이디</div>
+            <input class="signupBox3-2" type="text" />
+            <div class="signupBox3-3">
+              사용자 ID는 0~0자 사이의 영문+숫자로 이루어져야하며 영문으로
+              시작되어야 합니다
+            </div>
+          </div>
+          <div class="signupBox3">
+            <div class="signupBox3-1">비밀번호</div>
+            <input class="signupBox3-2" type="password" />
+            <div class="signupBox3-3">비밀번호는 6~20자로 되어야 합니다</div>
+          </div>
+          <div class="signupBox3">
+            <div class="signupBox3-1">비밀번호 확인</div>
+            <input class="signupBox3-2" type="password" />
+            <div class="signupBox3-3"></div>
+          </div>
+          <div class="signupBox3">
+            <div class="signupBox3-1">이름</div>
+            <input class="signupBox3-2" type="text" />
+            <div class="signupBox3-3">이름은 2~20자 이내여야 합니다.</div>
+          </div>
+          <div class="signupBox3">
+            <div class="signupBox3-1">닉네임</div>
+            <input class="signupBox3-2" type="text" />
+            <div class="signupBox3-3">닉네임은 1~10자 이내여야 합니다.</div>
+          </div>
+          <div class="signupBox3">
+            <div class="signupBox3-1">사용자 구분</div>
+            <div class="signupBox3-4">
+              <input type="radio" name="authority" value="teacher" /> 선생님
+              <input type="radio" name="authority" value="student" /> 학생
+            </div>
+            <div class="signupBox3-3"></div>
+          </div>
+          <div class="signupBox3">
+            <div class="signupBox3-1">이메일</div>
+            <input class="signupBox3-2" type="email" />
+            <div class="signupBox3-3"></div>
+          </div>
+          <div class="signupBox3">
+            <div class="signupBox3-1">성별</div>
+            <div class="signupBox3-4">
+              <input type="radio" name="gender" value="male" /> 남자
+              <input type="radio" name="gender" value="female" /> 여자
+            </div>
+            <div class="signupBox3-3"></div>
+          </div>
+          <div class="signupBox3">
+            <div class="signupBox3-1">핸드폰 번호</div>
+            <input class="signupBox3-2" type="number" />
+            <div class="signupBox3-3"></div>
+          </div>
+          <!-- 주소 항목 -->
+          <div class="bl_stack form">
+            <div class="el_ttl">주소</div>
+            <div class="bl_stack bl_stack--row">
+              <input
+                type="text"
+                class="el_input hp_txt-center"
+                placeholder=""
+                disabled
+                id="zonecode"
+              />
+              <button
+                class="el_btn el_btn--outline hp_shrink-0"
+                id="search-btn"
+                onclick="findAddr()"
+              >
+                우편번호 찾기
+              </button>
+            </div>
+            <input
+              type="text"
+              class="el_input"
+              placeholder=""
+              disabled
+              id="roadAddress"
+            />
+            <input
+              type="text"
+              class="el_input"
+              placeholder="상세주소를 입력해주세요."
+              id="roadAddressDetail"
+            />
+            <button class="el_btn" id="register-btn">주소 등록하기</button>
+          </div>
+          <div class="bl_stack">
+            <div class="el_ttl">주소 입력 결과</div>
+            <div class="el_ttl">우편번호</div>
+            <div class="el_result" id="zonecodeResult"></div>
+            <div class="el_ttl">주소</div>
+            <div class="el_result" id="roadAddressResult"></div>
+            <div class="el_ttl">상세주소</div>
+            <div class="el_result" id="roadAddressDetailResult"></div>
+          </div>
+          <div class="signupBox3">
+            <div class="signupBox3-1">생년월일</div>
+            <input class="signupBox3-2" type="date" />
+            <div class="signupBox3-3"></div>
+          </div>
+          <div class="signupBox3">
+            <div class="signupBox3-1">선호도(장르)</div>
+            <div class="signupBoxCheckBox">
+              <table>
+                <tr>
+                  <td>
+                    <div class="signupBoxCheckBoxGrid">
+                      <input type="checkbox" name="genre" value="클래식" />
+                      <div class="signupBoxCheckBox-1">클래식</div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="signupBoxCheckBoxGrid">
+                      <input type="checkbox" name="genre" value="재즈" />
+                      <div class="signupBoxCheckBox-1">재즈</div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="signupBoxCheckBoxGrid">
+                      <input type="checkbox" name="genre" value="락" />
+                      <div class="signupBoxCheckBox-1">락</div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="signupBoxCheckBoxGrid">
+                      <input type="checkbox" name="genre" value="CCM" />
+                      <div class="signupBoxCheckBox-1">CCM</div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="signupBoxCheckBoxGrid">
+                      <input type="checkbox" name="genre" value="K-pop" />
+                      <div class="signupBoxCheckBox-1">K-POP</div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="signupBoxCheckBoxGrid">
+                      <input type="checkbox" name="genre" value="pop" />
+                      <div class="signupBoxCheckBox-1">POP</div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="signupBoxCheckBoxGrid">
+                      <input type="checkbox" name="genre" value="J-pop" />
+                      <div class="signupBoxCheckBox-1">J-POP</div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="signupBoxCheckBoxGrid">
+                      <input type="checkbox" name="genre" value="R&B" />
+                      <div class="signupBoxCheckBox-1">R&B</div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="signupBoxCheckBoxGrid">
+                      <input type="checkbox" name="genre" value="뉴에이지" />
+                      <div class="signupBoxCheckBox-1">뉴에이지</div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="signupBoxCheckBoxGrid">
+                      <input type="checkbox" name="genre" value="트로트" />
+                      <div class="signupBoxCheckBox-1">트로트</div>
+                    </div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="signupBox3-3"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    function findAddr() {
+      new daum.Postcode({
+        oncomplete: function (data) {
+          console.log(data);
+
+          var roadAddr = data.roadAddress;
+          var jibunAddr = data.jibunAddress;
+
+          document.getElementById("zonecode").value = data.zonecode;
+          if (roadAddr !== "") {
+            document.getElementById("roadAddress").value = roadAddr;
+          } else if (jibunAddr !== "") {
+            document.getElementById("roadAddress").value = jibunAddr;
+          }
+        },
+      }).open();
+    }
+  </script>
+  <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+</html>
