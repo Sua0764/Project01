@@ -1,8 +1,4 @@
 const urlLectures = "http://localhost:8080/lectures";
-// const urlParams = new URLSearchParams(window.location.search);
-// const id = urlParams.get("lectureId");
-// console.log("Lecture ID: ", id);
-// const urlLecture = "http://localhost:8080/lectures/" + id;
 
 axios
   .get(urlLectures)
