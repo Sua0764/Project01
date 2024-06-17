@@ -1,188 +1,191 @@
 <!DOCTYPE html>
 <html lang="kr">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="/css/style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-          href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-          rel="stylesheet"
-  />
-  <title>수강후기</title>
-  <script src="https://cdn.jsdelivr.net/npm/axios@1.7.2/dist/axios.min.js"></script>
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <title>수강후기</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.7.2/dist/axios.min.js"></script>
+  </head>
 
-<body>
-<div class="container">
-  <div class="box1">
-    <div class="wbox mainMenu">
-      <div>
-        <a href="index.html"
-        ><img src="/static/img/브니엘 아카데미 로고 1.png" class="logo"
-        /></a>
-      </div>
-      <div>
-        <span class="centerMenu"><a href="about.html">학원소개</a></span>
-        <span class="centerMenu"><a href="course.html">수강안내</a></span>
-        <span class="centerMenu"
-        ><a href="enrollment.html">수강신청</a></span
-        >
-        <span class="centerMenu"><a href="customer.html">고객센터</a></span>
-      </div>
+  <body>
+    <div class="container">
+      <div class="box1">
+        <div class="wbox mainMenu">
+          <div>
+            <a href="index.html"
+              ><img src="/static/img/브니엘 아카데미 로고 1.png" class="logo"
+            /></a>
+          </div>
+          <div>
+            <span class="centerMenu"><a href="about.html">학원소개</a></span>
+            <span class="centerMenu"><a href="course.html">수강안내</a></span>
+            <span class="centerMenu"
+              ><a href="enrollment.html">수강신청</a></span
+            >
+            <span class="centerMenu"><a href="customer.html">고객센터</a></span>
+          </div>
 
-      <div>
-        <span class="rightMenu"><a href="review.html">수강후기</a></span>
-        <span class="rightMenu">
+          <div>
+            <span class="rightMenu"><a href="review.html">수강후기</a></span>
+            <span class="rightMenu">
               <a href="mypage.html"
-              ><img
-                      src="/static/img/마이페이지.png"
-                      alt=""
-                      class="mypageIcon"
+                ><img
+                  src="/static/img/마이페이지.png"
+                  alt=""
+                  class="mypageIcon"
               /></a>
             </span>
-        <span class="rightMenu">
+            <span class="rightMenu">
               <a href="cart.html"
-              ><img src="/static/img/장바구니.png" alt="" class="cartIcon"
+                ><img src="/static/img/장바구니.png" alt="" class="cartIcon"
               /></a>
             </span>
-        <span class="rightMenu"
-        ><img src="/static/img/로그아웃.png" alt="" /> 로그아웃</span
-        >
-      </div>
-    </div>
-    <div></div>
-    <div class="wbox title">
-      <div>REVIEW</div>
-    </div>
-    <div class="wbox subMenu">
-      <div class="reviewBtn">Review</div>
-    </div>
-  </div>
-  <div class="box2">
-    <div class="reviewBox"></div>
-    <div class="wbox reivew">
-      <div class="reviewBox2">
-        <div class="reviewBox2-content">
-          <div class="reviewBox3">
-            <div class="reviewBox4">Text</div>
-            <div class="reviewBox4">Text</div>
-            <div class="reviewBox4">Text</div>
+            <span class="rightMenu menuLogoutBtn"
+              ><img src="/static/img/로그아웃.png" alt="" /> 로그아웃</span
+            >
+            <span class="rightMenu menuLoginBtn hidden"
+              ><a href="login.html">로그인</a></span
+            >
           </div>
-          <div class="reviewBox3">
-            <div id="reviewBox3-1">Text</div>
-            <div id="reviewBox3-2">Text</div>
-            <div class="reviewBoxStar">
-              <div class="reviewBoxStarGrid">
-                <div class="reviewStar">★★★★★</div>
-                <div id="reviewBoxStar1-1"></div>
+        </div>
+        <div></div>
+        <div class="wbox title">
+          <div>REVIEW</div>
+        </div>
+        <div class="wbox subMenu">
+          <div class="reviewBtn">Review</div>
+        </div>
+      </div>
+      <div class="box2">
+        <div class="reviewBox"></div>
+        <div class="wbox reivew">
+          <div class="reviewBox2">
+            <div class="reviewBox2-content">
+              <div class="reviewBox3">
+                <div class="reviewBox4">Text</div>
+                <div class="reviewBox4">Text</div>
+                <div class="reviewBox4">Text</div>
               </div>
-              <div class="reviewBoxStarGrid">
-                <div class="reviewStar">★★★★☆</div>
-                <div class="reviewBoxStar2-1">
-                  <div id="reviewBoxStar2-1"></div>
+              <div class="reviewBox3">
+                <div id="reviewBox3-1">Text</div>
+                <div id="reviewBox3-2">Text</div>
+                <div class="reviewBoxStar">
+                  <div class="reviewBoxStarGrid">
+                    <div class="reviewStar">★★★★★</div>
+                    <div id="reviewBoxStar1-1"></div>
+                  </div>
+                  <div class="reviewBoxStarGrid">
+                    <div class="reviewStar">★★★★☆</div>
+                    <div class="reviewBoxStar2-1">
+                      <div id="reviewBoxStar2-1"></div>
+                    </div>
+                  </div>
+                  <div class="reviewBoxStarGrid">
+                    <div class="reviewStar">★★★☆☆</div>
+                    <div class="reviewBoxStar2-1">
+                      <div id="reviewBoxStar2-2"></div>
+                    </div>
+                  </div>
+                  <div class="reviewBoxStarGrid">
+                    <div class="reviewStar">★★☆☆☆</div>
+                    <div class="reviewBoxStar2-1">
+                      <div id="reviewBoxStar2-3"></div>
+                    </div>
+                  </div>
+                  <div class="reviewBoxStarGrid">
+                    <div class="reviewStar">★☆☆☆☆</div>
+                    <div class="reviewBoxStar2-1">
+                      <div id="reviewBoxStar2-4"></div>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div class="reviewBoxStarGrid">
-                <div class="reviewStar">★★★☆☆</div>
-                <div class="reviewBoxStar2-1">
-                  <div id="reviewBoxStar2-2"></div>
+            </div>
+          </div>
+          <div class="reviewBox5">
+            <div>전체</div>
+            <div>피아노</div>
+            <div>첼로</div>
+            <div>기타</div>
+            <div>드럼</div>
+          </div>
+          <div class="reviewBox6">
+            <div id="reviewBox6-1">Text</div>
+            <div class="reviewBox7">
+              <div class="reviewBox7Grid">
+                <img src="img/카메라.png" />
+                <div>
+                  <div id="reviewBox7Grid-1">Text</div>
+                  <div id="reviewBox7Grid-2">Text</div>
+                </div>
+                <div>
+                  <div id="reviewBox7Grid-4">★★★★★</div>
+                  <div id="reviewBox7Grid-3">Text</div>
                 </div>
               </div>
-              <div class="reviewBoxStarGrid">
-                <div class="reviewStar">★★☆☆☆</div>
-                <div class="reviewBoxStar2-1">
-                  <div id="reviewBoxStar2-3"></div>
+              <div class="reviewBox8">Text</div>
+              <div class="reviewBox9Grid">
+                <div class="reviewBox9Grid-2">
+                  <div class="reviewBox9Grid-1">Text</div>
+                  <div class="reviewBox9Grid-1">Text</div>
+                </div>
+                <div class="reviewBox9Grid-2">
+                  <img src="img/하트.png" />
+                  <div class="reviewBox9Grid-1">Text</div>
+                  <img src="img/말풍선.png" />
+                  <div class="reviewBox9Grid-3">Text</div>
                 </div>
               </div>
-              <div class="reviewBoxStarGrid">
-                <div class="reviewStar">★☆☆☆☆</div>
-                <div class="reviewBoxStar2-1">
-                  <div id="reviewBoxStar2-4"></div>
+            </div>
+            <div class="reviewBox7">
+              <div class="reviewBox7Grid">
+                <img src="img/카메라.png" />
+                <div>
+                  <div id="reviewBox7Grid-1">Text</div>
+                  <div id="reviewBox7Grid-2">Text</div>
+                </div>
+                <div>
+                  <div id="reviewBox7Grid-4">★★★☆☆</div>
+                  <div id="reviewBox7Grid-3">Text</div>
+                </div>
+              </div>
+              <div class="reviewBox8">Text</div>
+              <div class="reviewBox9Grid">
+                <div class="reviewBox9Grid-2">
+                  <div class="reviewBox9Grid-1">Text</div>
+                  <div class="reviewBox9Grid-1">Text</div>
+                </div>
+                <div class="reviewBox9Grid-2">
+                  <img src="img/하트.png" />
+                  <div class="reviewBox9Grid-1">Text</div>
+                  <img src="img/말풍선.png" />
+                  <div class="reviewBox9Grid-3">Text</div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="reviewBox5">
-        <div>전체</div>
-        <div>피아노</div>
-        <div>첼로</div>
-        <div>기타</div>
-        <div>드럼</div>
-      </div>
-      <div class="reviewBox6">
-        <div id="reviewBox6-1">Text</div>
-        <div class="reviewBox7">
-          <div class="reviewBox7Grid">
-            <img src="img/카메라.png" />
-            <div>
-              <div id="reviewBox7Grid-1">Text</div>
-              <div id="reviewBox7Grid-2">Text</div>
-            </div>
-            <div>
-              <div id="reviewBox7Grid-4">★★★★★</div>
-              <div id="reviewBox7Grid-3">Text</div>
-            </div>
+        <div class="wbox reivewWriteBox hidden">
+          <div class="reivewWrite">수강후기</div>
+          <div class="reivewWriteBox1">Text</div>
+          <div class="reivewWriteBox2">
+            <div class="reivewWriteBoxStar">★★★★★</div>
+            <div>Text</div>
           </div>
-          <div class="reviewBox8">Text</div>
-          <div class="reviewBox9Grid">
-            <div class="reviewBox9Grid-2">
-              <div class="reviewBox9Grid-1">Text</div>
-              <div class="reviewBox9Grid-1">Text</div>
-            </div>
-            <div class="reviewBox9Grid-2">
-              <img src="img/하트.png" />
-              <div class="reviewBox9Grid-1">Text</div>
-              <img src="img/말풍선.png" />
-              <div class="reviewBox9Grid-3">Text</div>
-            </div>
-          </div>
-        </div>
-        <div class="reviewBox7">
-          <div class="reviewBox7Grid">
-            <img src="img/카메라.png" />
-            <div>
-              <div class="reviewBox7Grid-1">Text</div>
-              <div class="reviewBox7Grid-2">Text</div>
-            </div>
-            <div>
-              <div class="reviewBox7Grid-4">★★★☆☆</div>
-              <div class="reviewBox7Grid-3">Text</div>
-            </div>
-          </div>
-          <div class="reviewBox8">Text</div>
-          <div class="reviewBox9Grid">
-            <div class="reviewBox9Grid-2">
-              <div class="reviewBox9Grid-1">Text</div>
-              <div class="reviewBox9Grid-1">Text</div>
-            </div>
-            <div class="reviewBox9Grid-2">
-              <img src="img/하트.png" />
-              <div class="reviewBox9Grid-1">Text</div>
-              <img src="img/말풍선.png" />
-              <div class="reviewBox9Grid-3">Text</div>
-            </div>
-          </div>
+          <div class="reivewWriteBox3">Text</div>
         </div>
       </div>
-    </div>
-    <div class="wbox reivewWriteBox hidden">
-      <div class="reivewWrite">수강후기</div>
-      <div class="reivewWriteBox1">Text</div>
-      <div class="reivewWriteBox2">
-        <div class="reivewWriteBoxStar">★★★★★</div>
-        <div>Text</div>
+      <div class="footer">
+        <h3>FOOTER</h3>
       </div>
-      <div class="reivewWriteBox3">Text</div>
     </div>
-  </div>
-  <div class="footer">
-    <h3>FOOTER</h3>
-  </div>
-</div>
-<script src="/js/review.js"></script>
-</body>
+    <script src="/js/review.js"></script>
+  </body>
 </html>

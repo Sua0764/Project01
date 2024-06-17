@@ -27,6 +27,9 @@ public class Lecture {
     @Column(name = "play_time")
     private int playTime;
 
+    @Column(name = "lecture_text")
+    private String lectureText;
+
     @ManyToOne
     @JoinColumn(name = "teacher_id")
     private Teacher teacher;

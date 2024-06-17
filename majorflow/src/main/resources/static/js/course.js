@@ -74,6 +74,7 @@ function displayLecture(data) {
 
   //이미지 속성 추가 필요
   detailedBox.textContent = data.lectureName;
+  detailedBox2Text.textContent = data.lectureText;
 
   allCourseDetailBox.appendChild(backBtn);
   allCourseDetailBox.appendChild(detailedBox);
