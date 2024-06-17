@@ -68,7 +68,7 @@ public class UserController {
         if ( session != null) {
             session.invalidate();
         }
-        return "Yoy have been logged out.";
+        return "You have been logged out.";
     }
 
     @GetMapping("/current")

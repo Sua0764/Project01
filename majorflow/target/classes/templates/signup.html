@@ -202,24 +202,6 @@
     </div>
   </body>
 
-  <script>
-    function findAddr() {
-      new daum.Postcode({
-        oncomplete: function (data) {
-          console.log(data);
-
-          var roadAddr = data.roadAddress;
-          var jibunAddr = data.jibunAddress;
-
-          document.getElementById("zonecode").value = data.zonecode;
-          if (roadAddr !== "") {
-            document.getElementById("roadAddress").value = roadAddr;
-          } else if (jibunAddr !== "") {
-            document.getElementById("roadAddress").value = jibunAddr;
-          }
-        },
-      }).open();
-    }
-  </script>
+  <script src="/static/js/signup.js"></script>
   <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </html>
