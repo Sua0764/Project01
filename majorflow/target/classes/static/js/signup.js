@@ -1,3 +1,5 @@
+const urlSignup = "http://localhost:8080/user/signup";
+
 function findAddr() {
   new daum.Postcode({
     oncomplete: function (data) {

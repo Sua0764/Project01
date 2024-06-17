@@ -14,7 +14,7 @@ public class Reply {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long replyId;
 
-    @Column(name = "reply_text")
+    @Column(name = "reply_text", length=65535)
     private String replyText;
 
     @ManyToOne

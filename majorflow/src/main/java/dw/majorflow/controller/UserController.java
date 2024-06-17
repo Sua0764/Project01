@@ -8,7 +8,6 @@ import dw.majorflow.service.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -25,11 +24,8 @@ import java.util.List;
 public class UserController {
 
     private UserService userService;
-
     private UserDetailService userDetailService;
-
     private AuthenticationManager authenticationManager;
-
     private HttpServletRequest httpServletRequest;
 
     public UserController(UserService userService, UserDetailService userDetailService, AuthenticationManager authenticationManager, HttpServletRequest httpServletRequest) {
@@ -41,15 +37,19 @@ public class UserController {
 
     @GetMapping("/user")
     public ResponseEntity<List<User>> getUsersAll() {
-        return new ResponseEntity<>(userService.getUsersAll(),
-                HttpStatus.OK);
+        return new ResponseEntity<>(userService.getUsersAll(), HttpStatus.OK);
     }
 
     @PostMapping("/signup")
-    public ResponseEntity<String> signUp(@RequestBody UserDto user) {
-        return new ResponseEntity<>(userService.saveUser(user),
-                HttpStatus.CREATED);
+    public ResponseEntity<Integer> signUp(@RequestBody UserDto user) {
+        String result = userService.saveUser(user);
+        if ("0".equals(result)) {
+            return new ResponseEntity<>(0, HttpStatus.CONFLICT);
+        } else {
+            return new ResponseEntity<>(1, HttpStatus.CREATED);
+        }
     }
+
     @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody UserDto userDto, HttpServletRequest request) {
         Authentication authentication = authenticationManager.authenticate(
@@ -65,7 +65,7 @@ public class UserController {
     @PostMapping("/logout")
     public String logout(HttpServletRequest request, HttpServletResponse response) {
         HttpSession session = request.getSession(false);
-        if ( session != null) {
+        if (session != null) {
             session.invalidate();
         }
         return "You have been logged out.";
@@ -81,5 +81,17 @@ public class UserController {
         sessionDto.setUserId(authentication.getName());
         sessionDto.setAuthority(authentication.getAuthorities());
         return sessionDto;
+    }
+
+    @PostMapping("/check-id")
+    public ResponseEntity<Boolean> checkDuplicateId(@RequestBody UserDto userDto) {
+        boolean exists = userService.checkDuplicateId(userDto.getUserId());
+        return new ResponseEntity<>(exists, exists ? HttpStatus.CONFLICT : HttpStatus.OK);
+    }
+
+    @PostMapping("/check-nickname")
+    public ResponseEntity<Boolean> checkDuplicateNickname(@RequestBody UserDto userDto) {
+        boolean exists = userService.checkDuplicateNickname(userDto.getNickname());
+        return new ResponseEntity<>(exists, exists ? HttpStatus.CONFLICT : HttpStatus.OK);
     }
 }

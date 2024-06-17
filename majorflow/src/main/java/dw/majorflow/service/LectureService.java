@@ -3,6 +3,7 @@ package dw.majorflow.service;
 import dw.majorflow.exception.ResourceNotFoundException;
 import dw.majorflow.model.Lecture;
 import dw.majorflow.repository.LectureRepository;
+import dw.majorflow.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;

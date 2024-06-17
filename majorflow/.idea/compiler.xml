@@ -10,13 +10,9 @@
         <module name="majorflow" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="majorFlow" target="21" />
-    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="majorFlow" options="-parameters" />
       <module name="majorflow" options="-parameters" />
     </option>
   </component>
