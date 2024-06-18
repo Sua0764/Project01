@@ -29,6 +29,9 @@ public class ViewController {
     @GetMapping("majorflow/course.html")
     public String course() {return "course"; }
 
+    @GetMapping("majorflow/lecture.html")
+    public String lecture() {return "lecture"; }
+
     @GetMapping("majorflow/enrollment.html")
     public String enrollment() {return "enrollment"; }
 
