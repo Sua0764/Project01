@@ -30,4 +30,9 @@ public class Cart {
     @Column(name="purchase_time")
     private LocalDateTime purchaseTime;
 
+    public Cart(Lecture lecture, User user, LocalDateTime purchaseTime) {
+        this.lecture = lecture;
+        this.user = user;
+        this.purchaseTime = purchaseTime;
+    }
 }
