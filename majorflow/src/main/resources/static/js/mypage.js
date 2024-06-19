@@ -12,6 +12,87 @@ document.querySelector(".gradeBtn").addEventListener("click", () => {
   document.querySelector(".progressBox").classList.add("hidden");
 });
 
+/* 나의 진도율 */
+// progressBox 생성
+const progressBox = document.createElement("div");
+progressBox.classList.add("wbox", "progressBox");
+
+// progressTitle 생성 및 추가
+const progressTitle = document.createElement("div");
+progressTitle.classList.add("progressTitle");
+progressTitle.innerText = "조수아님의 진도율";
+progressBox.appendChild(progressTitle);
+
+// progressTitleBox 생성
+const progressTitleBox = document.createElement("div");
+progressTitleBox.classList.add("progressTitleBox");
+
+// progressSubjectName 생성 및 추가
+const progressSubjectName = document.createElement("div");
+progressSubjectName.classList.add("progressSubjectName");
+progressSubjectName.innerText = "Text";
+progressTitleBox.appendChild(progressSubjectName);
+
+// progressSubjectInfo 생성 및 추가
+const progressSubjectInfo = document.createElement("div");
+progressSubjectInfo.classList.add("progressSubjectInfo");
+progressSubjectInfo.innerText = "Text";
+progressTitleBox.appendChild(progressSubjectInfo);
+
+progressBox.appendChild(progressTitleBox);
+
+// progressInfoBox 생성
+const progressInfoBox = document.createElement("div");
+progressInfoBox.classList.add("progressInfoBox");
+
+// 첫 번째 progressInfo 생성
+const progressInfo1 = document.createElement("div");
+progressInfo1.classList.add("progressInfo");
+
+const progressInfoStudent1 = document.createElement("div");
+progressInfoStudent1.classList.add("progressInfoStudent");
+progressInfoStudent1.innerHTML = '나의 진도율 <span id="myProgress">0</span>%';
+progressInfo1.appendChild(progressInfoStudent1);
+
+const progressInfoGraph1 = document.createElement("div");
+progressInfoGraph1.classList.add("progressInfoGraph");
+
+const progressInfoGraphColor1 = document.createElement("div");
+progressInfoGraphColor1.classList.add("progressInfoGraphColor");
+progressInfoGraphColor1.id = "myProgressBar";
+progressInfoGraph1.appendChild(progressInfoGraphColor1);
+
+progressInfo1.appendChild(progressInfoGraph1);
+progressInfoBox.appendChild(progressInfo1);
+
+// 두 번째 progressInfo 생성
+const progressInfo2 = document.createElement("div");
+progressInfo2.classList.add("progressInfo");
+
+const progressInfoStudent2 = document.createElement("div");
+progressInfoStudent2.classList.add("progressInfoStudent");
+progressInfoStudent2.innerHTML =
+  '수강생 평균 진도율 <span id="averageProgress">0</span>%';
+progressInfo2.appendChild(progressInfoStudent2);
+
+const progressInfoGraph2 = document.createElement("div");
+progressInfoGraph2.classList.add("progressInfoGraph");
+
+const progressInfoGraphColor2 = document.createElement("div");
+progressInfoGraphColor2.classList.add("progressInfoGraphColor");
+progressInfoGraphColor2.id = "averageProgressBar";
+progressInfoGraph2.appendChild(progressInfoGraphColor2);
+
+progressInfo2.appendChild(progressInfoGraph2);
+progressInfoBox.appendChild(progressInfo2);
+
+progressBox.appendChild(progressInfoBox);
+
+// progressBox를 HTML에 추가
+document.getElementById("progress-container").appendChild(progressBox);
+
+//=======
+//>>>>>>> 42a9630708a119709209393a905c2e747c7ca903
 axios
   .get("/user/current")
   .then((response) => {
@@ -40,23 +121,39 @@ document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("averageProgressBar").style.width =
     averageProgress + "%";
 });
+//<<<<<<< HEAD
+//=======
 
+//>>>>>>> 42a9630708a119709209393a905c2e747c7ca903
 /* DOMContentLoaded 이벤트 */
 document.addEventListener("DOMContentLoaded", function () {
   sessionCurrent();
   getLectureData();
 });
 
-document.querySelectorAll(".subMenu > div").forEach((div) => {
-  div.addEventListener("click", () => {
-    document
-      .querySelectorAll(".subMenu > div")
-      .forEach((item) => item.classList.remove("active"));
+axios
+  .get("/user/current")
+  .then((response) => {
+    const userData = response.data;
+    const userName = userData.userId;
 
-    // 클릭된 div에 active 클래스 추가
-    div.classList.add("active");
+    const gradeTitle = document.querySelector(".gradeTitle");
+
+    gradeTitle.textContent = `${userName}님의 성적현황`;
+  })
+  .catch((error) => {
+    console.error("사용자 데이터 가져오기 실패:", error);
   });
-});
+
+axios
+  .get(urlLectures)
+  .then((response) => {
+    const lectureName = response.data.lectureName;
+    document.querySelector(".progressSubjectName").innerText = lectureName;
+  })
+  .catch((error) => {
+    console.error("강의 데이터 가져오기 실패:", error);
+  });
 
 function sessionCurrent() {
   axios

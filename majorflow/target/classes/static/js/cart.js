@@ -48,8 +48,10 @@ document.addEventListener("DOMContentLoaded", function () {
   cartBtns.forEach((btn) => {
     btn.addEventListener("click", function () {
       const lectureInfo = this.closest(".lectureEnrollInfo");
-      const lectureName = lectureInfo.querySelector(".lectureEnrollname").innerText;
-      const teacherName = lectureInfo.querySelector(".teacherEnrollname").innerText;
+      const lectureName =
+        lectureInfo.querySelector(".lectureEnrollname").innerText;
+      const teacherName =
+        lectureInfo.querySelector(".teacherEnrollname").innerText;
       const hobbyCheckbox = lectureInfo.querySelector(".hobbyCheckbox");
       const examCheckbox = lectureInfo.querySelector(".examCheckbox");
 
