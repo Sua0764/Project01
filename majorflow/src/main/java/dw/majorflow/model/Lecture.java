@@ -24,6 +24,9 @@ public class Lecture {
     @Column
     private int price;
 
+    @Column(name = "lecture_image")
+    private String lectureImage;
+
     @Column(name = "video_path")
     private String videoPath;
 
