@@ -565,7 +565,7 @@ body {
 }
 
 /* 동영상 모달창 */
-.modal {
+.modal1 {
   position: fixed;
   top: 30%;
   left: 30%;
@@ -580,7 +580,7 @@ body {
   pointer-events: none;
   padding: 20px;
 }
-.modal-content {
+.modal-content1 {
   width: 800px;
   height: 500px;
   background: grey;
@@ -589,11 +589,11 @@ body {
   transition: opacity 0.3s ease-in out, transform 0.3s ease-in out;
   transform: scale(0.8);
 }
-.modal.show {
+.modal1.show {
   opacity: 1;
   pointer-events: auto;
 }
-.modal.show .modal-content {
+.modal1.show .modal-content1 {
   opacity: 1;
   transform: scale(1);
 }
@@ -889,6 +889,22 @@ body {
 .moveToCartBtn:hover {
   background-color: #333;
   transform: scale(1.05);
+}
+
+/* 체크박스 스타일링 */
+.styled-checkbox {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid black;
+  border-radius: 4px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.styled-checkbox:checked {
+  background-color: black;
+  border: 2px solid black;
 }
 
 /* 장바구니 */
