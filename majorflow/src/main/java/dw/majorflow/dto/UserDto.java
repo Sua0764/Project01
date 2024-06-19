@@ -22,4 +22,5 @@ public class UserDto {
     private String email;
     private String nickname;
     private String genre;
+    private String newPassword; // 추가된 필드
 }

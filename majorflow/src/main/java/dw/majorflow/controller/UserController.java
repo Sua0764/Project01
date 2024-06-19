@@ -8,6 +8,7 @@ import dw.majorflow.service.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -28,6 +29,7 @@ public class UserController {
     private AuthenticationManager authenticationManager;
     private HttpServletRequest httpServletRequest;
 
+    @Autowired
     public UserController(UserService userService, UserDetailService userDetailService, AuthenticationManager authenticationManager, HttpServletRequest httpServletRequest) {
         this.userService = userService;
         this.userDetailService = userDetailService;
@@ -93,5 +95,16 @@ public class UserController {
     public ResponseEntity<Boolean> checkDuplicateNickname(@RequestBody UserDto userDto) {
         boolean exists = userService.checkDuplicateNickname(userDto.getNickname());
         return new ResponseEntity<>(exists, exists ? HttpStatus.CONFLICT : HttpStatus.OK);
+    }
+
+    // 비밀번호 재설정 엔드포인트 추가
+    @PostMapping("/reset-password")
+    public ResponseEntity<String> resetPassword(@RequestBody UserDto userDto) {
+        boolean success = userService.resetPassword(userDto.getUserId(), userDto.getNewPassword());
+        if (success) {
+            return ResponseEntity.ok("비밀번호가 재설정되었습니다.");
+        } else {
+            return new ResponseEntity<>("사용자를 찾을 수 없습니다.", HttpStatus.NOT_FOUND);
+        }
     }
 }

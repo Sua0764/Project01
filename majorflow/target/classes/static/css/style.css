@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap");
+
 * {
   margin: 0;
   padding: 0;
@@ -118,7 +120,7 @@
   font-size: 30px;
   font-weight: 500;
   position: absolute;
-  bottom: -480px;
+  bottom: -500px;
   left: 0px;
   transform: translateX(-100%);
   opacity: 0;
@@ -138,6 +140,7 @@
   flex-direction: column;
   align-items: end;
   padding: 20px;
+  cursor: pointer;
 }
 
 .menuContents > div {
@@ -244,6 +247,7 @@ body {
 
 .rightMenu {
   padding: 10px;
+  cursor: pointer;
 }
 
 .mainMenu > div > span:hover {
@@ -275,11 +279,21 @@ body {
   color: gray;
 }
 
-.logo,
+.logo {
+  width: 50px;
+  height: 50px;
+}
+
 .cartIcon,
 .mypageIcon {
-  width: 25px;
-  height: 25px;
+  width: 30px;
+  height: 30px;
+}
+
+.cartIcon > img,
+.mypageIcon > img {
+  width: 30px;
+  height: 30px;
 }
 
 /* 연혁 페이지 설정*/
@@ -704,7 +718,6 @@ body {
 }
 
 /* 수강신청 페이지 설정 */
-
 .enrollmentTitle {
   font-size: 40px;
   font-weight: bold;
@@ -714,11 +727,17 @@ body {
   margin-top: 30px;
 }
 
-.lectureEnrollment {
+.enrollment {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.enrollment > div {
   border: 2px solid black;
   border-radius: 5px;
   margin: 0px 0px 30px 0px;
   display: flex;
+  flex-basis: 100%;
 }
 
 .lectureEnrollInfo {
@@ -746,17 +765,7 @@ body {
   margin: 0px 0px 30px 0px;
 }
 
-/* .enrollPrice {
-  padding: 30px 20px 20px 0px;
-} */
-
 .enrollPrice > div {
-  display: inline-block;
-  padding: 20px 40px 20px 0px;
-  margin-right: 50px;
-}
-
-.enrollPrice2 > div {
   display: inline-block;
   padding: 20px 40px 20px 0px;
   margin-right: 50px;
@@ -776,6 +785,147 @@ body {
 .cartEnrollBtn:hover {
   background-color: black;
   color: white;
+}
+
+.moveToCartBtnContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.moveToCartBtn {
+  background-color: #000;
+  color: #fff;
+  font-size: 20px;
+  padding: 15px 30px;
+  border-radius: 10px;
+  text-decoration: none;
+  text-align: center;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.moveToCartBtn:hover {
+  background-color: #333;
+  transform: scale(1.05);
+}
+
+/* 장바구니 */
+.box1Cart {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #444;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px 0;
+}
+
+.cartBox {
+  width: 80%;
+  max-width: 1000px;
+  background-color: #555;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: auto;
+  margin-bottom: 20px;
+}
+
+.cartBox1 {
+  width: 100%;
+  background-color: #666;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cartBox2, .cartBox3, .cartBox4-1, .cartBox4-2 {
+  flex: 1;
+  border: none;
+  background-color: transparent;
+  text-align: center;
+}
+
+.cartBox3, .cartBox4-2 {
+  border-left: 1px solid #888;
+}
+
+.cartBoxLine {
+  display: none;
+}
+
+.cartBox5 {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.cartBox5-1 {
+  width: calc(50% - 20px);
+  height: 64px;
+  background-color: #777;
+  border-radius: 10px;
+  text-align: center;
+  line-height: 64px;
+  margin: 10px;
+  border: 1px solid #999;
+}
+
+.cartBox6 {
+  width: 263px;
+  height: 64px;
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  margin: auto;
+  text-align: center;
+  line-height: 64px;
+  border-radius: 50px;
+  text-decoration: none;
+  display: block;
+  margin-top: 20px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.cartBox6:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+.cartBoxRemove {
+  background-color: #ff4d4d;
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+  margin-left: 10px;
+  text-align: center;
+  line-height: 30px;
+  border-radius: 10px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.cartBoxRemove:hover {
+  background-color: #cc0000;
+}
+
+.totalPrice {
+  font-size: 20px;
+  text-align: right;
+  margin: 20px 0;
+}
+
+.footer {
+  width: 100%;
+  background-color: #222;
+  color: white;
+  text-align: center;
+  padding: 20px 0;
 }
 
 /* 나의 진도율 페이지 설정 */
@@ -1176,7 +1326,7 @@ body {
 
 /* 로그인 화면 */
 
-@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap");
+
 
 .loginBody {
   display: flex;
@@ -1312,105 +1462,83 @@ body {
   background: rgb(51, 51, 51);
 }
 
-/*장바구니 */
-.box1Cart {
-  width: 100%;
-  height: 1080px;
-  background-color: #5f5f5f;
-}
-
-.cartBox {
-  width: 987px;
-  height: 895px;
-  margin: 50px auto;
-  border: 1px solid black;
-  background-color: white;
-  padding: 25px;
-}
-
-.cartBox1 {
-  width: 936px;
-  height: 167px;
-  border: 1px solid black;
-  margin: auto;
-  margin-bottom: 20px;
-  padding: 20px 34px 20px 34px;
-}
-
-.cartBox2 {
-  width: 192px;
-  height: 47px;
-  border: 1px solid black;
-  text-align: center;
-  line-height: 47px;
-}
-
-.cartBoxLine {
-  width: 863px;
-  border: 1px solid black;
-  margin: 16px auto 16px;
-}
-
-.cartBox3 {
-  width: 863px;
-  height: 47px;
-  border: 1px solid black;
-  text-align: center;
-  line-height: 47px;
-}
-
-.cartBox4 {
-  width: 936px;
-  height: 228px;
-  border: 1px solid black;
-  margin: auto;
-  margin-bottom: 20px;
-  padding: 20px 34px 20px 34px;
-}
-
-.cartBox4-1 {
-  width: 192px;
-  height: 64px;
-  border: 1px solid black;
-  text-align: center;
-  line-height: 64px;
-}
-
-.cartBox4-2 {
-  width: 863px;
-  height: 64px;
-  border: 1px solid black;
-  text-align: center;
-  line-height: 64px;
-}
-
-.cartBox5 {
-  display: flex;
-  justify-content: center;
-}
-
-.cartBox5-1 {
-  width: 542px;
-  height: 64px;
-  border: 1px solid black;
-  text-align: center;
-  line-height: 64px;
-  margin: 10px 10px 50px 30px;
-}
-
-.cartBox6 {
-  width: 263px;
-  height: 64px;
-  background: black;
-  color: white;
-  font-weight: bold;
-  font-size: 32px;
-  margin: auto;
-  text-align: center;
-  line-height: 64px;
-  border-radius: 50px;
-}
-
 .hidden {
   display: none;
+}
+
+/* 비밀번호 재설정 팝업창 스타일 */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.modal-content {
+  background-color: #111;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 500px;
+  border-radius: 10px;
+  color: #fff;
+}
+
+.close-btn {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.reset-passwordBx {
+  position: relative;
+  width: 100%;
+}
+
+.reset-passwordBx input {
+  position: relative;
+  width: 100%;
+  padding: 20px 30px;
+  background: transparent;
+  border: 2px solid #fff;
+  border-radius: 40px;
+  font-size: 1.5em;
+  color: #fff;
+  box-shadow: none;
+  outline: none;
+  margin-top: 20px;
+}
+
+.reset-passwordBx input::placeholder {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.reset-passwordBx input[type="submit"] {
+  width: 50%;
+  padding: 10px;
+  background: rgb(94, 94, 94);
+  border: none;
+  cursor: pointer;
+  font-size: 1.2em;
+  transition: 0.3s;
+  margin: 20px auto;
+  display: block;
+}
+
+.reset-passwordBx input[type="submit"]:hover {
+  background: rgb(51, 51, 51);
 }

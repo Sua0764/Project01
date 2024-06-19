@@ -4,9 +4,10 @@ import dw.majorflow.dto.UserDto;
 import dw.majorflow.model.Authority;
 import dw.majorflow.model.User;
 import dw.majorflow.repository.UserRepository;
-import jakarta.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -18,9 +19,19 @@ public class UserService {
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
+    @Autowired
     public UserService(UserRepository userRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.userRepository = userRepository;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+    }
+
+    public User getUserById(String userId) {
+        Optional<User> userOptional = userRepository.findByUserId(userId);
+        if (userOptional.isPresent()) {
+            return userOptional.get();
+        } else {
+            throw new RuntimeException("User not found with id: " + userId);
+        }
     }
 
     public List<User> getUsersAll() {
@@ -57,5 +68,17 @@ public class UserService {
 
     public boolean checkDuplicateNickname(String nickname) {
         return userRepository.findByNickname(nickname).isPresent();
+    }
+
+    // 비밀번호 재설정 메서드 추가
+    public boolean resetPassword(String userId, String newPassword) {
+        Optional<User> userOptional = userRepository.findByUserId(userId);
+        if (userOptional.isPresent()) {
+            User user = userOptional.get();
+            user.setPassword(bCryptPasswordEncoder.encode(newPassword));
+            userRepository.save(user);
+            return true;
+        }
+        return false;
     }
 }

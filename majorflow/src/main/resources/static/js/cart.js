@@ -1,108 +1,99 @@
-const urlLogout = "http://localhost:8080/user/logout";
-const urlCart = "http://localhost:8080/cart/user/" + userId;
-//const urlPost = "http://localhost:8080/cart/user/" + userId;
+document.addEventListener("DOMContentLoaded", function () {
+  const cartItemsContainer = document.getElementById("cartItemsContainer");
+  const cartItems = JSON.parse(sessionStorage.getItem("cartItems")) || [];
 
-function sessionCurrent() {
-  axios
-    .get("http://localhost:8080/user/current", { withCredentials: true })
-    .then((response) => {
-      console.log("데이터: ", response.data);
-      if (response.status == 200) {
-        const userId = response.data.userId;
-        const authority = response.data.authority[0].authority;
-        let cartItems = JSON.parse(localStorage.getItem(userId));
-        if (cartItems) {
-          displayCart(cartItems, userId);
-          const data = cartItems.map((game) => {
-            return {
-              game: game,
-              user: { userId: userId, authority: { authorityName: authority } },
-            };
-          });
-          document
-            .querySelector(".purchaseBtn")
-            .addEventListener("click", () => {
-              if (confirm("진짜 구매하시겠습니까?")) {
-                axios
-                  .post(url, data, { withCredentials: true })
-                  .then((response) => {
-                    console.log("데이터: ", response.data);
-                    localStorage.removeItem(userId);
-                    window.location.reload();
-                  })
-                  .catch((error) => {
-                    console.log("에러 발생: ", error);
-                  });
-              }
-            });
-        }
-      }
-    })
-    .catch((error) => {
-      console.log("에러 발생: ", error);
-      alert("로그인해주세요.");
+  function renderCartItems() {
+    cartItemsContainer.innerHTML = "";
+    cartItems.forEach((item, index) => {
+      const cartItemDiv = document.createElement("div");
+      cartItemDiv.classList.add("cartBox1");
+      cartItemDiv.innerHTML = `
+        <div class="cartBox2">${item.lectureName}</div>
+        <div class="cartBoxLine"></div>
+        <div class="cartBox3">${item.teacherName}</div>
+        <div class="cartBox3">${item.type}</div>
+        <div class="cartBox3">${item.price.toLocaleString()}원</div>
+        <div class="cartBoxRemove" data-index="${index}">삭제</div>
+      `;
+      cartItemsContainer.appendChild(cartItemDiv);
     });
-}
+    updateTotalPrice();
+  }
 
-function displayCart(lectures, userId) {
-  const cartBox = document.querySelector(".cartBox");
-  let totalPrice = 0;
+  function updateTotalPrice() {
+    const totalPriceContainer = document.getElementById("totalPriceContainer");
+    const totalPrice = cartItems.reduce((sum, item) => sum + item.price, 0);
+    totalPriceContainer.textContent = `총 가격: ${totalPrice.toLocaleString()}원`;
+  }
 
-  lectures.forEach((data, index) => {
-    // 태그 요소 생성
-    const cartBox1 = document.createElement("div");
-    const cartBox2 = document.createElement("div");
-    const cartLine = document.createElement("div");
-    const cartBox3 = document.createElement("div");
-    const cartDeleteBtn = document.createElement("div");
+  cartItemsContainer.addEventListener("click", function (event) {
+    if (event.target.classList.contains("cartBoxRemove")) {
+      const index = event.target.dataset.index;
+      cartItems.splice(index, 1);
+      sessionStorage.setItem("cartItems", JSON.stringify(cartItems));
+      renderCartItems();
+    }
+  });
 
-    // 클래스 이름 생성
-    cartBox1.classList.add(".cartBox1");
-    cartBox2.classList.add(".cartBox2");
-    cartLine.classList.add(".cartLine");
-    cartBox3.classList.add(".cartBox3");
-    cartDeleteBtn.classList.add(".cartDeleteBtn");
+  renderCartItems();
 
-    // 태그 속성 추가
-    cartBox2.textContent = data.lectureName;
-    cartBox3.textContent = "160,000";
-    cartDeleteBtn.textContent = "삭제하기";
+  window.addEventListener("beforeunload", function () {
+    sessionStorage.removeItem("cartItems");
+  });
+});
 
-    // appendChild 부모자식 위치 설정
-    cartBox.appendChild(cartBox1);
-    cartBox1.appendChild(cartBox2);
-    cartBox1.appendChild(cartBox3);
+document.addEventListener("DOMContentLoaded", function () {
+  const cartBtns = document.querySelectorAll(".cartEnrollBtn");
 
-    totalPrice += data.price;
+  cartBtns.forEach((btn) => {
+    btn.addEventListener("click", function () {
+      const lectureInfo = this.closest(".lectureEnrollInfo");
+      const lectureName = lectureInfo.querySelector(".lectureEnrollname").innerText;
+      const teacherName = lectureInfo.querySelector(".teacherEnrollname").innerText;
+      const hobbyCheckbox = lectureInfo.querySelector(".hobbyCheckbox");
+      const examCheckbox = lectureInfo.querySelector(".examCheckbox");
 
-    deleteBtn.addEventListener("click", () => {
-      if (confirm("장바구니에서 삭제하시겠습니까?")) {
-        games.splice(index, 1);
-        localStorage.setItem(userId, JSON.stringify(games));
-        displayCart(games, userId);
+      const cartItems = JSON.parse(sessionStorage.getItem("cartItems")) || [];
+
+      if (hobbyCheckbox.checked) {
+        cartItems.push({
+          lectureName: lectureName,
+          teacherName: teacherName,
+          type: "취미반",
+          price: 160000,
+        });
+      }
+
+      if (examCheckbox.checked) {
+        cartItems.push({
+          lectureName: lectureName,
+          teacherName: teacherName,
+          type: "입시반",
+          price: 200000,
+        });
+      }
+
+      sessionStorage.setItem("cartItems", JSON.stringify(cartItems));
+      alert("선택한 항목이 장바구니에 담겼습니다.");
+    });
+  });
+
+  const hobbyCheckboxes = document.querySelectorAll(".hobbyCheckbox");
+  const examCheckboxes = document.querySelectorAll(".examCheckbox");
+
+  hobbyCheckboxes.forEach((hobbyCheckbox, index) => {
+    hobbyCheckbox.addEventListener("change", function () {
+      if (this.checked) {
+        examCheckboxes[index].checked = false;
       }
     });
   });
-  document.querySelector(".totalprice").textContent = "총 " + totalPrice + "원";
-}
 
-// 페이지 로딩시에 즉시 세션여부 확인
-sessionCurrent();
-
-document.querySelector(".menuLogoutBtn").addEventListener("click", () => {
-  if (confirm("로그아웃하시겠습니까?")) {
-    axios
-      .post(urlLogout, {}, { withCredentials: true })
-      .then((response) => {
-        console.log("데이터: ", response);
-        if (response.status == 200) {
-          alert("로그아웃 되었습니다");
-          document.querySelector(".menuLoginBtn").classList.remove("hidden");
-          document.querySelector(".menuLogoutBtn").classList.add("hidden");
-        }
-      })
-      .catch((error) => {
-        console.log("에러 발생: ", error);
-      });
-  }
+  examCheckboxes.forEach((examCheckbox, index) => {
+    examCheckbox.addEventListener("change", function () {
+      if (this.checked) {
+        hobbyCheckboxes[index].checked = false;
+      }
+    });
+  });
 });
