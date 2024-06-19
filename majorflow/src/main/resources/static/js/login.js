@@ -28,6 +28,7 @@ document.querySelector(".sign-inBx").addEventListener("click", () => {
     })
     .catch((error) => {
       console.log("에러 발생: ", error);
+      alert("아이디또는 비밀번호가 올바르지 않습니다");
     });
 });
 

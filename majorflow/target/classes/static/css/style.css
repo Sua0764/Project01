@@ -248,14 +248,14 @@ body {
 .rightMenu {
   padding: 10px;
   cursor: pointer;
-  justify-content: center;
 }
 
 .menuReviewBtn {
   box-sizing: border-box;
   border: 1px solid white;
-  border-radius: 10px;
+  border-radius: 15px;
   font-size: 0.8rem;
+  padding: 5px 20px 5px 20px;
 }
 
 .mainMenu > div > span:hover {
