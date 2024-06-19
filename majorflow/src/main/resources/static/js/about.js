@@ -1,4 +1,5 @@
 const urlLogout = "http://localhost:8080/user/logout";
+const urlTeacher = "";
 
 //연혁 hidden,
 //강사진 unhidden

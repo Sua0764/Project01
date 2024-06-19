@@ -15,6 +15,12 @@ document.querySelector(".reviewBtn").addEventListener("click", () => {
   document.querySelector(".reivewWriteBox").classList.add("hidden");
 });
 
+function displayReview(reviewData) {
+  console.log(reviewData.length);
+  if (reviewData.length > 0) {
+  }
+}
+
 function sessionCurrent() {
   axios
     .get("http://localhost:8080/user/current", { withCredentials: true })

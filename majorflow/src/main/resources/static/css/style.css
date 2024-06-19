@@ -1481,10 +1481,6 @@ body {
   background: rgb(51, 51, 51);
 }
 
-.hidden {
-  display: none;
-}
-
 /* 비밀번호 재설정 팝업창 스타일 */
 .modal {
   display: none;
@@ -1560,4 +1556,118 @@ body {
 
 .reset-passwordBx input[type="submit"]:hover {
   background: rgb(51, 51, 51);
+}
+
+/* 나의 진도율 페이지 설정 */
+
+.progressTitle {
+  font-size: 40px;
+  font-weight: bold;
+  display: flex;
+  justify-content: left;
+  padding: 30px 0px;
+  margin-top: 30px;
+  border-bottom: 2px solid black;
+}
+
+.selectSearchBox {
+  display: flex;
+  justify-content: center;
+}
+
+.selectSubjectBtn {
+  height: 50px;
+  width: 200px;
+  border: 2px solid black;
+  border-radius: 5px;
+  text-align: left;
+  line-height: 45px;
+  font-size: 20px;
+  padding: 0px 10px;
+  margin: 30px 10px;
+  color: gray;
+}
+
+.searchSubjectBtn {
+  height: 50px;
+  width: 400px;
+  border: 2px solid black;
+  border-radius: 5px;
+  text-align: left;
+  line-height: 45px;
+  font-size: 20px;
+  padding: 0px 10px;
+  margin: 30px 10px;
+  color: gray;
+}
+
+.searchIcon {
+  height: 50px;
+  width: 50px;
+  margin: 30px 0px;
+  background-color: gray;
+}
+
+.progressTitleBox {
+  display: flex;
+  justify-content: left;
+}
+
+.progressSubjectName {
+  font-size: 40px;
+  font-weight: bold;
+  display: flex;
+  justify-content: left;
+  padding: 30px 0px;
+  margin: 30px;
+}
+
+.progressSubjectInfo {
+  font-size: 40px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  padding: 30px 0px;
+  margin: 30px;
+}
+
+.progressInfoBox {
+  height: 700px;
+  border: 2px solid black;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.progressInfo {
+  display: grid;
+  grid-template-columns: 35% 65%;
+}
+
+.progressInfoStudent {
+  font-size: 30px;
+  padding: 0px 10px;
+  margin: 40px;
+  color: black;
+  font-weight: bold;
+}
+
+.progressInfoGraph {
+  height: 50px;
+  width: 700px;
+  border: 2px solid black;
+  border-radius: 10px;
+  margin: 40px;
+  position: relative;
+}
+
+.progressInfoGraphColor {
+  height: 50px;
+  width: 0%;
+  border: 2px solid black;
+  border-radius: 10px;
+  background-color: #000;
+}
+
+.hidden {
+  display: none;
 }

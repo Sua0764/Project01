@@ -1,4 +1,6 @@
 const urlLogout = "http://localhost:8080/user/logout";
+const urlLectures = "http://localhost:8080/lectures";
+const urlMypage = "http://localhost:8080/user";
 
 document.querySelector(".progressBtn").addEventListener("click", () => {
   document.querySelector(".gradeBox").classList.add("hidden");
@@ -8,6 +10,41 @@ document.querySelector(".progressBtn").addEventListener("click", () => {
 document.querySelector(".gradeBtn").addEventListener("click", () => {
   document.querySelector(".gradeBox").classList.remove("hidden");
   document.querySelector(".progressBox").classList.add("hidden");
+});
+
+axios
+  .get("/user/current")
+  .then((response) => {
+    const userData = response.data;
+    const userName = userData.userId;
+
+    const progressTitle = document.querySelector(".progressTitle");
+
+    progressTitle.textContent = `${userName}님의 진도율`;
+  })
+  .catch((error) => {
+    console.error("사용자 데이터 가져오기 실패:", error);
+  });
+
+document.addEventListener("DOMContentLoaded", function () {
+  // 강의 진도율 데이터를 설정합니다.
+  let myProgress = 75; // 나의 진도율 (예: 75%)
+  let averageProgress = 60; // 수강생 평균 진도율 (예: 60%)
+
+  // 진도율 텍스트 업데이트
+  document.getElementById("myProgress").textContent = myProgress;
+  document.getElementById("averageProgress").textContent = averageProgress;
+
+  // 진도율 그래프 업데이트
+  document.getElementById("myProgressBar").style.width = myProgress + "%";
+  document.getElementById("averageProgressBar").style.width =
+    averageProgress + "%";
+});
+
+/* DOMContentLoaded 이벤트 */
+document.addEventListener("DOMContentLoaded", function () {
+  sessionCurrent();
+  getLectureData();
 });
 
 function sessionCurrent() {
