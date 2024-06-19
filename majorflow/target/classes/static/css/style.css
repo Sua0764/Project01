@@ -120,7 +120,7 @@
   font-size: 30px;
   font-weight: 500;
   position: absolute;
-  bottom: -500px;
+  bottom: -480px;
   left: 0px;
   transform: translateX(-100%);
   opacity: 0;
@@ -843,14 +843,18 @@ body {
   justify-content: space-between;
 }
 
-.cartBox2, .cartBox3, .cartBox4-1, .cartBox4-2 {
+.cartBox2,
+.cartBox3,
+.cartBox4-1,
+.cartBox4-2 {
   flex: 1;
   border: none;
   background-color: transparent;
   text-align: center;
 }
 
-.cartBox3, .cartBox4-2 {
+.cartBox3,
+.cartBox4-2 {
   border-left: 1px solid #888;
 }
 
@@ -1325,8 +1329,6 @@ body {
 }
 
 /* 로그인 화면 */
-
-
 
 .loginBody {
   display: flex;

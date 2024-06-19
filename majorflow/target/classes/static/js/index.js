@@ -18,36 +18,19 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-document.addEventListener("DOMContentLoaded", () => {
-  const coursePriceGuideBtn = document.querySelector(".coursePriceGuideBtn");
-
-  if (coursePriceGuideBtn) {
-    coursePriceGuideBtn.addEventListener("click", () => {
-      window.location.href = "course.html";
+function sessionCurrent() {
+  axios
+    .get("http://localhost:8080/user/current", { withCredentials: true })
+    .then((response) => {
+      console.log("데이터:", response);
+      if (response.status == 200 && response.data.userId !== "anonymousUser") {
+        console.log("세션 유지");
+        document.querySelector(".loginBtn").classList.add("hidden");
+      }
+    })
+    .catch((error) => {
+      console.log("에러 발생:", error);
     });
-  } else {
-    console.error("coursePriceGuideBtn not found");
-  }
-});
+}
 
-// document.addEventListener("DOMContentLoaded", () => {
-//   const coursePriceGuideBtn = document.querySelector(".coursePriceGuideBtn");
-
-//   if (coursePriceGuideBtn) {
-//     coursePriceGuideBtn.addEventListener("click", () => {
-//       // 클래스 조작
-//       document.querySelector(".coursePriceGuideBox").classList.remove("hidden");
-//       document.querySelector(".tasteCourseBox").classList.add("hidden");
-//       document.querySelector(".allCourseBox").classList.add("hidden");
-//       document.querySelector(".allCourseDetailBox").classList.add("hidden");
-
-//       // 상태를 localStorage에 저장
-//       localStorage.setItem("coursePriceGuideVisible", "true");
-
-//       // 페이지 이동
-//       window.location.href = "course.html";
-//     });
-//   } else {
-//     console.error("coursePriceGuideBtn not found");
-//   }
-// });
+sessionCurrent();
