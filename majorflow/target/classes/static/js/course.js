@@ -85,6 +85,33 @@ document.querySelectorAll(".subMenu > div").forEach((div) => {
   });
 });
 
+/* 모달창 */
+document.addEventListener("DOMContentLoaded", function () {
+  const tasteCourseClickAvi = document.getElementsByClassName(
+    "tasteCourseClickAvi"
+  );
+  const modal = document.getElementById("courseModal");
+  const modalCloseBtn = document.getElementById("modalCloseBtn");
+
+  function toggleModal() {
+    modal.classList.toggle("show");
+  }
+
+  for (let i = 0; i < tasteCourseClickAvi.length; i++) {
+    tasteCourseClickAvi[i].addEventListener("click", toggleModal);
+  }
+
+  modalCloseBtn.addEventListener("click", function () {
+    toggleModal();
+  });
+
+  window.addEventListener("click", function (event) {
+    if (event.target === modal) {
+      toggleModal();
+    }
+  });
+});
+
 function sessionCurrent() {
   axios
     .get("http://localhost:8080/user/current", { withCredentials: true })
