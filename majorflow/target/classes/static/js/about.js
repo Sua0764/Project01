@@ -1,4 +1,5 @@
 const urlLogout = "http://localhost:8080/user/logout";
+const urlTeacher = "";
 
 //연혁 hidden,
 //강사진 unhidden
@@ -24,6 +25,17 @@ document.querySelector(".historyBtn").addEventListener("click", () => {
 document.querySelector(".teacherInfo").addEventListener("click", () => {
   document.querySelector(".teacherBox").classList.add("hidden");
   document.querySelector(".singleTeacherBox").classList.remove("hidden");
+});
+
+document.querySelectorAll(".subMenu > div").forEach((div) => {
+  div.addEventListener("click", () => {
+    document
+      .querySelectorAll(".subMenu > div")
+      .forEach((item) => item.classList.remove("active"));
+
+    // 클릭된 div에 active 클래스 추가
+    div.classList.add("active");
+  });
 });
 
 function sessionCurrent() {

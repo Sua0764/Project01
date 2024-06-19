@@ -20,6 +20,17 @@ function removeActiveClasses() {
   });
 }
 
+document.querySelectorAll(".subMenu > div").forEach((div) => {
+  div.addEventListener("click", () => {
+    document
+      .querySelectorAll(".subMenu > div")
+      .forEach((item) => item.classList.remove("active"));
+
+    // 클릭된 div에 active 클래스 추가
+    div.classList.add("active");
+  });
+});
+
 document.querySelector(".noticeBox6").addEventListener("click", () => {
   document.querySelector(".noticeWriteBox").classList.remove("hidden");
   document.querySelector(".noticeBox").classList.add("hidden");
