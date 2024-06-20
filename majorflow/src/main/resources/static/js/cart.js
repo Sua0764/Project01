@@ -66,7 +66,6 @@ document.addEventListener("DOMContentLoaded", function () {
       cartBoxRemove.addEventListener("click", () => {
         if (confirm("장바구니에서 삭제하시겠습니까?")) {
           item.splice(index, 1);
-          localStorage.setItem(userId, JSON.stringify(item));
           fetchAndRenderCart(item, userId);
         }
       });
@@ -89,6 +88,14 @@ document.addEventListener("DOMContentLoaded", function () {
     const totalPrice = cartItems.reduce((sum, item) => sum + item.price, 0);
     totalPriceContainer.textContent = `총 가격: ${totalPrice.toLocaleString()}원`;
   }
+
+  document.querySelector(".cartBox6").addEventListener("click", () => {
+    if (confirm("구매하시겠습니까?")) {
+      let cartItems = JSON.parse(localStorage.getItem(userId));
+      localStorage.setItem(userId + "_purchased", JSON.stringify(cartItems));
+      alert("구매 완료! 마이페이지에서 확인할 수 있습니다.");
+    }
+  });
 
   document.querySelector(".menuLogoutBtn").addEventListener("click", () => {
     if (confirm("로그아웃하시겠습니까?")) {

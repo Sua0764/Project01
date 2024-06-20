@@ -663,32 +663,42 @@ body {
 /*공지사항*/
 
 .noticeBox2 {
-  width: 100%;
+  width: 90%; /* 가로 길이 조정 */
   height: 110px;
   border-radius: 25px;
-  border: 1px solid black;
+  border: 1px solid #ddd; /* 좀 더 연한 색상 */
   padding: 15px;
   position: relative;
   overflow: hidden;
-  transition: height 0.3s ease;
+  transition: height 0.3s ease, background-color 0.3s ease;
   margin-bottom: 30px;
+  background-color: #f9f9f9; /* 배경색 추가 */
 }
+
+.noticeBox2:hover {
+  background-color: #f1f1f1; /* 호버 시 배경색 변경 */
+}
+
 .noticeBox2.active {
   height: 330px;
   transition: height 0.3s ease;
 }
+
 .noticeBox3 {
   display: grid;
   grid-template-columns: 8fr 1.5fr 0.5fr;
   width: 100%;
   height: 88px;
 }
+
 .noticeBox3-1 {
-  font-size: 32px;
+  font-size: 24px; /* 텍스트 크기 축소 */
   font-weight: bold;
   margin-right: 30px;
   line-height: 88px;
+  color: #333; /* 텍스트 색상 변경 */
 }
+
 .noticeBox3-2 {
   cursor: pointer;
   width: 2rem;
@@ -699,156 +709,137 @@ body {
   position: absolute;
   top: 2.5rem;
   right: 1.5rem;
-  font-size: 50px;
+  font-size: 20px; /* 텍스트 크기 축소 */
+  color: #666; /* 텍스트 색상 변경 */
 }
+
 .noticeBox3-2:focus {
   outline: 0;
 }
+
 .noticeBox3-3.close {
   display: none;
 }
+
 .noticeBox2.active .noticeBox3-3.close {
   display: block;
 }
+
 .noticeBox2.active .noticeBox3-3.open {
   display: none;
 }
+
 .noticeBoxLine {
   width: 100%;
   height: 1px;
   margin-top: 10px;
   margin-bottom: 20px;
-  border: 1px solid black;
+  border: 1px solid #ddd; /* 연한 색상으로 변경 */
 }
+
 .noticeBox4 {
-  font-size: 24px;
+  font-size: 18px; /* 텍스트 크기 축소 */
   height: 150px;
+  color: #666; /* 텍스트 색상 변경 */
 }
+
 .noticeBox5 {
   display: flex;
-  justify-content: end;
+  align-items: center; /* 수직 가운데 정렬 */
+  gap: 10px; /* 이미지와 텍스트 사이 간격 조정 */
 }
+
+.noticeBox5 img {
+  width: 24px; /* 이미지 너비 조정 */
+  height: 24px; /* 이미지 높이 조정 */
+  vertical-align: middle; /* 텍스트와 이미지가 수직으로 가운데 정렬되도록 설정 */
+}
+
 .noticeBox5-1 {
-  width: 62px;
-  height: 25px;
-  border: 1px solid black;
-  margin-left: 8px;
-  font-size: 12px;
+  width: auto;
+  height: 30px;
+  padding: 0 15px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 15px;
+  font-size: 14px;
   text-align: center;
-  line-height: 25px;
+  line-height: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
+
+.noticeBox5-1:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+.commentBox {
+  display: none;
+  margin-top: 10px;
+}
+
+.commentBox.active {
+  display: block;
+}
+
+.commentInput {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.commentSubmit {
+  width: 100px;
+  height: 35px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  line-height: 35px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.commentSubmit:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
 .noticeBox6 {
-  width: 178px;
-  height: 66px;
-  border: 1px solid black;
+  width: 150px; /* 버튼 크기 축소 */
+  height: 50px; /* 버튼 크기 축소 */
+  font-size: 20px; /* 텍스트 크기 조정 */
+  line-height: 50px; /* 버튼 높이에 맞게 조정 */
+  margin-bottom: 50px; /* 글쓰기 버튼과 FOOTER 사이 간격 조정 */
+  margin-left: 20px; /* 왼쪽으로 조금 이동 */
+  /* 나머지 속성은 그대로 유지 */
+  border: none;
   font-weight: bold;
-  font-size: 30px;
   text-align: center;
-  line-height: 66px;
-  float: right;
-  margin-bottom: 30px;
+  float: left; /* 버튼을 왼쪽으로 정렬 */
+  color: white;
+  background-color: #007bff;
+  border-radius: 33px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.noticeWriteBox1 {
-  width: 100%;
-  height: 100px;
-  font-size: 35px;
-  border: 1px solid black;
-  border-radius: 20px;
-  padding: 25px;
+.footer {
+  margin-top: 70px; /* FOOTER와 글쓰기 버튼 사이 간격 늘리기 */
   text-align: center;
-}
-.noticeWriteBox2 {
-  width: 100%;
-  height: 800px;
-  border: 1px solid black;
-  border-radius: 20px;
-  margin-top: 30px;
-}
-.noticeWriteBox3 {
-  width: 200px;
-  height: 70px;
-  background-color: black;
-  color: white;
-  border-radius: 20px;
-  text-align: center;
-  margin-top: 40px;
-  padding: 15px;
-  font-size: 25px;
-  font-weight: bold;
+  padding: 20px 0;
+  background-color: #f1f1f1;
 }
 
-.customerInquiryBox2 {
-  width: 100%;
-  height: 70px;
-  border: 1px solid black;
-  border-radius: 25px;
-  font-size: 32px;
-  text-align: center;
-  line-height: 70px;
-  margin-bottom: 20px;
-}
-.customerInquiryBox3 {
-  width: 100%;
-  height: 1033px;
-  border: 1px solid black;
-  border-radius: 25px;
-  padding: 50px;
-}
-.customerInquiryBox4 {
-  display: grid;
-  grid-template-columns: 0.5fr 5.5fr 1fr 1fr 1fr;
-  font-size: 32px;
-  gap: 20px;
-  text-align: center;
-}
-.customerInquiryBox5 {
-  display: grid;
-  grid-template-columns: 0.5fr 5.5fr 1fr 1fr 1fr;
-  font-size: 32px;
-  gap: 20px;
-  text-align: center;
-  margin-bottom: 20px;
-}
-#customerInquiryBoxLine {
-  border: 1px solid black;
-  margin: 30px auto;
-}
-.customerInquiryBox6 {
-  width: 263px;
-  height: 64px;
-  background-color: black;
-  color: white;
-  border-radius: 50px;
-  margin: 30px auto;
-  text-align: center;
-  line-height: 64px;
-  font-size: 32px;
-  font-weight: bold;
-}
-.inquiryBox2 {
-  width: 412px;
-  height: 97px;
-  font-size: 32px;
-  font-weight: bold;
-  text-align: center;
-  line-height: 97px;
-  margin-bottom: 30px;
-  border: 1px solid black;
-  border-radius: 25px;
-}
-
-.inquiryBox7 {
-  width: 260px;
-  height: 60px;
-  background-color: black;
-  color: white;
-  font-size: 32px;
-  font-weight: bold;
-  text-align: center;
-  line-height: 60px;
-  border-radius: 25px;
-  margin: 20px 0;
+.footer h3 {
+  margin: 0;
+  font-size: 16px;
+  color: #333;
 }
 
 /* 수강신청 페이지 설정 */
@@ -1242,7 +1233,9 @@ body {
 }
 
 /* 수강후기 */
-
+.review {
+  height: 2000px;
+}
 .reviewBox {
   width: 100%;
   height: 300px;
@@ -1353,25 +1346,27 @@ body {
 .reviewStar {
   font-size: 22px;
 }
-.reviewBox5 {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  width: 850px;
-  height: 90px;
-  border-radius: 50px;
-  margin: auto;
-  text-align: center;
-  line-height: 90px;
-  background-color: #d9d9d9;
-  font-size: 32px;
-  position: relative;
-  top: -110px;
-}
-.reviewBox5 > div:hover {
-  color: white;
-  background-color: #2f2f2f;
-  border-radius: 50px;
-}
+/*
+  .reviewBox5 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    width: 850px;
+    height: 90px;
+    border-radius: 50px;
+    margin: auto;
+    text-align: center;
+    line-height: 90px;
+    background-color: #d9d9d9;
+    font-size: 32px;
+    position: relative;
+    top: -110px;
+  }
+  .reviewBox5 > div:hover {
+    color: white;
+    background-color: #2f2f2f;
+    border-radius: 50px;
+  }
+  */
 .reviewBox6 {
   width: 85%;
   margin: auto;
@@ -1379,11 +1374,10 @@ body {
 #reviewBox6-1 {
   width: 230px;
   height: 56px;
-  font-size: 24px;
+  font-size: 30px;
   font-weight: bold;
   text-align: center;
   line-height: 56px;
-  border: 1px solid black;
   position: relative;
   top: -30px;
 }
@@ -1397,14 +1391,16 @@ body {
 }
 .reviewBox7Grid {
   display: grid;
-  grid-template-columns: 1fr 8fr 1fr;
+  grid-template-columns: 9.5fr 0.5fr;
 }
-#reviewBox7Grid-1 {
+.reviewBox7Grid-1 {
   width: 143px;
   height: 43px;
-  border: 1px solid black;
   text-align: center;
   line-height: 43px;
+  margin-top: 20px;
+  font-size: 30px;
+  font-weight: bold;
 }
 #reviewBox7Grid-2 {
   width: 143px;
@@ -1414,14 +1410,13 @@ body {
   line-height: 26px;
   margin-top: 5px;
 }
-#reviewBox7Grid-3 {
+.reviewBox7Grid-3 {
   width: 140px;
   height: 26px;
-  border: 1px solid black;
   text-align: center;
   margin-top: 15px;
 }
-#reviewBox7Grid-4 {
+.reviewBox7Grid-4 {
   width: 143px;
   font-size: 24px;
   text-align: center;
@@ -1434,16 +1429,20 @@ body {
 }
 .reviewBox9Grid {
   display: grid;
-  grid-template-columns: 8fr 2fr;
+  grid-template-columns: 9.5fr 0.5fr;
   margin-top: 30px;
 }
+.likeBtn:hover {
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+}
 .reviewBox9Grid-1 {
-  width: 62px;
+  width: 100px;
   height: 25px;
-  border: 1px solid black;
   text-align: center;
   font-weight: bold;
-  margin: 0 15px 0 15px;
+  margin: 0 15px 0 0;
 }
 .reviewBox9Grid-3 {
   width: 62px;
@@ -1456,39 +1455,104 @@ body {
 .reviewBox9Grid-2 {
   display: flex;
 }
-.reivewWriteBox1 {
-  width: 100%;
-  height: 97px;
-  text-align: center;
-  line-height: 97px;
+.reviewWriteBtn {
+  width: 178px;
+  height: 66px;
   border: 1px solid black;
-  font-size: 46px;
   font-weight: bold;
+  font-size: 30px;
+  text-align: center;
+  line-height: 66px;
+  float: right;
+  margin: 30px 0;
   border-radius: 25px;
 }
-.reivewWriteBox2 {
+.star_rating {
   width: 100%;
-  height: 782px;
-  border: 1px solid black;
-  border-radius: 25px;
-  margin-top: 30px;
+  box-sizing: border-box;
+  display: inline-flex;
+  float: left;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.star_rating .reviewWriteStar {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+  display: inline-block;
+  background: url("/img/빈별.png") no-repeat;
+  background-size: 100%;
+  box-sizing: border-box;
+}
+.star_rating .reviewWriteStar.on {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+  display: inline-block;
+  background: url("/img/꽉찬별.png") no-repeat;
+  background-size: 100%;
+  box-sizing: border-box;
+}
+
+.star_box {
+  width: 800px;
+  box-sizing: border-box;
+  display: inline-block;
+  margin: 15px 0;
+  background: #f3f4f8;
+  border: 0;
+  border-radius: 10px;
+  height: 300px;
+  resize: none;
+  padding: 15px;
+  font-size: 24px;
+  font-family: sans-serif;
+}
+.reviewWriteBtn2 {
+  display: block;
+  width: 800px;
+  font-weight: bold;
+  border: 0;
+  border-radius: 10px;
+  max-height: 50px;
+  padding: 15px 0;
+  font-size: 1.1em;
+  text-align: center;
+  background: bisque;
+}
+.reviewWriteModal {
+  display: none; /* 초기에는 모달 창을 숨깁니다 */
+  position: fixed; /* 모달 창을 고정 위치에 배치합니다 */
+  z-index: 1; /* 다른 요소 위에 표시되도록 합니다 */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto; /* 콘텐츠가 모달 창을 초과할 경우 스크롤이 가능하도록 합니다 */
+  background-color: rgba(0, 0, 0, 0.4); /* 반투명한 배경 */
+}
+
+.reviewWriteModal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 모달 창을 수직 가운데 정렬합니다 */
   padding: 20px;
-}
-.reivewWriteBoxStar {
-  font-size: 70px;
-  margin-bottom: 20px;
-}
-.reivewWriteBox3 {
-  width: 200px;
-  height: 70px;
-  background-color: black;
-  color: white;
-  font-size: 32px;
-  font-weight: bold;
+  border: 1px solid #888;
   border-radius: 25px;
-  margin-top: 30px;
-  text-align: center;
-  line-height: 70px;
+  width: 30%; /* 모달 창의 너비를 조정할 수 있습니다 */
+}
+
+.reviewModalCloseBtn {
+  color: #aaa;
+  float: right;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.reviewModalCloseBtn:hover,
+.reviewModalCloseBtn:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 /* 로그인 화면 */

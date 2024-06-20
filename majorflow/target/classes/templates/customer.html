@@ -7,36 +7,44 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap"
       rel="stylesheet"
     />
     <title>고객센터-공지사항</title>
-    <!-- table 자체 css  -->
-    <!-- <style>
-      .noticeTable {
-          width: 100%;
-          border: 1px solid black;
-          text-align: center;
-          padding: 20px;
-          border-collapse: separate;
-          border-spacing: 10px 25px;
-      }
-      #noticeCheckbox {
-          width: 10%;
-          padding: 20px;
-          border: 1px solid black;
-          border-collapse: separate;
-          border-spacing: 10px 25px;
-      }
-      .noticeTable th, .noticeTable td {
-          border: 1px solid black;
-          padding: 10px;
-      }
-      #noticeCheckbox td {
-          padding: 11px;
+    <style>
+      /* 기존 스타일 코드 */
+
+      .noticeBox5 {
+        display: flex;
+        align-items: center; /* 수직 가운데 정렬 */
+        gap: 10px; /* 이미지와 텍스트 사이 간격 조정 */
       }
 
-  </style> -->
+      .noticeBox5 img {
+        width: 24px; /* 이미지 너비 조정 */
+        height: 24px; /* 이미지 높이 조정 */
+        vertical-align: middle; /* 텍스트와 이미지가 수직으로 가운데 정렬되도록 설정 */
+      }
+
+      .noticeBox6 {
+        width: 150px; /* 버튼 크기 축소 */
+        height: 50px; /* 버튼 크기 축소 */
+        font-size: 20px; /* 텍스트 크기 조정 */
+        line-height: 50px; /* 버튼 높이에 맞게 조정 */
+        margin-bottom: 50px; /* 글쓰기 버튼과 FOOTER 사이 간격 조정 */
+        margin-left: 20px; /* 왼쪽으로 조금 이동 */
+        /* 나머지 속성은 그대로 유지 */
+        border: none;
+        font-weight: bold;
+        text-align: center;
+        float: left; /* 버튼을 왼쪽으로 정렬 */
+        color: white;
+        background-color: #007bff;
+        border-radius: 33px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: background-color 0.3s ease, transform 0.3s ease;
+      }
+    </style>
     <script src="https://cdn.jsdelivr.net/npm/axios@1.7.2/dist/axios.min.js"></script>
   </head>
 
@@ -97,7 +105,7 @@
             <div class="noticeBox3-4">
               <p class="noticeBox4">공지내용</p>
               <div class="noticeBox5">
-                <img src="/TemaProject/img/말풍선.png" />
+                <img src="/img/말풍선.png" />
                 <div class="noticeBox5-1">댓글달기</div>
               </div>
             </div>
@@ -115,7 +123,7 @@
             <div class="noticeBox3-4">
               <p class="noticeBox4">공지내용</p>
               <div class="noticeBox5">
-                <img src="/TemaProject/img/말풍선.png" />
+                <img src="/img/말풍선.png" />
                 <div class="noticeBox5-1">댓글달기</div>
               </div>
             </div>

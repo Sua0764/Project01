@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const examCheckbox = lectureInfoDiv.querySelector(".examCheckbox");
 
             if (hobbyCheckbox.checked) {
-              addToCart(
+              ToCart(
                 userId,
                 lecture.lectureId,
                 lectureName,
