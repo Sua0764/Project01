@@ -1538,7 +1538,7 @@ body {
   padding: 20px;
   border: 1px solid #888;
   border-radius: 25px;
-  width: 30%; /* 모달 창의 너비를 조정할 수 있습니다 */
+  width: 850px; /* 모달 창의 너비를 조정할 수 있습니다 */
 }
 
 .reviewModalCloseBtn {
