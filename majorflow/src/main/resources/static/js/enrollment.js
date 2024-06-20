@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const examCheckbox = lectureInfoDiv.querySelector(".examCheckbox");
 
             if (hobbyCheckbox.checked) {
-              ToCart(
+              addToCart(
                 userId,
                 lecture.lectureId,
                 lectureName,
@@ -63,7 +63,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const teacherNameDiv = document.createElement("div");
         teacherNameDiv.classList.add("teacherEnrollname");
-        teacherNameDiv.textContent = lecture.teacherName;
+
+        findTeacherName(lecture.teacher, teacherNameDiv);
 
         const hobbyPriceDiv = document.createElement("div");
         hobbyPriceDiv.classList.add("enrollPrice");
@@ -202,7 +203,7 @@ document.addEventListener("DOMContentLoaded", function () {
       .post("http://localhost:8080/cart/add/" + userId + "/" + lectureId)
       .then((response) => {
         if (response.status === 201) {
-          addToSessionCart(lectureName, teacherName, type, price);
+          addToSessionCart(userId, lectureName, teacherName, type, price);
           alert("선택한 항목이 장바구니에 담겼습니다.");
         }
       })
@@ -212,11 +213,21 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   }
 
-  function addToSessionCart(lectureName, teacherName, type, price) {
+  function addToSessionCart(userId, lectureName, teacherName, type, price) {
     const cartItems = JSON.parse(localStorage.getItem(userId)) || [];
     cartItems.push({ lectureName, teacherName, type, price });
     localStorage.setItem(userId, JSON.stringify(cartItems));
+  }
 
-    // 페이지 새로고침 없이 다른 페이지로 이동해도 데이터 유지
+  function findTeacherName(teacherId, teacherNameDiv) {
+    axios
+      .get("http://localhost:8080/teacher/get/" + teacherId)
+      .then((response) => {
+        const teacherName = response.data.teacherName;
+        teacherNameDiv.textContent = teacherName;
+      })
+      .catch((error) => {
+        console.error("Error fetching teacher name:", error);
+      });
   }
 });

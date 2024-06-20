@@ -93,6 +93,8 @@ document.addEventListener("DOMContentLoaded", function () {
     if (confirm("구매하시겠습니까?")) {
       let cartItems = JSON.parse(localStorage.getItem(userId));
       localStorage.setItem(userId + "_purchased", JSON.stringify(cartItems));
+      localStorage.removeItem(userId);
+      window.location.reload();
       alert("구매 완료! 마이페이지에서 확인할 수 있습니다.");
     }
   });
