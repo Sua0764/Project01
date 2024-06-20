@@ -18,15 +18,26 @@ function displayLectures(lectureData) {
     lectureData.forEach((data) => {
       const allCourseClick = document.createElement("div");
       allCourseClick.classList.add("allCourseClick");
+
       const allCourseClickImg = document.createElement("div");
       allCourseClickImg.classList.add("allCourseClickImg");
+      allCourseClickImg.style.backgroundImage = `url('/img/전체강좌_기타.jpg')`; // 이미지 설정
 
+      const textContainer = document.createElement("div");
+      textContainer.classList.add("textContainer");
+
+      const mainText = document.createElement("p");
+      mainText.classList.add("mainText");
+      mainText.textContent = data.lectureName;
+      textContainer.appendChild(mainText);
+
+      const subText = document.createElement("p");
+      subText.classList.add("subText");
+      subText.innerHTML = "초보부터 고수까지<br>1:1 맞춤교육";
+      textContainer.appendChild(subText);
+
+      allCourseClickImg.appendChild(textContainer);
       allCourseClick.appendChild(allCourseClickImg);
-      const lectureName = document.createElement("p");
-      lectureName.classList.add("lectureName");
-      lectureName.textContent = data.lectureName;
-
-      allCourseClick.appendChild(lectureName);
       allCourse.appendChild(allCourseClick);
 
       allCourseClickImg.addEventListener("click", () => {

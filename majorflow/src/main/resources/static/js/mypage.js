@@ -12,6 +12,65 @@ document.querySelector(".gradeBtn").addEventListener("click", () => {
   document.querySelector(".progressBox").classList.add("hidden");
 });
 
+function sessionCurrent() {
+  axios
+    .get("http://localhost:8080/user/current", { withCredentials: true })
+    .then((response) => {
+      console.log("데이터: ", response);
+      if (response.status == 200 && response.data.userId !== "anonymousUser") {
+        console.log("세션 유지");
+        const userId = response.data.userId;
+        document.querySelector(".menuLoginBtn").classList.add("hidden");
+        document.querySelector(".menuLogoutBtn").classList.remove("hidden");
+
+        const userData = response.data;
+        const usernickname = userData.nickname;
+
+        const gradeTitle = document.querySelector(".gradeTitle");
+        gradeTitle.textContent = usernickname + "님의 성적현황";
+
+        const progressTitle = document.querySelector(".progressTitle");
+        progressTitle.textContent = usernickname + "님의 진도율";
+      } else {
+        document.querySelector(".menuLogoutBtn").classList.add("hidden");
+        document.querySelector(".menuLoginBtn").classList.remove("hidden");
+      }
+    })
+    .catch((error) => {
+      console.log("로그인 안됨");
+    });
+}
+
+axios
+  .get(urlLectures)
+  .then((response) => {
+    const lectureName = response.data.lectureName;
+    document.querySelector(".progressSubjectName").innerText = lectureName;
+  })
+  .catch((error) => {
+    console.error("강의 데이터 가져오기 실패:", error);
+  });
+
+document.querySelector(".menuLogoutBtn").addEventListener("click", () => {
+  if (confirm("로그아웃하시겠습니까?")) {
+    axios
+      .post(urlLogout, {}, { withCredentials: true })
+      .then((response) => {
+        console.log("데이터: ", response);
+        if (response.status == 200) {
+          alert("로그아웃 되었습니다");
+          document.querySelector(".menuLoginBtn").classList.remove("hidden");
+          document.querySelector(".menuLogoutBtn").classList.add("hidden");
+        }
+      })
+      .catch((error) => {
+        console.log("에러 발생: ", error);
+      });
+  }
+});
+
+sessionCurrent();
+
 /* 나의 진도율 */
 // progressBox 생성
 const progressBox = document.createElement("div");
@@ -90,18 +149,11 @@ progressBox.appendChild(progressInfoBox);
 
 // progressBox를 HTML에 추가
 document.getElementById("progress-container").appendChild(progressBox);
-
-//=======
-//>>>>>>> 42a9630708a119709209393a905c2e747c7ca903
 axios
   .get("/user/current")
   .then((response) => {
     const userData = response.data;
     const userName = userData.userId;
-
-    const progressTitle = document.querySelector(".progressTitle");
-
-    progressTitle.textContent = `${userName}님의 진도율`;
   })
   .catch((error) => {
     console.error("사용자 데이터 가져오기 실패:", error);
@@ -121,76 +173,3 @@ document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("averageProgressBar").style.width =
     averageProgress + "%";
 });
-//<<<<<<< HEAD
-//=======
-
-//>>>>>>> 42a9630708a119709209393a905c2e747c7ca903
-/* DOMContentLoaded 이벤트 */
-document.addEventListener("DOMContentLoaded", function () {
-  sessionCurrent();
-  getLectureData();
-});
-
-axios
-  .get("/user/current")
-  .then((response) => {
-    const userData = response.data;
-    const userName = userData.userId;
-
-    const gradeTitle = document.querySelector(".gradeTitle");
-
-    gradeTitle.textContent = `${userName}님의 성적현황`;
-  })
-  .catch((error) => {
-    console.error("사용자 데이터 가져오기 실패:", error);
-  });
-
-axios
-  .get(urlLectures)
-  .then((response) => {
-    const lectureName = response.data.lectureName;
-    document.querySelector(".progressSubjectName").innerText = lectureName;
-  })
-  .catch((error) => {
-    console.error("강의 데이터 가져오기 실패:", error);
-  });
-
-function sessionCurrent() {
-  axios
-    .get("http://localhost:8080/user/current", { withCredentials: true })
-    .then((response) => {
-      console.log("데이터: ", response);
-      if (response.status == 200 && response.data.userId !== "anonymousUser") {
-        console.log("세션 유지");
-        const userId = response.data.userId;
-        document.querySelector(".menuLoginBtn").classList.add("hidden");
-        document.querySelector(".menuLogoutBtn").classList.remove("hidden");
-      } else {
-        document.querySelector(".menuLogoutBtn").classList.add("hidden");
-        document.querySelector(".menuLoginBtn").classList.remove("hidden");
-      }
-    })
-    .catch((error) => {
-      console.log("로그인 안됨");
-    });
-}
-
-document.querySelector(".menuLogoutBtn").addEventListener("click", () => {
-  if (confirm("로그아웃하시겠습니까?")) {
-    axios
-      .post(urlLogout, {}, { withCredentials: true })
-      .then((response) => {
-        console.log("데이터: ", response);
-        if (response.status == 200) {
-          alert("로그아웃 되었습니다");
-          document.querySelector(".menuLoginBtn").classList.remove("hidden");
-          document.querySelector(".menuLogoutBtn").classList.add("hidden");
-        }
-      })
-      .catch((error) => {
-        console.log("에러 발생: ", error);
-      });
-  }
-});
-
-sessionCurrent();

@@ -474,14 +474,66 @@ body {
   gap: 20px;
 }
 .allCourseClick {
-  margin: 20px 0 20px 0;
+  position: relative; /* 텍스트를 이미지 위에 배치하기 위해 relative 설정 */
+  margin: 20px auto;
+  border-radius: 15px;
+  overflow: hidden; /* 둥근 모서리 내에서 이미지가 잘리도록 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* 애니메이션 효과 */
+  width: 450px; /* 박스의 가로 길이 조정 */
+}
+
+.allCourseClick:hover {
+  transform: scale(1.05); /* 호버 시 확대 */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* 호버 시 그림자 강화 */
 }
 
 .allCourseClickImg {
   background-color: gray;
-  width: 500px;
+  width: 100%; /* 부모 박스 크기에 맞춤 */
   height: 300px;
-  margin: 30px 30px 10px 30px;
+  background-size: cover; /* 이미지가 박스를 채우도록 */
+  background-position: center; /* 이미지가 중앙에 위치하도록 */
+  background-image: url("/img/전체강좌_기타.jpg"); /* 이미지 추가 */
+  transition: opacity 0.3s ease; /* 이미지 애니메이션 효과 */
+}
+
+.textContainer {
+  position: absolute;
+  left: 20px; /* 좌측에서 20px 떨어진 위치 */
+  bottom: 40px; /* 아래에서 40px 떨어진 위치 */
+  color: white;
+  font-weight: bold;
+  transition: transform 0.3s ease; /* 위치 변경 애니메이션 */
+}
+
+.textContainer p {
+  margin: 0;
+}
+
+.textContainer .mainText {
+  font-size: 30px; /* 기타 텍스트 크기 증가 */
+}
+
+.textContainer .subText {
+  font-size: 16px; /* 서브 텍스트 크기 설정 */
+  font-weight: normal; /* 서브 텍스트 굵기 얇게 */
+  opacity: 0; /* 기본 상태에서는 보이지 않음 */
+  transition: opacity 0.3s ease; /* 자연스럽게 나타나는 애니메이션 */
+}
+
+.allCourseClick:hover .textContainer {
+  transform: translateY(-10px); /* 마우스 오버 시 텍스트 위치 위로 이동 */
+}
+
+.allCourseClick:hover .subText {
+  opacity: 1; /* 마우스 오버 시 하위 텍스트 보이기 */
+}
+
+.lectureName {
+  font-size: 25px;
+  margin: 10px 0; /* 텍스트 위아래 여백 조정 */
+  text-align: center; /* 텍스트 가운데 정렬 */
 }
 
 .backBtn {
@@ -900,11 +952,24 @@ body {
   border-radius: 4px;
   margin-right: 10px;
   cursor: pointer;
+  position: relative;
 }
 
 .styled-checkbox:checked {
   background-color: black;
   border: 2px solid black;
+}
+
+.styled-checkbox:checked::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 6px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
 }
 
 /* 장바구니 */
