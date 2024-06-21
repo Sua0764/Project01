@@ -19,6 +19,11 @@ function sessionCurrent() {
     .get("http://localhost:8080/user/current", { withCredentials: true })
     .then((response) => {
       if (response.status === 200 && response.data.userId !== "anonymousUser") {
+        console.log("세션 유지");
+        userId = response.data.userId;
+        document.querySelector(".menuLoginBtn").classList.add("hidden");
+        document.querySelector(".menuLogoutBtn").classList.remove("hidden");
+
         const userInfo = response.data;
         const userId = response.data.userId;
 
