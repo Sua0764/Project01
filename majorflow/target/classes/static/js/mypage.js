@@ -20,7 +20,6 @@ function sessionCurrent() {
     .then((response) => {
       if (response.status === 200 && response.data.userId !== "anonymousUser") {
         console.log("세션 유지");
-        userId = response.data.userId;
         document.querySelector(".menuLoginBtn").classList.add("hidden");
         document.querySelector(".menuLogoutBtn").classList.remove("hidden");
 
