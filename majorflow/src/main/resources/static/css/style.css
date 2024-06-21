@@ -655,10 +655,10 @@ body {
 /* 동영상 모달창 */
 .modal1 {
   position: fixed;
-  top: 30%;
-  left: 30%;
-  width: 100%;
-  height: 100%;
+  top: 40%;
+  left: 35%;
+  width: 850px;
+  height: 550px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -668,7 +668,7 @@ body {
   pointer-events: none;
   padding: 20px;
 }
-.modal-content1 {
+.modal1-content {
   width: 800px;
   height: 500px;
   background: grey;
@@ -681,7 +681,7 @@ body {
   opacity: 1;
   pointer-events: auto;
 }
-.modal1.show .modal-content1 {
+.modal1.show .modal1-content {
   opacity: 1;
   transform: scale(1);
 }
