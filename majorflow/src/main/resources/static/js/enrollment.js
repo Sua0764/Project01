@@ -63,8 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const teacherNameDiv = document.createElement("div");
         teacherNameDiv.classList.add("teacherEnrollname");
-
-        findTeacherName(lecture.teacher, teacherNameDiv);
+        teacherNameDiv.textContent = lecture.teacherName;
 
         const hobbyPriceDiv = document.createElement("div");
         hobbyPriceDiv.classList.add("enrollPrice");
@@ -74,7 +73,11 @@ document.addEventListener("DOMContentLoaded", function () {
         hobbyCheckbox.type = "checkbox";
         hobbyCheckbox.classList.add("styled-checkbox", "hobbyCheckbox");
         hobbyCheckbox.id = `hobby${index + 1}`;
-        hobbyCheckbox.addEventListener("change", handleCheckboxChange);
+        hobbyCheckbox.addEventListener("change", function () {
+          if (this.checked) {
+            document.getElementById(`exam${index + 1}`).checked = false;
+          }
+        });
         const hobbyLabel = document.createElement("label");
         hobbyLabel.setAttribute("for", `hobby${index + 1}`);
         hobbyLabel.innerText = "취미반";
@@ -94,7 +97,11 @@ document.addEventListener("DOMContentLoaded", function () {
         examCheckbox.type = "checkbox";
         examCheckbox.classList.add("styled-checkbox", "examCheckbox");
         examCheckbox.id = `exam${index + 1}`;
-        examCheckbox.addEventListener("change", handleCheckboxChange);
+        examCheckbox.addEventListener("change", function () {
+          if (this.checked) {
+            document.getElementById(`hobby${index + 1}`).checked = false;
+          }
+        });
         const examLabel = document.createElement("label");
         examLabel.setAttribute("for", `exam${index + 1}`);
         examLabel.innerText = "입시반";
@@ -115,25 +122,6 @@ document.addEventListener("DOMContentLoaded", function () {
         lectureDiv.appendChild(lectureImgDiv);
         lectureDiv.appendChild(lectureInfoDiv);
         enrollment.appendChild(lectureDiv);
-      });
-
-      const hobbyCheckboxes = document.querySelectorAll(".hobbyCheckbox");
-      const examCheckboxes = document.querySelectorAll(".examCheckbox");
-
-      hobbyCheckboxes.forEach((hobbyCheckbox, index) => {
-        hobbyCheckbox.addEventListener("change", function () {
-          if (this.checked) {
-            examCheckboxes[index].checked = false;
-          }
-        });
-      });
-
-      examCheckboxes.forEach((examCheckbox, index) => {
-        examCheckbox.addEventListener("change", function () {
-          if (this.checked) {
-            hobbyCheckboxes[index].checked = false;
-          }
-        });
       });
     })
     .catch((error) => {
@@ -166,7 +154,11 @@ document.addEventListener("DOMContentLoaded", function () {
   document.querySelector(".menuLogoutBtn").addEventListener("click", () => {
     if (confirm("로그아웃하시겠습니까?")) {
       axios
-        .post(urlLogout, {}, { withCredentials: true })
+        .post(
+          "http://localhost:8080/user/logout",
+          {},
+          { withCredentials: true }
+        )
         .then((response) => {
           console.log("데이터: ", response);
           if (response.status == 200) {
@@ -181,29 +173,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  function handleCheckboxChange() {
-    const hobbyCheckboxes = document.querySelectorAll(".hobbyCheckbox");
-    const examCheckboxes = document.querySelectorAll(".examCheckbox");
-
-    hobbyCheckboxes.forEach((hobbyCheckbox, index) => {
-      if (hobbyCheckbox.checked) {
-        examCheckboxes[index].checked = false;
-      }
-    });
-
-    examCheckboxes.forEach((examCheckbox, index) => {
-      if (examCheckbox.checked) {
-        hobbyCheckboxes[index].checked = false;
-      }
-    });
-  }
-
   function addToCart(userId, lectureId, lectureName, teacherName, type, price) {
     axios
       .post("http://localhost:8080/cart/add/" + userId + "/" + lectureId)
       .then((response) => {
         if (response.status === 201) {
-          addToSessionCart(userId, lectureName, teacherName, type, price);
+          addToSessionCart(lectureName, teacherName, type, price);
           alert("선택한 항목이 장바구니에 담겼습니다.");
         }
       })
@@ -213,21 +188,11 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   }
 
-  function addToSessionCart(userId, lectureName, teacherName, type, price) {
+  function addToSessionCart(lectureName, teacherName, type, price) {
     const cartItems = JSON.parse(localStorage.getItem(userId)) || [];
     cartItems.push({ lectureName, teacherName, type, price });
     localStorage.setItem(userId, JSON.stringify(cartItems));
-  }
 
-  function findTeacherName(teacherId, teacherNameDiv) {
-    axios
-      .get("http://localhost:8080/teacher/get/" + teacherId)
-      .then((response) => {
-        const teacherName = response.data.teacherName;
-        teacherNameDiv.textContent = teacherName;
-      })
-      .catch((error) => {
-        console.error("Error fetching teacher name:", error);
-      });
+    // 페이지 새로고침 없이 다른 페이지로 이동해도 데이터 유지
   }
 });

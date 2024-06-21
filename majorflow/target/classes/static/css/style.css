@@ -1780,6 +1780,15 @@ body {
   border-bottom: 2px solid black;
 }
 
+.noInfo {
+  height: 700px;
+  display: flex;
+  justify-content: center;
+  font-size: 30px;
+  padding: 50px;
+  margin: 30px;
+}
+
 .selectSearchBox {
   display: flex;
   justify-content: center;
@@ -1824,56 +1833,59 @@ body {
 }
 
 .progressSubjectName {
-  font-size: 40px;
+  font-size: 30px;
   font-weight: bold;
   display: flex;
   justify-content: left;
-  padding: 30px 0px;
+  padding: 0px;
   margin: 30px;
 }
 
 .progressSubjectInfo {
-  font-size: 40px;
+  font-size: 30px;
   font-weight: bold;
   display: flex;
   justify-content: center;
-  padding: 30px 0px;
-  margin: 30px;
+  padding: 0px;
+  margin: 10px;
 }
 
 .progressInfoBox {
-  height: 700px;
-  border: 2px solid black;
-  border-radius: 5px;
+  height: 350px;
+  background-color: white;
+  border: 0.5px solid gray;
+  border-radius: 10px;
   padding: 20px;
+  margin: 50px 20px 20px 20px;
 }
 
 .progressInfo {
+  height: 70px;
   display: grid;
   grid-template-columns: 35% 65%;
 }
 
 .progressInfoStudent {
-  font-size: 30px;
-  padding: 0px 10px;
-  margin: 40px;
+  font-size: 20px;
+  padding: 0px;
+  margin: 30px;
   color: black;
   font-weight: bold;
 }
 
 .progressInfoGraph {
-  height: 50px;
-  width: 700px;
-  border: 2px solid black;
+  height: 30px;
+  width: 500px;
+  border: 0.5px solid gray;
   border-radius: 10px;
   margin: 40px;
   position: relative;
 }
 
 .progressInfoGraphColor {
-  height: 50px;
+  height: 28px;
   width: 0%;
-  border: 2px solid black;
+  border: 0.5px solid gray;
   border-radius: 10px;
   background-color: #000;
 }

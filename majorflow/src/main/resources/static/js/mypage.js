@@ -29,6 +29,7 @@ function sessionCurrent() {
         if (purchasedItems && purchasedItems.length > 0) {
           displayMylectures(purchasedItems, userInfo);
         } else {
+          document.querySelector(".progress-container").classList.add("noInfo");
           document.querySelector(".progress-container").textContent =
             "구매한 항목이 없습니다.";
         }
@@ -43,78 +44,85 @@ function sessionCurrent() {
 
   function displayMylectures(items, user) {
     const progressContainer = document.querySelector(".progress-container");
-    const progressBox = document.createElement("div");
-    const progressTitleBox = document.createElement("div");
     const progressTitle = document.createElement("div");
-    const progressInfoBox = document.createElement("div");
-    const progressInfo1 = document.createElement("div");
 
-    const progressInfoStudent1 = document.createElement("div");
-    const progressInfoGraph1 = document.createElement("div");
-    const progressInfoGraphColor1 = document.createElement("div");
-    // 두 번째 progressInfo 생성
-    const progressInfo2 = document.createElement("div");
-    const progressInfoStudent2 = document.createElement("div");
-    const progressInfoGraph2 = document.createElement("div");
-    const progressInfoGraphColor2 = document.createElement("div");
+    const progressBox = document.createElement("div");
 
     progressBox.classList.add("wbox", "progressBox");
     progressTitle.classList.add("progressTitle");
-    progressTitleBox.classList.add("progressTitleBox");
-    progressInfoBox.classList.add("progressInfoBox");
-    progressInfo1.classList.add("progressInfo");
-    progressInfoStudent1.classList.add("progressInfoStudent");
-    progressInfoGraph1.classList.add("progressInfoGraph");
-    progressInfoGraphColor1.classList.add("progressInfoGraphColor");
-    progressInfoGraphColor1.id = "myProgressBar";
-    progressInfo2.classList.add("progressInfo");
-    progressInfoStudent2.classList.add("progressInfoStudent");
-    progressInfoGraph2.classList.add("progressInfoGraph");
-    progressInfoGraphColor2.classList.add("progressInfoGraphColor");
 
     progressTitle.textContent = user.userName + "님의 강좌";
-    progressInfoStudent2.innerHTML =
-      '수강생 평균 진도율 <span id="averageProgress">0</span>%';
-    progressInfoGraphColor2.id = "averageProgressBar";
 
     progressContainer.appendChild(progressBox);
     progressBox.appendChild(progressTitle);
-    progressBox.appendChild(progressTitleBox);
-    progressInfoStudent1.innerHTML =
-      '나의 진도율 <span id="myProgress">0</span>%';
-    progressInfo1.appendChild(progressInfoStudent1);
-    progressInfoGraph1.appendChild(progressInfoGraphColor1);
-    progressInfo1.appendChild(progressInfoGraph1);
-    progressInfoBox.appendChild(progressInfo1);
-    progressInfo2.appendChild(progressInfoStudent2);
-    progressInfoGraph2.appendChild(progressInfoGraphColor2);
-    progressInfo2.appendChild(progressInfoGraph2);
-    progressInfoBox.appendChild(progressInfo2);
-    progressBox.appendChild(progressInfoBox);
-
-    // 강의 진도율 데이터 설정
-    let myProgress = 75; // 나의 진도율 (예: 75%)
-    let averageProgress = 60; // 수강생 평균 진도율 (예: 60%)
-
-    // 진도율 텍스트 업데이트
-    document.getElementById("myProgress").textContent = myProgress;
-    document.getElementById("averageProgress").textContent = averageProgress;
-
-    // 진도율 그래프 업데이트
-    document.getElementById("myProgressBar").style.width = myProgress + "%";
-    document.getElementById("averageProgressBar").style.width =
-      averageProgress + "%";
 
     items.forEach((item) => {
+      const progressInfoBox = document.createElement("div");
+      const progressTitleBox = document.createElement("div");
       const progressSubjectName = document.createElement("div");
-      progressSubjectName.classList.add("progressSubjectName");
-      progressSubjectName.textContent = item.lectureName;
-      progressTitleBox.appendChild(progressSubjectName);
-
       const progressSubjectInfo = document.createElement("div");
+      const progressInfo1 = document.createElement("div");
+
+      const progressInfoStudent1 = document.createElement("div");
+      const progressInfoGraph1 = document.createElement("div");
+      const progressInfoGraphColor1 = document.createElement("div");
+      // 두 번째 progressInfo 생성
+      const progressInfo2 = document.createElement("div");
+      const progressInfoStudent2 = document.createElement("div");
+
+      const progressInfoGraph2 = document.createElement("div");
+      const progressInfoGraphColor2 = document.createElement("div");
+
+      progressInfoBox.classList.add("progressInfoBox");
+      progressTitleBox.classList.add("progressTitleBox");
+      progressSubjectName.classList.add("progressSubjectName");
       progressSubjectInfo.classList.add("progressSubjectInfo");
+      progressInfo1.classList.add("progressInfo");
+      progressInfoStudent1.classList.add("progressInfoStudent");
+
+      progressInfoGraph1.classList.add("progressInfoGraph");
+      progressInfoGraphColor1.classList.add("progressInfoGraphColor");
+      progressInfoGraphColor1.id = "myProgressBar";
+      progressInfo2.classList.add("progressInfo");
+      progressInfoStudent2.classList.add("progressInfoStudent");
+      progressInfoGraph2.classList.add("progressInfoGraph");
+      progressInfoGraphColor2.classList.add("progressInfoGraphColor");
+
+      progressSubjectName.textContent = item.lectureName;
       progressSubjectInfo.textContent = item.teacherName;
+
+      progressInfoStudent1.innerHTML =
+        '나의 진도율 <span id="myProgress">0</span>%';
+      progressInfoStudent2.innerHTML =
+        '수강생 평균 진도율 <span id="averageProgress">0</span>%';
+      progressInfoGraphColor2.id = "averageProgressBar";
+
+      progressInfoBox.appendChild(progressTitleBox);
+      progressBox.appendChild(progressInfoBox);
+      progressTitleBox.appendChild(progressSubjectName);
       progressTitleBox.appendChild(progressSubjectInfo);
+
+      progressInfo1.appendChild(progressInfoStudent1);
+      progressInfoGraph1.appendChild(progressInfoGraphColor1);
+      progressInfo1.appendChild(progressInfoGraph1);
+      progressInfoBox.appendChild(progressInfo1);
+      progressInfo2.appendChild(progressInfoStudent2);
+      progressInfoGraph2.appendChild(progressInfoGraphColor2);
+      progressInfo2.appendChild(progressInfoGraph2);
+      progressInfoBox.appendChild(progressInfo2);
+
+      // 강의 진도율 데이터 설정
+      let myProgress = 75; // 나의 진도율 (예: 75%)
+      let averageProgress = 60; // 수강생 평균 진도율 (예: 60%)
+
+      // 진도율 텍스트 업데이트
+      document.getElementById("myProgress").textContent = myProgress;
+      document.getElementById("averageProgress").textContent = averageProgress;
+
+      // 진도율 그래프 업데이트
+      document.getElementById("myProgressBar").style.width = myProgress + "%";
+      document.getElementById("averageProgressBar").style.width =
+        averageProgress + "%";
     });
   }
 }
