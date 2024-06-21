@@ -1727,6 +1727,16 @@ body {
   background: rgb(51, 51, 51);
 }
 
+/* 뒤로가기 버튼 스타일 */
+.login-back-button {
+  font-size: 24px;
+  color: #fff;
+  cursor: pointer;
+  text-align: left;
+  margin: 0 20px;
+  display: inline-block;
+}
+
 /* 비밀번호 재설정 팝업창 스타일 */
 .modal {
   display: none;

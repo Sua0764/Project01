@@ -55,7 +55,7 @@ function sessionCurrent() {
     progressBox.classList.add("wbox", "progressBox");
     progressTitle.classList.add("progressTitle");
 
-    progressTitle.textContent = user.userName + "님의 강좌";
+    progressTitle.textContent = user.nickname + "님의 강좌";
 
     progressContainer.appendChild(progressBox);
     progressBox.appendChild(progressTitle);

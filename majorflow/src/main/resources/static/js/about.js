@@ -8,6 +8,7 @@ document.querySelector(".teacherBtn").addEventListener("click", () => {
   document.querySelector(".teacherBox").classList.remove("hidden");
   document.querySelector(".historyBox").classList.add("hidden");
   document.querySelector(".singleTeacherBox").classList.add("hidden");
+  //displayTeachers();
 });
 
 //강사진 hidden,
@@ -38,6 +39,17 @@ document.querySelectorAll(".subMenu > div").forEach((div) => {
   });
 });
 
+function displayTeachers() {
+  axios
+    .get("모든 Teacher의 정보를 받아오는 url")
+    .then((response) => {
+      console.log("데이터: ", response);
+    })
+    .catch((error) => {
+      console.log("에러 발생: ", error);
+    });
+}
+
 function sessionCurrent() {
   axios
     .get("http://localhost:8080/user/current", { withCredentials: true })
@@ -54,7 +66,7 @@ function sessionCurrent() {
       }
     })
     .catch((error) => {
-      console.log("로그인 안됨");
+      console.log("에러 발생: ", error);
     });
 }
 

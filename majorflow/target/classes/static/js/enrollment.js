@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const teacherNameDiv = document.createElement("div");
         teacherNameDiv.classList.add("teacherEnrollname");
-        teacherNameDiv.textContent = lecture.teacherName;
+        teacherNameDiv.textContent = lecture.teacherId;
 
         const hobbyPriceDiv = document.createElement("div");
         hobbyPriceDiv.classList.add("enrollPrice");
