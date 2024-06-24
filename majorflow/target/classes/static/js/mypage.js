@@ -25,6 +25,8 @@ function sessionCurrent() {
 
         const userInfo = response.data;
         const userId = response.data.userId;
+        const userNickname = response.data.nickname;
+        console.log(userInfo);
 
         let purchasedItems = JSON.parse(
           localStorage.getItem(userId + "_purchased")
@@ -55,7 +57,7 @@ function sessionCurrent() {
     progressBox.classList.add("wbox", "progressBox");
     progressTitle.classList.add("progressTitle");
 
-    progressTitle.textContent = user.nickname + "님의 강좌";
+    progressTitle.textContent = user.nickname;
 
     progressContainer.appendChild(progressBox);
     progressBox.appendChild(progressTitle);
