@@ -25,23 +25,20 @@ function displayTeachers(teacherData) {
     const teacher = document.querySelector(".teacher");
     teacherData.forEach((data) => {
       const teacherInfo = document.createElement("div");
-      teacherInfo.classList.add("teacherInfo");
-
       const teacherPicture = document.createElement("div");
-      teacherPicture.classList.add("teacherPicture");
-
       const teacherImg = document.createElement("img");
-      teacherImg.src = teacherData.img;
-
       const teacherPictureColor = document.createElement("div");
-      teacherPictureColor.classList.add("teacherPictureColor");
-
       const teacherName = document.createElement("div");
-      teacherName.classList.add("teacherName");
-      teacherName.textContent = data.teacherName;
-
       const teacherSubject = document.createElement("div");
+
+      teacherInfo.classList.add("teacherInfo");
+      teacherPicture.classList.add("teacherPicture");
+      teacherPictureColor.classList.add("teacherPictureColor");
+      teacherName.classList.add("teacherName");
       teacherSubject.classList.add("teacherSubject");
+
+      teacherImg.src = data.teacherImgPath;
+      teacherName.textContent = data.teacherName;
 
       teacher.appendChild(teacherInfo);
       teacherInfo.appendChild(teacherPicture);
@@ -57,7 +54,7 @@ function displayTeachers(teacherData) {
           .get("http://localhost:8080/teacher/get/" + data.teacherId)
           .then((response) => {
             console.log("데이터 : ", response.data);
-            //displayTeacher(response.data);
+            displayTeacher(response.data);
           })
           .catch((error) => {
             console.log("에러발생 : ", error);
@@ -67,7 +64,50 @@ function displayTeachers(teacherData) {
   }
 }
 
-function displayTeacher(data) {}
+function displayTeacher(data) {
+  const singleTeacherBox = document.querySelector(".singleTeacherBox");
+  singleTeacherBox.innerHTML = "";
+
+  const backBtn = document.createElement("div");
+  const backBtnImg = document.createElement("img");
+  const singleTeacherTitle = document.createElement("div");
+  const singleTeacher = document.createElement("div");
+  const singleTeacher1 = document.createElement("div");
+  const singleTeacher2 = document.createElement("div");
+  const singleTeacherImg = document.createElement("img");
+  const singleTeacherInfo = document.createElement("div");
+  const singleTeacherText = document.createElement("div");
+  const singleTeacherText2 = document.createElement("div");
+
+  backBtn.classList.add("backBtn");
+  backBtnImg.classList.add("backBtnImg");
+  singleTeacherTitle.classList.add("singleTeacherTitle");
+  singleTeacher.classList.add("singleTeacher");
+  singleTeacher1.classList.add("singleTeacher1");
+  singleTeacher2.classList.add("singleTeacher2");
+
+  backBtnImg.src = "/img/뒤로가기검정.png";
+  singleTeacherTitle.textContent = data.teacherName;
+  singleTeacherImg.src = data.teacherImgPath;
+  singleTeacherInfo.textContent = "담당 강의명";
+  singleTeacherText2.textContent = "선생님 정보";
+
+  singleTeacherBox.appendChild(backBtn);
+  backBtn.appendChild(backBtnImg);
+  singleTeacherBox.appendChild(singleTeacherTitle);
+  singleTeacherBox.appendChild(singleTeacher);
+  singleTeacher.appendChild(singleTeacher1);
+  singleTeacher1.appendChild(singleTeacherImg);
+  singleTeacher1.appendChild(singleTeacherInfo);
+  singleTeacher1.appendChild(singleTeacherText);
+  singleTeacher.appendChild(singleTeacher2);
+  singleTeacher2.appendChild(singleTeacherText2);
+  backBtn.addEventListener("click", () => {
+    document.querySelector(".teacherBox").classList.remove("hidden");
+    document.querySelector(".historyBox").classList.add("hidden");
+    document.querySelector(".singleTeacherBox").classList.add("hidden");
+  });
+}
 
 //강사진 hidden,
 //연혁 unhidden
