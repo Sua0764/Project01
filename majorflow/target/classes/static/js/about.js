@@ -54,7 +54,7 @@ function displayTeachers(teacherData) {
         document.querySelector(".teacherBox").classList.add("hidden");
         document.querySelector(".singleTeacherBox").classList.remove("hidden");
         axios
-          .get("http://localhost:8080/teacher/get" + data.teacherId)
+          .get("http://localhost:8080/teacher/get/" + data.teacherId)
           .then((response) => {
             console.log("데이터 : ", response.data);
             //displayTeacher(response.data);
