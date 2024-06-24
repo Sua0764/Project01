@@ -14,6 +14,17 @@ document.querySelector(".gradeBtn").addEventListener("click", () => {
 
 sessionCurrent();
 
+document.querySelectorAll(".subMenu > div").forEach((div) => {
+  div.addEventListener("click", () => {
+    document
+      .querySelectorAll(".subMenu > div")
+      .forEach((item) => item.classList.remove("active"));
+
+    // 클릭된 div에 active 클래스 추가
+    div.classList.add("active");
+  });
+});
+
 function sessionCurrent() {
   axios
     .get("http://localhost:8080/user/current", { withCredentials: true })
@@ -57,7 +68,7 @@ function sessionCurrent() {
     progressBox.classList.add("wbox", "progressBox");
     progressTitle.classList.add("progressTitle");
 
-    progressTitle.textContent = user.nickname;
+    progressTitle.textContent = user.userId + "님의 진도율";
 
     progressContainer.appendChild(progressBox);
     progressBox.appendChild(progressTitle);
