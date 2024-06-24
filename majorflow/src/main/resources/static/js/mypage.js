@@ -3,14 +3,42 @@ const urlLectures = "http://localhost:8080/lectures";
 const urlMypage = "http://localhost:8080/user";
 
 document.querySelector(".progressBtn").addEventListener("click", () => {
-  document.querySelector(".gradeBox").classList.add("hidden");
+  document.querySelector(".myLectureBox").classList.add("hidden");
   document.querySelector(".progressBox").classList.remove("hidden");
+  axios
+    .get("http://localhost:8080/user/current", { withCredentials: true })
+    .then((response) => {
+      if (response.status === 200 && response.data.userId !== "anonymousUser") {
+        console.log("세션 유지");
+
+        const userInfo = response.data;
+        const userId = response.data.userId;
+        console.log(userInfo);
+
+        let purchasedItems = JSON.parse(
+          localStorage.getItem(userId + "_purchased")
+        );
+
+        if (purchasedItems && purchasedItems.length > 0) {
+          StudyMylectures(purchasedItems, userInfo);
+        } else {
+          document.querySelector(".progress-container").classList.add("noInfo");
+          document.querySelector(".progress-container").textContent =
+            "구매한 항목이 없습니다.";
+        }
+      } else {
+        alert("로그인이 필요합니다.");
+        window.location.href = "login.html";
+      }
+    })
+    .catch((error) => {
+      console.log("에러 발생: ", error);
+    });
 });
 
 document.querySelector(".myLectureBtn").addEventListener("click", () => {
-  document.querySelector(".gradeBox").classList.remove("hidden");
+  document.querySelector(".myLectureBox").classList.remove("hidden");
   document.querySelector(".progressBox").classList.add("hidden");
-  StudyMylectures();
 });
 
 sessionCurrent();
@@ -61,9 +89,8 @@ function sessionCurrent() {
     });
 
   function displayMylectures(items, user) {
-    //const progressContainer = document.querySelector(".progress-container");
+    const myLectureBox = document.querySelector(".myLectureBox");
     const progressTitle = document.createElement("div");
-    const progressBox = document.querySelector(".progressBox");
 
     progressTitle.classList.add("progressTitle");
     progressTitle.textContent = user.userId + "님의 수강신청 현황";
