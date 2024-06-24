@@ -15,7 +15,7 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: #111;
+  background: #0e0e0e;
   width: 100%;
   overflow: hidden;
 }
@@ -101,6 +101,51 @@
   }
 }
 
+.loginMenuBtn {
+  height: 300px;
+  width: 150px;
+  color: white;
+  font-size: 35px;
+  line-height: 40px;
+  bottom: 539px;
+  left: 100px;
+  cursor: pointer; /* Pointer cursor for button */
+}
+
+.loginMenu {
+  height: 1000px;
+  width: 500px;
+  color: black;
+  font-size: 30px;
+  font-weight: 500;
+  position: absolute;
+  bottom: -81px;
+  left: 0px;
+  transform: translateX(-100%);
+  opacity: 0;
+  padding: 10px;
+  transition: transform 1s cubic-bezier(0.25, 1, 0.5, 1),
+    opacity 1s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.loginMenu.active {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.loginMenu::before {
+  content: "";
+  position: absolute;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  background-color: white;
+  transition: all 1s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
 .menuBtn {
   height: 300px;
   width: 150px;
@@ -120,7 +165,7 @@
   font-size: 30px;
   font-weight: 500;
   position: absolute;
-  bottom: -480px;
+  bottom: -500px;
   left: 0px;
   transform: translateX(-100%);
   opacity: 0;
@@ -283,7 +328,6 @@ body {
   width: 250px;
   height: 50px;
   margin: 20px 20px 20px 0px;
-  padding: 20px 20px 20px 0px;
   background-color: black;
   color: white;
   box-sizing: border-box;
@@ -479,11 +523,12 @@ body {
   border-radius: 15px;
   overflow: hidden; /* 둥근 모서리 내에서 이미지가 잘리도록 */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
-  transition: box-shadow 0.3s ease; /* 애니메이션 효과 */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* 애니메이션 효과 */
   width: 450px; /* 박스의 가로 길이 조정 */
 }
 
 .allCourseClick:hover {
+  transform: scale(1.05); /* 호버 시 확대 */
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* 호버 시 그림자 강화 */
 }
 
@@ -591,7 +636,6 @@ body {
   object-fit: cover;
   border-radius: 15px;
 }
-
 .coursePriceGuide {
   width: 90%;
   height: 800px;
@@ -635,20 +679,17 @@ body {
   background-color: #a0aec0;
   margin: 40px auto;
 }
-
 #priceGuide1,
 #priceGuide2 {
   font-size: 70px;
   margin: 20px 0 10px 100px;
   color: #333;
 }
-
 .priceGuide3 {
   font-size: 40px;
   margin: 20px 0 0px 100px;
   color: #555;
 }
-
 .priceGuide4 {
   font-size: 90px;
   margin: 0px 80px 10px 0px;
@@ -657,7 +698,6 @@ body {
   justify-content: end;
   color: #111;
 }
-
 #priceGuide5 {
   font-size: 25px;
   margin: 40px 80px 10px 0px;
@@ -754,14 +794,12 @@ body {
   height: 330px;
   transition: height 0.3s ease;
 }
-
 .noticeBox3 {
   display: grid;
   grid-template-columns: 8fr 1.5fr 0.5fr;
   width: 100%;
   height: 88px;
 }
-
 .noticeBox3-1 {
   font-size: 24px; /* 텍스트 크기 축소 */
   font-weight: bold;
@@ -769,7 +807,6 @@ body {
   line-height: 88px;
   color: #333; /* 텍스트 색상 변경 */
 }
-
 .noticeBox3-2 {
   cursor: pointer;
   width: 2rem;
@@ -783,23 +820,18 @@ body {
   font-size: 20px; /* 텍스트 크기 축소 */
   color: #666; /* 텍스트 색상 변경 */
 }
-
 .noticeBox3-2:focus {
   outline: 0;
 }
-
 .noticeBox3-3.close {
   display: none;
 }
-
 .noticeBox2.active .noticeBox3-3.close {
   display: block;
 }
-
 .noticeBox2.active .noticeBox3-3.open {
   display: none;
 }
-
 .noticeBoxLine {
   width: 100%;
   height: 1px;
@@ -807,13 +839,11 @@ body {
   margin-bottom: 20px;
   border: 1px solid #ddd; /* 연한 색상으로 변경 */
 }
-
 .noticeBox4 {
   font-size: 18px; /* 텍스트 크기 축소 */
   height: 150px;
   color: #666; /* 텍스트 색상 변경 */
 }
-
 .noticeBox5 {
   display: flex;
   align-items: center; /* 수직 가운데 정렬 */
@@ -914,6 +944,7 @@ body {
 }
 
 /* 수강신청 페이지 설정 */
+
 .enrollmentTitle {
   font-size: 40px;
   font-weight: bold;
@@ -922,12 +953,10 @@ body {
   padding: 30px 0px;
   margin-top: 30px;
 }
-
 .enrollment {
   display: flex;
   flex-wrap: wrap;
 }
-
 .enrollment > div {
   border: 2px solid black;
   border-radius: 5px;
@@ -1634,10 +1663,11 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: #111;
+  background: #0e0e0e;
   width: 100%;
   overflow: hidden;
 }
+
 .ring {
   position: relative;
   width: 600px;
@@ -1723,15 +1753,10 @@ body {
   justify-content: space-between;
   color: #fff;
 }
-.login .links .find-password {
-  color: #fff;
-  text-decoration: underline;
-  font-size: 14px;
-  padding: 5px 10px 0px 10px;
-}
 
 .login .links .signup-link {
-  padding: 0 20px;
+  padding: 0 15px;
+  text-decoration: underline;
 }
 
 .login .sign-inBx input[type="submit"] {
@@ -1773,83 +1798,6 @@ body {
   cursor: pointer;
   text-align: left;
   display: inline-block;
-}
-
-/* 비밀번호 재설정 팝업창 스타일 */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.75);
-}
-
-.modal-content {
-  background-color: #111;
-  margin: 15% auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
-  max-width: 500px;
-  border-radius: 10px;
-  color: #fff;
-}
-
-.close-btn {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close-btn:hover,
-.close-btn:focus {
-  color: white;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.reset-passwordBx {
-  position: relative;
-  width: 100%;
-}
-
-.reset-passwordBx input {
-  position: relative;
-  width: 100%;
-  padding: 20px 30px;
-  background: transparent;
-  border: 2px solid #fff;
-  border-radius: 40px;
-  font-size: 1.5em;
-  color: #fff;
-  box-shadow: none;
-  outline: none;
-  margin-top: 20px;
-}
-
-.reset-passwordBx input::placeholder {
-  color: rgba(255, 255, 255, 0.75);
-}
-
-.reset-passwordBx input[type="submit"] {
-  width: 50%;
-  padding: 10px;
-  background: rgb(94, 94, 94);
-  border: none;
-  cursor: pointer;
-  font-size: 1.2em;
-  transition: 0.3s;
-  margin: 20px auto;
-  display: block;
-}
-
-.reset-passwordBx input[type="submit"]:hover {
-  background: rgb(51, 51, 51);
 }
 
 /* 나의 진도율 페이지 설정 */
