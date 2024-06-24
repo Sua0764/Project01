@@ -11,8 +11,13 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-@Table(name = "ecuTech")
+@Entity
+@Table(name = "edu_tech")
 public class EduTech {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int EduTechId;
 
     @ManyToOne
     @JoinColumn

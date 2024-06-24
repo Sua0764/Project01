@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -18,9 +19,8 @@ public class UserDto {
     private LocalDate birthDate;
     private String phoneNumber;
     private String address;
-    private String gender;
+    private List<String> gender;
     private String email;
     private String nickname;
-    private String genre;
-    private String newPassword; // 추가된 필드
+    private List<String> genre;
 }

@@ -23,4 +23,7 @@ public class Teacher {
 
     @Column(name = "teacher_name")
     private String teacherName;
+
+    @Column
+    private String teacherImgPath;
 }

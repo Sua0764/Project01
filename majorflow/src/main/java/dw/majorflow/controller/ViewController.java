@@ -46,4 +46,9 @@ public class ViewController {
 
     @GetMapping("majorflow/lecture.html")
     public String lecture() {return "lecture"; }
+
+    @GetMapping("/majorflow/admin.html")
+    public String admin() {
+        return "admin";
+    }
 }
