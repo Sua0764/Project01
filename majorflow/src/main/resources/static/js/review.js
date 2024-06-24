@@ -1,5 +1,7 @@
 const urlLogout = "http://localhost:8080/user/logout";
 
+let currentUser = {};
+
 document.querySelector(".reviewBtn").addEventListener("click", () => {
   document.querySelector(".review").classList.remove("hidden");
 });
@@ -51,6 +53,32 @@ document.addEventListener("DOMContentLoaded", () => {
       "0" +
       (currentDate.getMonth() + 1)
     ).slice(-2)}-${("0" + currentDate.getDate()).slice(-2)}`;
+
+    const data = {
+      user: {
+        userId: currentUser.userId,
+        authority: {
+          authorityName: currentUser.authority[0].authority,
+        },
+      },
+      lecture: {
+        lectureId: 1,
+      },
+      text: reviewContent,
+      rating: 5,
+      ReviewTime: formattedDate,
+    };
+
+    axios
+      .post("http://localhost:8080/review/save", data, {
+        withCredentials: true,
+      })
+      .then((response) => {
+        console.log("데이터: ", response);
+      })
+      .catch((error) => {
+        console.log("에러발생: ", error);
+      });
 
     const reviewContainer = document.querySelector(".reviewBox6");
     const newReview = document.createElement("div");
@@ -121,6 +149,7 @@ function sessionCurrent() {
       console.log("데이터: ", response);
       if (response.status == 200 && response.data.userId !== "anonymousUser") {
         console.log("세션 유지");
+        currentUser = response.data;
         const userId = response.data.userId;
         document.querySelector(".menuLoginBtn").classList.add("hidden");
         document.querySelector(".menuLogoutBtn").classList.remove("hidden");

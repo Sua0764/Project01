@@ -7,9 +7,10 @@ document.querySelector(".progressBtn").addEventListener("click", () => {
   document.querySelector(".progressBox").classList.remove("hidden");
 });
 
-document.querySelector(".gradeBtn").addEventListener("click", () => {
+document.querySelector(".myLectureBtn").addEventListener("click", () => {
   document.querySelector(".gradeBox").classList.remove("hidden");
   document.querySelector(".progressBox").classList.add("hidden");
+  StudyMylectures();
 });
 
 sessionCurrent();
@@ -60,17 +61,12 @@ function sessionCurrent() {
     });
 
   function displayMylectures(items, user) {
-    const progressContainer = document.querySelector(".progress-container");
+    //const progressContainer = document.querySelector(".progress-container");
     const progressTitle = document.createElement("div");
+    const progressBox = document.querySelector(".progressBox");
 
-    const progressBox = document.createElement("div");
-
-    progressBox.classList.add("wbox", "progressBox");
     progressTitle.classList.add("progressTitle");
-
-    progressTitle.textContent = user.userId + "님의 진도율";
-
-    progressContainer.appendChild(progressBox);
+    progressTitle.textContent = user.userId + "님의 수강신청 현황";
     progressBox.appendChild(progressTitle);
 
     items.forEach((item) => {
@@ -80,68 +76,62 @@ function sessionCurrent() {
       const progressSubjectInfo = document.createElement("div");
       const progressInfo1 = document.createElement("div");
 
-      const progressInfoStudent1 = document.createElement("div");
-      const progressInfoGraph1 = document.createElement("div");
-      const progressInfoGraphColor1 = document.createElement("div");
-      // 두 번째 progressInfo 생성
-      const progressInfo2 = document.createElement("div");
-      const progressInfoStudent2 = document.createElement("div");
-
-      const progressInfoGraph2 = document.createElement("div");
-      const progressInfoGraphColor2 = document.createElement("div");
-
       progressInfoBox.classList.add("progressInfoBox");
       progressTitleBox.classList.add("progressTitleBox");
       progressSubjectName.classList.add("progressSubjectName");
       progressSubjectInfo.classList.add("progressSubjectInfo");
       progressInfo1.classList.add("progressInfo");
-      progressInfoStudent1.classList.add("progressInfoStudent");
-
-      progressInfoGraph1.classList.add("progressInfoGraph");
-      progressInfoGraphColor1.classList.add("progressInfoGraphColor");
-      progressInfoGraphColor1.id = "myProgressBar";
-      progressInfo2.classList.add("progressInfo");
-      progressInfoStudent2.classList.add("progressInfoStudent");
-      progressInfoGraph2.classList.add("progressInfoGraph");
-      progressInfoGraphColor2.classList.add("progressInfoGraphColor");
 
       progressSubjectName.textContent = item.lectureName;
       progressSubjectInfo.textContent = item.teacherName;
-
-      progressInfoStudent1.innerHTML =
-        '나의 진도율 <span id="myProgress">0</span>%';
-      progressInfoStudent2.innerHTML =
-        '수강생 평균 진도율 <span id="averageProgress">0</span>%';
-      progressInfoGraphColor2.id = "averageProgressBar";
 
       progressInfoBox.appendChild(progressTitleBox);
       progressBox.appendChild(progressInfoBox);
       progressTitleBox.appendChild(progressSubjectName);
       progressTitleBox.appendChild(progressSubjectInfo);
 
-      progressInfo1.appendChild(progressInfoStudent1);
-      progressInfoGraph1.appendChild(progressInfoGraphColor1);
-      progressInfo1.appendChild(progressInfoGraph1);
       progressInfoBox.appendChild(progressInfo1);
-      progressInfo2.appendChild(progressInfoStudent2);
-      progressInfoGraph2.appendChild(progressInfoGraphColor2);
-      progressInfo2.appendChild(progressInfoGraph2);
-      progressInfoBox.appendChild(progressInfo2);
-
-      // 강의 진도율 데이터 설정
-      let myProgress = 75; // 나의 진도율 (예: 75%)
-      let averageProgress = 60; // 수강생 평균 진도율 (예: 60%)
-
-      // 진도율 텍스트 업데이트
-      document.getElementById("myProgress").textContent = myProgress;
-      document.getElementById("averageProgress").textContent = averageProgress;
-
-      // 진도율 그래프 업데이트
-      document.getElementById("myProgressBar").style.width = myProgress + "%";
-      document.getElementById("averageProgressBar").style.width =
-        averageProgress + "%";
     });
   }
+}
+
+function StudyMylectures(items, user) {
+  const progressContainer = document.querySelector(".progress-container");
+  const progressTitle = document.createElement("div");
+
+  const progressBox = document.createElement("div");
+
+  progressBox.classList.add("wbox", "progressBox");
+  progressTitle.classList.add("progressTitle");
+
+  progressTitle.textContent = user.userId + "님의 강의실";
+
+  progressContainer.appendChild(progressBox);
+  progressBox.appendChild(progressTitle);
+
+  items.forEach((item) => {
+    const progressInfoBox = document.createElement("div");
+    const progressTitleBox = document.createElement("div");
+    const progressSubjectName = document.createElement("div");
+    const progressSubjectInfo = document.createElement("div");
+    const progressInfo1 = document.createElement("div");
+
+    progressInfoBox.classList.add("progressInfoBox");
+    progressTitleBox.classList.add("progressTitleBox");
+    progressSubjectName.classList.add("progressSubjectName");
+    progressSubjectInfo.classList.add("progressSubjectInfo");
+    progressInfo1.classList.add("progressInfo");
+
+    progressSubjectName.textContent = item.lectureName;
+    progressSubjectInfo.textContent = item.teacherName;
+
+    progressInfoBox.appendChild(progressTitleBox);
+    progressBox.appendChild(progressInfoBox);
+    progressTitleBox.appendChild(progressSubjectName);
+    progressTitleBox.appendChild(progressSubjectInfo);
+
+    progressInfoBox.appendChild(progressInfo1);
+  });
 }
 
 document.querySelector(".menuLogoutBtn").addEventListener("click", () => {

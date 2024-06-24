@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -30,4 +32,8 @@ public class Review {
 
     @Column
     private int rating;
+
+    @Column
+    private LocalDateTime ReviewTime;
+
 }

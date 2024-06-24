@@ -15,6 +15,9 @@ document.addEventListener("DOMContentLoaded", function () {
         const lectureImgDiv = document.createElement("div");
         lectureImgDiv.classList.add("lectureEnrollimg");
 
+        const lectureImg = document.createElement("img");
+        lectureImg.src = lecture.lectureImage;
+
         const lectureInfoDiv = document.createElement("div");
         lectureInfoDiv.classList.add("lectureEnrollInfo");
 

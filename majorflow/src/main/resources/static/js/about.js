@@ -23,6 +23,8 @@ function displayTeachers(teacherData) {
   console.log(teacherData.length);
   if (teacherData.length > 0) {
     const teacher = document.querySelector(".teacher");
+    teacher.innerHTML = "";
+
     teacherData.forEach((data) => {
       const teacherInfo = document.createElement("div");
       const teacherPicture = document.createElement("div");
