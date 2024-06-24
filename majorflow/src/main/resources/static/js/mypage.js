@@ -90,21 +90,28 @@ function sessionCurrent() {
 
   function displayMylectures(items, user) {
     const myLectureBox = document.querySelector(".myLectureBox");
-    const progressTitle = document.createElement("div");
+    const myLectureBoxGrid = document.createElement("div");
+    const myLectureTitle = document.createElement("div");
 
-    progressTitle.classList.add("progressTitle");
-    progressTitle.textContent = user.userId + "님의 수강신청 현황";
-    progressBox.appendChild(progressTitle);
+    myLectureBoxGrid.classList.add("myLectureBoxGrid");
+    myLectureTitle.classList.add("myLectureTitle");
+    myLectureTitle.textContent = user.userId + "님의 수강신청 현황";
+    myLectureBox.appendChild(myLectureTitle);
+    myLectureBox.appendChild(myLectureBoxGrid);
 
     items.forEach((item) => {
       const progressInfoBox = document.createElement("div");
-      const progressTitleBox = document.createElement("div");
+      const myLectureTitleBox = document.createElement("div");
       const progressSubjectName = document.createElement("div");
       const progressSubjectInfo = document.createElement("div");
       const progressInfo1 = document.createElement("div");
+      const myLectureImgBox = document.createElement("div");
+      const myLectureImg = document.createElement("img");
 
+      myLectureImg.src = items.lectureImage;
+      myLectureImgBox.classList.add("myLectureimgBox");
       progressInfoBox.classList.add("progressInfoBox");
-      progressTitleBox.classList.add("progressTitleBox");
+      myLectureTitleBox.classList.add("progressTitleBox");
       progressSubjectName.classList.add("progressSubjectName");
       progressSubjectInfo.classList.add("progressSubjectInfo");
       progressInfo1.classList.add("progressInfo");
@@ -112,10 +119,10 @@ function sessionCurrent() {
       progressSubjectName.textContent = item.lectureName;
       progressSubjectInfo.textContent = item.teacherName;
 
-      progressInfoBox.appendChild(progressTitleBox);
-      progressBox.appendChild(progressInfoBox);
-      progressTitleBox.appendChild(progressSubjectName);
-      progressTitleBox.appendChild(progressSubjectInfo);
+      myLectureBoxGrid.appendChild(progressInfoBox);
+      progressInfoBox.appendChild(myLectureTitleBox);
+      myLectureTitleBox.appendChild(progressSubjectName);
+      myLectureTitleBox.appendChild(progressSubjectInfo);
 
       progressInfoBox.appendChild(progressInfo1);
     });
@@ -123,17 +130,12 @@ function sessionCurrent() {
 }
 
 function StudyMylectures(items, user) {
-  const progressContainer = document.querySelector(".progress-container");
+  const progressBox = document.querySelector(".progressBox");
   const progressTitle = document.createElement("div");
-
-  const progressBox = document.createElement("div");
-
-  progressBox.classList.add("wbox", "progressBox");
   progressTitle.classList.add("progressTitle");
 
   progressTitle.textContent = user.userId + "님의 강의실";
 
-  progressContainer.appendChild(progressBox);
   progressBox.appendChild(progressTitle);
 
   items.forEach((item) => {

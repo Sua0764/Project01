@@ -1159,6 +1159,13 @@ body {
 
 /* 나의 진도율 페이지 설정 */
 
+.myLectureBoxGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.myLectureTitle,
 .progressTitle {
   font-size: 40px;
   font-weight: bold;
@@ -1200,13 +1207,7 @@ body {
   color: gray;
 }
 
-.searchIcon {
-  height: 50px;
-  width: 50px;
-  margin: 30px 0px;
-  background-color: gray;
-}
-
+.myLectureTitlebox,
 .progressTitleBox {
   display: flex;
   justify-content: left;
