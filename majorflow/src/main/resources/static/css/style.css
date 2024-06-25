@@ -1077,7 +1077,7 @@ body {
 .cartBox {
   width: 80%;
   max-width: 1000px;
-  background-color: #555;
+  background-color: #f1f4f9;
   padding: 25px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -1087,7 +1087,7 @@ body {
 
 .cartBox1 {
   width: 100%;
-  background-color: #666;
+  background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 10px;
   padding: 20px;
@@ -1205,68 +1205,106 @@ body {
   border-bottom: 2px solid black;
 }
 
-.selectSearchBox {
-  display: flex;
-  justify-content: center;
-}
-
-.selectSubjectBtn {
-  height: 50px;
-  width: 200px;
-  border: 2px solid black;
-  border-radius: 5px;
-  text-align: left;
-  line-height: 45px;
-  font-size: 20px;
-  padding: 0px 10px;
-  margin: 30px 10px;
-  color: gray;
-}
-
-.searchSubjectBtn {
-  height: 50px;
-  width: 400px;
-  border: 2px solid black;
-  border-radius: 5px;
-  text-align: left;
-  line-height: 45px;
-  font-size: 20px;
-  padding: 0px 10px;
-  margin: 30px 10px;
-  color: gray;
-}
-
 .myLectureTitlebox,
 .progressTitleBox {
+  display: inline;
+  justify-content: left;
+}
+
+.myLectureSubjectName {
+  font-size: 40px;
+  font-weight: bold;
   display: flex;
   justify-content: left;
+  padding: 30px 0px 0px 0px;
+  margin: 30px 0px 20px 30px;
 }
 
 .progressSubjectName {
   font-size: 40px;
   font-weight: bold;
   display: flex;
-  justify-content: left;
-  padding: 30px 0px;
+  align-items: center;
+  padding: 30px 0px 0px 0px;
+  margin: 30px 0px 20px 0px;
+}
+
+.myLectureType {
+  font-size: 20px;
+  padding: 0px 0px 30px 30px;
+}
+
+.progressType {
+  font-size: 20px;
+  padding: 30px 0px 0px 0px;
+  margin: 30px 0px 20px 0px;
+}
+
+.myLectureImgBox {
+  background-color: gray;
+  width: inherit;
+  height: 300px;
+  border: 0px solid gray;
+  border-radius: 30px 30px 0px 0px;
+}
+
+.progressImgBox {
+  background-color: gray;
+  width: 350px;
+  height: 250px;
+  border: 0px solid gray;
+  border-radius: 30px;
   margin: 30px;
 }
 
-.progressSubjectInfo {
-  font-size: 40px;
-  font-weight: bold;
+.studyLectureBtnBox {
   display: flex;
   justify-content: center;
-  padding: 30px 0px;
+}
+
+.studyLectureBtn {
+  width: 300px;
+  height: 60px;
+  border: 1px solid #007bff;
+  color: #007bff;
+  border-radius: 30px;
+  text-align: center;
+  padding: 18px;
   margin: 30px;
+  font-weight: bold;
+}
+
+.studyLectureBtn:hover {
+  width: 300px;
+  height: 60px;
+  border: 1px solid #007bff;
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 20px;
+  text-align: center;
+  padding: 20px;
+  margin: 30px;
+  font-weight: bold;
+}
+
+.myLectureInfoBox {
+  height: 650px;
+  border: 1px solid gray;
+  border-radius: 30px;
+  margin: 50px;
 }
 
 .progressInfoBox {
-  height: 700px;
-  border: 2px solid black;
-  border-radius: 5px;
+  height: 350px;
+  border: 1px solid gray;
+  border-radius: 30px;
   padding: 20px;
+  margin: 50px;
+  display: grid;
+  grid-template-columns: 4fr 2fr 4fr;
 }
 
+.myLectureInfo,
 .progressInfo {
   display: grid;
   grid-template-columns: 35% 65%;
@@ -1280,20 +1318,62 @@ body {
   font-weight: bold;
 }
 
-.progressInfoGraph {
-  height: 50px;
-  width: 700px;
-  border: 2px solid black;
-  border-radius: 10px;
-  margin: 40px;
+.progressGraph {
+  width: 130px;
+  height: 130px;
+  border: 3px solid gray;
+  border-radius: 100px;
+  text-align: center;
+  padding: 20px;
+  margin: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.progressInfoGraphColor {
-  height: 50px;
-  width: 500px;
-  border: 2px solid black;
-  border-radius: 10px;
-  background-color: #000;
+.progressStudyBtn {
+  width: 130px;
+  height: 130px;
+  background-color: #007bff;
+  color: white;
+  border-radius: 20px;
+  font-size: 22px;
+  text-align: center;
+  padding: 20px;
+  margin: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.progressStudyBtn:hover {
+  width: 130px;
+  height: 130px;
+  background-color: white;
+  color: #007bff;
+  border-radius: 20px;
+  font-size: 22px;
+  text-align: center;
+  padding: 20px;
+  margin: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.progressBtnBox {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+}
+
+.noInfo {
+  height: 700px;
+  display: flex;
+  justify-content: center;
+  font-size: 30px;
+  padding: 50px;
+  margin: 50px;
 }
 
 /* 성적확인 페이지 설정 */
@@ -1798,128 +1878,6 @@ body {
   cursor: pointer;
   text-align: left;
   display: inline-block;
-}
-
-/* 나의 진도율 페이지 설정 */
-
-.progressTitle {
-  font-size: 40px;
-  font-weight: bold;
-  display: flex;
-  justify-content: left;
-  padding: 30px 0px;
-  margin-top: 30px;
-  border-bottom: 2px solid black;
-}
-
-.noInfo {
-  height: 700px;
-  display: flex;
-  justify-content: center;
-  font-size: 30px;
-  padding: 50px;
-  margin: 50px;
-}
-
-.selectSearchBox {
-  display: flex;
-  justify-content: center;
-}
-
-.selectSubjectBtn {
-  height: 50px;
-  width: 200px;
-  border: 2px solid black;
-  border-radius: 5px;
-  text-align: left;
-  line-height: 45px;
-  font-size: 20px;
-  padding: 0px 10px;
-  margin: 30px 10px;
-  color: gray;
-}
-
-.searchSubjectBtn {
-  height: 50px;
-  width: 400px;
-  border: 2px solid black;
-  border-radius: 5px;
-  text-align: left;
-  line-height: 45px;
-  font-size: 20px;
-  padding: 0px 10px;
-  margin: 30px 10px;
-  color: gray;
-}
-
-.searchIcon {
-  height: 50px;
-  width: 50px;
-  margin: 30px 0px;
-  background-color: gray;
-}
-
-.progressTitleBox {
-  display: flex;
-  justify-content: left;
-}
-
-.progressSubjectName {
-  font-size: 30px;
-  font-weight: bold;
-  display: flex;
-  justify-content: left;
-  padding: 0px;
-  margin: 30px;
-}
-
-.progressSubjectInfo {
-  font-size: 30px;
-  font-weight: bold;
-  display: flex;
-  justify-content: center;
-  padding: 0px;
-  margin: 10px;
-}
-
-.progressInfoBox {
-  height: 350px;
-  background-color: white;
-  border: 0.5px solid gray;
-  border-radius: 10px;
-  padding: 20px;
-  margin: 50px 20px 20px 20px;
-}
-
-.progressInfo {
-  height: 70px;
-  display: grid;
-  grid-template-columns: 35% 65%;
-}
-
-.progressInfoStudent {
-  font-size: 20px;
-  padding: 0px;
-  margin: 30px;
-  color: black;
-  font-weight: bold;
-}
-
-.progressInfoGraph {
-  height: 30px;
-  width: 500px;
-  border: 0.5px solid gray;
-  border-radius: 10px;
-  margin: 40px;
-  position: relative;
-}
-
-.progressInfoGraphColor {
-  height: 28px;
-  width: 0%;
-  border: 0.5px solid gray;
-  border-radius: 10px;
-  background-color: #000;
 }
 
 .hidden {
