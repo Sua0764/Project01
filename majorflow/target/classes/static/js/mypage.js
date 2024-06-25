@@ -91,6 +91,8 @@ function sessionCurrent() {
 
   function displayMylectures(items, user) {
     const myLectureBox = document.querySelector(".myLectureBox");
+    myLectureBox.innerHTML = "";
+
     const myLectureBoxGrid = document.createElement("div");
     const myLectureTitle = document.createElement("div");
 
@@ -139,6 +141,8 @@ function sessionCurrent() {
 
 function StudyMylectures(items, user) {
   const progressBox = document.querySelector(".progressBox");
+  progressBox.innerHTML = "";
+
   const progressTitle = document.createElement("div");
   progressTitle.classList.add("progressTitle");
 
