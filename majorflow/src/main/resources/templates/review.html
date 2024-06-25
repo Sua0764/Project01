@@ -29,33 +29,29 @@
             >
             <span class="centerMenu"><a href="customer.html">고객센터</a></span>
           </div>
-
           <div>
-            <span class="rightMenu menuReviewBtn"
-              ><a href="review.html">수강후기</a></span
-            >
+            <span class="rightMenu"><a href="review.html">수강후기</a></span>
             <span class="rightMenu">
-              <a href="mypage.html"
-                ><img src="/img/마이페이지.png" alt="" class="mypageIcon"
-              /></a>
+              <a href="mypage.html">
+                <img src="/img/마이페이지.png" alt="" class="mypageIcon" />
+              </a>
             </span>
             <span class="rightMenu">
-              <a href="cart.html"
-                ><img src="/img/장바구니.png" alt="" class="cartIcon"
-              /></a>
+              <a href="cart.html">
+                <img src="/img/장바구니.png" alt="" class="cartIcon" />
+              </a>
             </span>
             <span class="rightMenu menuLogoutBtn">로그아웃</span>
-            <span class="rightMenu menuLoginBtn"
-              ><a href="login.html">로그인</a></span
-            >
+            <span class="rightMenu menuLoginBtn">
+              <a href="login.html">로그인</a>
+            </span>
           </div>
         </div>
-        <div></div>
         <div class="wbox title">
           <div>REVIEW</div>
         </div>
         <div class="wbox subMenu">
-          <div class="reviewBtn active">Review</div>
+          <div class="reviewBtn">수강후기</div>
         </div>
       </div>
       <div class="box2">
@@ -69,8 +65,8 @@
                 <div class="reviewBox4">평점</div>
               </div>
               <div class="reviewBox3">
-                <div id="reviewBox3-1">Text</div>
-                <div id="reviewBox3-2">Text</div>
+                <div id="reviewBox3-1">리뷰 갯수</div>
+                <div id="reviewBox3-2">★ 5</div>
                 <div class="reviewBoxStar">
                   <div class="reviewBoxStarGrid">
                     <div class="reviewStar">★★★★★</div>
@@ -104,15 +100,9 @@
               </div>
             </div>
           </div>
-          <!--      <div class="reviewBox5">-->
-          <!--        <div>전체</div>-->
-          <!--        <div>피아노</div>-->
-          <!--        <div>첼로</div>-->
-          <!--        <div>기타</div>-->
-          <!--        <div>드럼</div>-->
-          <!--      </div>-->
+          <!-- Review Box 6-1 -->
+          <div class="reviewBox6-1">후기</div>
           <div class="reviewBox6">
-            <div id="reviewBox6-1">후기</div>
             <div class="reviewBox7">
               <div class="reviewBox7Grid">
                 <div>
@@ -147,29 +137,30 @@
           <div class="reviewWriteBtn">리뷰쓰기</div>
         </div>
       </div>
-      <div id="reviewModal" class="reviewWriteModal">
-        <div class="reviewWriteModal-content">
-          <span class="reviewModalCloseBtn">&times;</span>
-          <div class="reviewWriteBox">
-            <div class="star_rating">
-              <span class="reviewWriteStar on" data-value="1"></span>
-              <span class="reviewWriteStar" data-value="2"></span>
-              <span class="reviewWriteStar" data-value="3"></span>
-              <span class="reviewWriteStar" data-value="4"></span>
-              <span class="reviewWriteStar" data-value="5"></span>
-            </div>
-            <textarea
-              class="star_box"
-              placeholder="리뷰 내용을 작성해주세요."
-            ></textarea>
-            <input type="submit" class="reviewWriteBtn2" value="리뷰 등록" />
+    </div>
+    <div id="reviewModal" class="reviewWriteModal">
+      <div class="reviewWriteModal-content">
+        <span class="reviewModalCloseBtn">&times;</span>
+        <div class="reviewWriteBox">
+          <div class="star_rating">
+            <span class="reviewWriteStar on" data-value="1"></span>
+            <span class="reviewWriteStar" data-value="2"></span>
+            <span class="reviewWriteStar" data-value="3"></span>
+            <span class="reviewWriteStar" data-value="4"></span>
+            <span class="reviewWriteStar" data-value="5"></span>
           </div>
+          <textarea
+            class="star_box"
+            placeholder="리뷰 내용을 작성해주세요."
+          ></textarea>
+          <input type="submit" class="reviewWriteBtn2" value="리뷰 등록" />
         </div>
       </div>
     </div>
     <div class="footer">
       <h3>FOOTER</h3>
     </div>
+
     <script src="/js/review.js"></script>
   </body>
 </html>

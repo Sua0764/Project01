@@ -11,40 +11,6 @@
       rel="stylesheet"
     />
     <title>고객센터-공지사항</title>
-    <style>
-      /* 기존 스타일 코드 */
-
-      .noticeBox5 {
-        display: flex;
-        align-items: center; /* 수직 가운데 정렬 */
-        gap: 10px; /* 이미지와 텍스트 사이 간격 조정 */
-      }
-
-      .noticeBox5 img {
-        width: 24px; /* 이미지 너비 조정 */
-        height: 24px; /* 이미지 높이 조정 */
-        vertical-align: middle; /* 텍스트와 이미지가 수직으로 가운데 정렬되도록 설정 */
-      }
-
-      .noticeBox6 {
-        width: 150px; /* 버튼 크기 축소 */
-        height: 50px; /* 버튼 크기 축소 */
-        font-size: 20px; /* 텍스트 크기 조정 */
-        line-height: 50px; /* 버튼 높이에 맞게 조정 */
-        margin-bottom: 50px; /* 글쓰기 버튼과 FOOTER 사이 간격 조정 */
-        margin-left: 20px; /* 왼쪽으로 조금 이동 */
-        /* 나머지 속성은 그대로 유지 */
-        border: none;
-        font-weight: bold;
-        text-align: center;
-        float: left; /* 버튼을 왼쪽으로 정렬 */
-        color: white;
-        background-color: #007bff;
-        border-radius: 33px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        transition: background-color 0.3s ease, transform 0.3s ease;
-      }
-    </style>
     <script src="https://cdn.jsdelivr.net/npm/axios@1.7.2/dist/axios.min.js"></script>
   </head>
 
@@ -186,15 +152,8 @@
               <span class="noticeBox3-3 close">∧</span>
             </a>
           </div>
-          <div class="noticeBox6">글쓰기</div>
         </div>
-        <!-- 공지사항 등록 -->
-        <div class="wbox noticeWriteBox hidden">
-          <div class="noticeBox1">공지사항 등록</div>
-          <div class="noticeWriteBox1">Text</div>
-          <div class="noticeWriteBox2"></div>
-          <div class="noticeWriteBox3">text</div>
-        </div>
+        <!-- 공지사항 등록 부분 제거 -->
         <!-- 1:1문의 -->
         <div class="wbox customerInquiryBox hidden">
           <div class="customerInquiryBox1">고객문의</div>
@@ -246,6 +205,21 @@
         <h3>FOOTER</h3>
       </div>
     </div>
+
+    <!-- 모달창 HTML 추가 -->
+    <div id="commentModal" class="modal hidden">
+      <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h2>댓글 달기</h2>
+        <textarea
+          id="commentInput"
+          class="commentInput"
+          placeholder="댓글을 입력하세요..."
+        ></textarea>
+        <button id="commentSubmit" class="commentSubmit">댓글 등록</button>
+      </div>
+    </div>
+
     <script src="/js/customer.js"></script>
   </body>
 </html>

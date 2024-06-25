@@ -1,4 +1,5 @@
 const urlLogout = "http://localhost:8080/user/logout";
+const urlReview = "http://localhost:8080/review/get";
 
 let currentUser = {};
 
@@ -48,12 +49,6 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    const currentDate = new Date();
-    const formattedDate = `${currentDate.getFullYear()}-${(
-      "0" +
-      (currentDate.getMonth() + 1)
-    ).slice(-2)}-${("0" + currentDate.getDate()).slice(-2)}`;
-
     const data = {
       user: {
         userId: currentUser.userId,
@@ -65,8 +60,8 @@ document.addEventListener("DOMContentLoaded", () => {
         lectureId: 1,
       },
       text: reviewContent,
-      rating: 5,
-      ReviewTime: formattedDate,
+      rating: selectedRating,
+      // reviewTime 필드는 서버에서 자동으로 설정되도록 제거
     };
 
     axios
@@ -75,27 +70,57 @@ document.addEventListener("DOMContentLoaded", () => {
       })
       .then((response) => {
         console.log("데이터: ", response);
+        fetchReviews(); // 리뷰 작성 후 리뷰 목록 갱신
       })
       .catch((error) => {
         console.log("에러발생: ", error);
       });
 
-    const reviewContainer = document.querySelector(".reviewBox6");
+    reviewModal.style.display = "none";
+    document.querySelector(".star_box").value = "";
+    starRating.forEach((s) => s.classList.remove("on"));
+    selectedRating = 1;
+    starRating[0].classList.add("on");
+  });
+
+  fetchReviews(); // 페이지 로드 시 리뷰 가져오기
+});
+
+function fetchReviews() {
+  axios
+    .get(urlReview, { withCredentials: true })
+    .then((response) => {
+      console.log("리뷰 데이터:", JSON.stringify(response.data, null, 2));
+      displayReviews(response.data);
+    })
+    .catch((error) => {
+      console.log("리뷰 가져오기 오류:", error);
+    });
+}
+
+function displayReviews(reviews) {
+  const reviewContainer = document.querySelector(".reviewBox6");
+  reviewContainer.innerHTML = ""; // 기존 리뷰 초기화
+
+  reviews.forEach((review) => {
+    // reviewTime 필드 사용
+    const formattedDate = formatDate(review.reviewTime);
+
     const newReview = document.createElement("div");
     newReview.classList.add("reviewBox7");
     newReview.innerHTML = `
       <div class="reviewBox7Grid">
         <div>
-          <div class="reviewBox7Grid-1">닉네임</div>
+          <div class="reviewBox7Grid-1">${review.user.userId}</div>
         </div>
         <div>
           <div class="reviewBox7Grid-4">${"★".repeat(
-            selectedRating
-          )}${"☆".repeat(5 - selectedRating)}</div>
+            review.rating
+          )}${"☆".repeat(5 - review.rating)}</div>
           <div class="reviewBox7Grid-3">${formattedDate}</div>
         </div>
       </div>
-      <div class="reviewBox8">${reviewContent}</div>
+      <div class="reviewBox8">${review.text}</div>
       <div class="reviewBox9Grid">
         <div class="reviewBox9Grid-2">
           <div class="reviewBox9Grid-1">좋아요 <span class="likeCount">0</span>개</div>
@@ -116,19 +141,21 @@ document.addEventListener("DOMContentLoaded", () => {
       let count = parseInt(likeCount.textContent, 10);
       likeCount.textContent = count + 1;
     });
-
-    reviewModal.style.display = "none";
-    document.querySelector(".star_box").value = "";
-    starRating.forEach((s) => s.classList.remove("on"));
-    selectedRating = 1;
-    starRating[0].classList.add("on");
   });
-});
+}
 
-function displayReview(reviewData) {
-  console.log(reviewData.length);
-  if (reviewData.length > 0) {
-  }
+// 날짜 형식을 변환하는 함수
+function formatDate(dateString) {
+  if (!dateString) return "날짜 없음";
+
+  const date = new Date(dateString);
+  if (isNaN(date.getTime())) return dateString; // 유효하지 않은 날짜면 원본 문자열 반환
+
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+
+  return `${year}-${month}-${day}`;
 }
 
 document.querySelectorAll(".subMenu > div").forEach((div) => {

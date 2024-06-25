@@ -31,12 +31,12 @@ document.querySelectorAll(".subMenu > div").forEach((div) => {
   });
 });
 
-document.querySelector(".noticeBox6").addEventListener("click", () => {
+/*document.querySelector(".noticeBox6").addEventListener("click", () => {
   document.querySelector(".noticeWriteBox").classList.remove("hidden");
   document.querySelector(".noticeBox").classList.add("hidden");
   document.querySelector(".customerInquiryBox").classList.add("hidden");
   document.querySelector(".inquiryBox1-1").classList.add("hidden");
-});
+});*/
 
 document.querySelector(".noticeBtn").addEventListener("click", () => {
   document.querySelector(".noticeBox").classList.remove("hidden");
@@ -98,3 +98,40 @@ document.querySelector(".menuLogoutBtn").addEventListener("click", () => {
 });
 
 sessionCurrent();
+
+// 댓글달기 모달 기능 추가
+const commentBtns = document.querySelectorAll(".noticeBox5-1");
+const modal = document.getElementById("commentModal");
+const closeBtn = document.querySelector(".close-btn");
+
+commentBtns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    document.getElementById("commentInput").value = ""; // 댓글 입력창 초기화
+    modal.classList.remove("hidden");
+    modal.style.display = "block";
+  });
+});
+
+closeBtn.addEventListener("click", () => {
+  modal.classList.add("hidden");
+  modal.style.display = "none";
+});
+
+window.addEventListener("click", (event) => {
+  if (event.target == modal) {
+    modal.classList.add("hidden");
+    modal.style.display = "none";
+  }
+});
+
+document.getElementById("commentSubmit").addEventListener("click", () => {
+  const comment = document.getElementById("commentInput").value;
+  if (comment) {
+    alert("댓글이 등록되었습니다: " + comment);
+    document.getElementById("commentInput").value = ""; // 댓글 입력창 초기화
+    modal.classList.add("hidden");
+    modal.style.display = "none";
+  } else {
+    alert("댓글을 입력하세요.");
+  }
+});
