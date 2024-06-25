@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
           const cartBox4 = document.createElement("div");
           cartBox4.classList.add("cartBox3");
-          cartBox4.textContent = item.type;
+          cartBox4.textContent = item.lecture.lectureClass;
 
           const cartBox5 = document.createElement("div");
           cartBox5.classList.add("cartBox3");
@@ -110,7 +110,10 @@ document.addEventListener("DOMContentLoaded", function () {
   // 총 가격을 업데이트하는 함수
   function updateTotalPrice(cartItems) {
     const totalPriceContainer = document.getElementById("totalPriceContainer");
-    const totalPrice = cartItems.reduce((sum, item) => sum + item.price, 0);
+    const totalPrice = cartItems.reduce(
+      (sum, item) => sum + item.lecture.price,
+      0
+    );
     totalPriceContainer.textContent = `총 가격: ${totalPrice.toLocaleString()}원`;
   }
 
