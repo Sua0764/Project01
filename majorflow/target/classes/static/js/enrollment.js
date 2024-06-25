@@ -181,7 +181,7 @@ document.addEventListener("DOMContentLoaded", function () {
       .post("http://localhost:8080/cart/add/" + userId + "/" + lectureId)
       .then((response) => {
         if (response.status === 201) {
-          addToSessionCart(lectureName, teacherName, type, price);
+          //addToSessionCart(lectureName, teacherName, type, price);
           alert("선택한 항목이 장바구니에 담겼습니다.");
         }
       })

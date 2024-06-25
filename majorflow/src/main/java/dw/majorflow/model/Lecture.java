@@ -33,13 +33,13 @@ public class Lecture {
     @Column
     private String category;
 
-    @Column(name = "play_time")
-    private int playTime;
-
     @Column(name = "lecture_text", length = 65535)
     private String lectureText;
 
     @ManyToOne
     @JoinColumn(name = "teacher_id")
     private Teacher teacher;
+
+    @Column
+    private String lectureClass;
 }
