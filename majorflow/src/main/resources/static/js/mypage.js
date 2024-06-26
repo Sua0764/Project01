@@ -106,7 +106,6 @@ function sessionCurrent() {
             const studyLectureBtn = document.createElement("div");
             const studyLectureBtnBox = document.createElement("div");
 
-            myLectureImg.src = item.lecture.lectureImage;
             myLectureImgBox.classList.add("myLectureImgBox");
             myLectureInfoBox.classList.add("myLectureInfoBox");
             myLectureTitleBox.classList.add("myLectureTitleBox");
@@ -115,7 +114,9 @@ function sessionCurrent() {
             myLectureType.classList.add("myLectureType");
             studyLectureBtnBox.classList.add("studyLectureBtnBox");
             studyLectureBtn.classList.add("studyLectureBtn");
+            myLectureImg.classList.add("myLectureImg");
 
+            myLectureImg.src = item.lecture.thumbnailImg;
             myLectureSubjectName.textContent = item.lecture.lectureName;
             myLectureType.textContent = item.type;
             studyLectureBtn.textContent = "강의실 입장";
@@ -129,19 +130,19 @@ function sessionCurrent() {
             studyLectureBtnBox.appendChild(studyLectureBtn);
             myLectureTitleBox.appendChild(myLectureSubjectName);
           });
-          // 이미지 박스에 맞게 이미지 설정
-          const imgSrc = "/img/오겸비선생님 썸네일.png";
-          const myLectureImages = document.querySelectorAll(
-            ".myLectureImgBox img"
-          );
+          // // 이미지 박스에 맞게 이미지 설정
+          // const imgSrc = item.lecture.lectureImage;
+          // const myLectureImages = document.querySelectorAll(
+          //   ".myLectureImgBox img"
+          // );
 
-          myLectureImages.forEach((img) => {
-            img.src = imgSrc;
-            img.style.width = "100%";
-            img.style.height = "100%";
-            img.style.objectFit = "cover";
-            img.style.borderRadius = "inherit";
-          });
+          // myLectureImages.forEach((img) => {
+          //   img.src = imgSrc;
+          //   img.style.width = "100%";
+          //   img.style.height = "100%";
+          //   img.style.objectFit = "cover";
+          //   img.style.borderRadius = "inherit";
+          // });
         } else {
           document.querySelector(".progress-container").classList.add("noInfo");
           document.querySelector(".progress-container").textContent =
@@ -180,7 +181,6 @@ function StudyMylectures(user) {
         const progressInfoBox = document.createElement("div");
         const progressTitleBox = document.createElement("div");
         const progressSubjectName = document.createElement("div");
-        const progressType = document.createElement("div");
         const progressGraph = document.createElement("div");
         const progressStudyBtn = document.createElement("div");
         const progressBtnBox = document.createElement("div");
@@ -192,14 +192,13 @@ function StudyMylectures(user) {
         progressInfoBox.classList.add("progressInfoBox");
         progressTitleBox.classList.add("progressTitleBox");
         progressSubjectName.classList.add("progressSubjectName");
-        progressType.classList.add("progressType");
         progressImg.classList.add("progressImg");
         progressBtnBox.classList.add("progressBtnBox");
         progressGraph.classList.add("progressGraph");
         progressStudyBtn.classList.add("progressStudyBtn");
 
+        progressImg.src = item.lecture.thumbnailImg;
         progressSubjectName.textContent = item.lecture.lectureName;
-        progressType.textContent = item.type;
         progressGraph.textContent = "진도율" + progressNum + "%";
         progressStudyBtn.textContent = "학습하기";
 
@@ -212,9 +211,8 @@ function StudyMylectures(user) {
 
           // 모달 열기 및 비디오 재생
           modal.style.display = "block";
-          modalVideo.poster = "/img/오겸비선생님 썸네일.png"; // 썸네일 이미지 설정
-          modalVideo.src =
-            "https://storage.googleapis.com/teamproject1-majorflow/%20video/%EC%98%A4%EA%B2%B8%EB%B9%84-%ED%94%BC%EC%95%84%EB%85%B8.mp4";
+          modalVideo.poster = item.lecture.item.lecture.thumbnailImg; // 썸네일 이미지 설정
+          modalVideo.src = item.lecture.videoPath;
           modalVideo.load();
           setTimeout(() => {
             modalVideo.play();
@@ -229,21 +227,20 @@ function StudyMylectures(user) {
         progressBtnBox.appendChild(progressStudyBtn);
         progressBox.appendChild(progressInfoBox);
         progressTitleBox.appendChild(progressSubjectName);
-        progressTitleBox.appendChild(progressType);
 
         progressInfoBox.appendChild(progressInfo1);
       });
-      // 이미지 박스에 맞게 이미지 설정
-      const imgSrc = "/img/오겸비선생님 썸네일.png";
-      const progressImages = document.querySelectorAll(".progressImg");
+      // // 이미지 박스에 맞게 이미지 설정
+      // const imgSrc = item.lecture.lectureImage;
+      // const progressImages = document.querySelectorAll(".progressImg");
 
-      progressImages.forEach((img) => {
-        img.src = imgSrc;
-        img.style.width = "100%";
-        img.style.height = "100%";
-        img.style.objectFit = "cover";
-        img.style.borderRadius = "inherit";
-      });
+      // progressImages.forEach((img) => {
+      //   img.src = imgSrc;
+      //   img.style.width = "100%";
+      //   img.style.height = "100%";
+      //   img.style.objectFit = "cover";
+      //   img.style.borderRadius = "inherit";
+      // });
     })
     .catch((error) => {
       console.log("에러 발생 : ", error);
