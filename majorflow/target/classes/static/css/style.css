@@ -370,12 +370,6 @@ body {
   height: 25px;
 }
 
-.cartIcon > img,
-.mypageIcon > img {
-  width: 30px;
-  height: 30px;
-}
-
 /* 연혁 페이지 설정*/
 
 .historyTitle {
@@ -653,6 +647,7 @@ body {
 .coursePriceGuide {
   width: 90%;
   height: 800px;
+  margin-bottom: 30px;
   border-radius: 15px; /* 둥근 모서리 */
   background: linear-gradient(
     to bottom,
@@ -714,7 +709,7 @@ body {
 }
 #priceGuide5 {
   font-size: 25px;
-  margin: 40px 80px 10px 0px;
+  margin: 40px 80px;
   display: flex;
   justify-content: end;
   color: #777;
@@ -1013,13 +1008,14 @@ body {
 .cartEnrollBtn {
   height: 50px;
   width: 150px;
+  font-size: 16px;
   background-color: black;
   color: white;
-  border-radius: 15px;
+  border-radius: 30px;
   text-align: center;
   line-height: 50px;
   float: right;
-  margin: 5px 0px 5px 0px;
+  margin: 10px;
 }
 
 .cartEnrollBtn:hover {
@@ -1031,22 +1027,6 @@ body {
   display: flex;
   justify-content: center;
   margin-top: 30px;
-}
-
-.moveToCartBtn {
-  background-color: #000;
-  color: #fff;
-  font-size: 20px;
-  padding: 15px 30px;
-  border-radius: 10px;
-  text-decoration: none;
-  text-align: center;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.moveToCartBtn:hover {
-  background-color: #333;
-  transform: scale(1.05);
 }
 
 /* 체크박스 스타일링 */
@@ -1092,7 +1072,7 @@ body {
 .cartBox {
   width: 80%;
   max-width: 1000px;
-  background-color: #f1f4f9;
+  background-color: #bbd0e9;
   padding: 25px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -1148,26 +1128,9 @@ body {
   border: 1px solid #999;
 }
 
-.cartBox6 {
-  width: 263px;
-  height: 64px;
-  background-color: #007bff;
-  color: white;
-  font-weight: bold;
-  font-size: 20px;
-  margin: auto;
-  text-align: center;
-  line-height: 64px;
-  border-radius: 50px;
-  text-decoration: none;
-  display: block;
-  margin-top: 20px;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.cartBox6:hover {
-  background-color: #0056b3;
-  transform: scale(1.05);
+.cartBox6Wrapper {
+  display: flex;
+  justify-content: center;
 }
 
 .cartBoxRemove {
@@ -1285,31 +1248,6 @@ body {
   justify-content: center;
 }
 
-.studyLectureBtn {
-  width: 300px;
-  height: 60px;
-  border: 1px solid #007bff;
-  color: #007bff;
-  border-radius: 30px;
-  text-align: center;
-  padding: 18px;
-  margin: 30px;
-  font-weight: bold;
-}
-
-.studyLectureBtn:hover {
-  width: 300px;
-  height: 60px;
-  border: 1px solid #007bff;
-  background-color: #007bff;
-  color: #fff;
-  border-radius: 30px;
-  text-align: center;
-  padding: 18px;
-  margin: 30px;
-  font-weight: bold;
-}
-
 .myLectureInfoBox {
   height: 650px;
   border: 1px solid gray;
@@ -1357,33 +1295,28 @@ body {
 .progressStudyBtn {
   width: 130px;
   height: 130px;
-  background-color: #007bff;
-  color: white;
-  border-radius: 20px;
   font-size: 22px;
-  text-align: center;
-  padding: 20px;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
   margin: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  white-space: nowrap;
-}
-
-.progressStudyBtn:hover {
-  width: 130px;
-  height: 130px;
-  background-color: white;
-  color: #007bff;
-  border: 2px solid #007bff;
+  text-align: center;
+  line-height: 130px;
+  border: none;
+  background-size: 300% 100%;
   border-radius: 20px;
-  font-size: 22px;
-  text-align: center;
-  padding: 20px;
-  margin: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+  background-image: linear-gradient(
+    to right,
+    #29323c,
+    #485563,
+    #2b5876,
+    #4e4376
+  );
+  box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
 }
 
 .progressBtnBox {
@@ -1484,7 +1417,8 @@ body {
 .reviewBox2-content {
   width: 100%;
   height: 300px;
-  background-color: #f5f5f5;
+  background-color: white;
+  border: 10px solid #e3c04d;
   border-radius: 25px;
   position: relative;
   top: -150px;
@@ -1527,7 +1461,7 @@ body {
   margin-top: 5px;
 }
 .reviewBoxStar {
-  margin-top: 15px;
+  margin-top: 5px;
 }
 #reviewBoxStar1-1 {
   width: 294px;
@@ -1940,6 +1874,60 @@ body {
   cursor: pointer;
   text-align: left;
   display: inline-block;
+}
+
+/* 버튼 디자인 */
+.cartEnrollBtn,
+.reviewWriteBtn,
+.moveToCartBtn,
+.cartBox6,
+.studyLectureBtn {
+  width: 200px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  margin: 20px;
+  height: 55px;
+  text-align: center;
+  line-height: 55px;
+  border: none;
+  background-size: 300% 100%;
+  border-radius: 50px;
+  moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+  background-image: linear-gradient(
+    to right,
+    #29323c,
+    #485563,
+    #2b5876,
+    #4e4376
+  );
+  box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
+}
+
+.cartEnrollBtn:hover,
+.reviewWriteBtn:hover,
+.moveToCartBtn:hover,
+.cartBox6:hover,
+.studyLectureBtn:hover,
+.progressStudyBtn:hover {
+  background-position: 100% 0;
+  moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+.cartEnrollBtn:focus,
+.reviewWriteBtn:focus,
+.moveToCartBtn:focus,
+.cartBox6:focus,
+.studyLectureBtn:foucs,
+.progressStudyBtn:focus {
+  outline: none;
 }
 
 .hidden {
