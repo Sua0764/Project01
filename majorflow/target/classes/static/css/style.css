@@ -981,10 +981,15 @@ body {
 
 .lectureEnrollimg {
   background-color: white;
-  height: 300px;
+  height: 266px;
   width: 400px;
   border-radius: 25px;
   margin: 30px;
+}
+
+.lectureEnrollimg > img {
+  width: 400px;
+  border-radius: 25px;
 }
 
 .lectureEnrollname {
