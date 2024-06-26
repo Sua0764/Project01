@@ -130,19 +130,6 @@ function sessionCurrent() {
             studyLectureBtnBox.appendChild(studyLectureBtn);
             myLectureTitleBox.appendChild(myLectureSubjectName);
           });
-          // // 이미지 박스에 맞게 이미지 설정
-          // const imgSrc = item.lecture.lectureImage;
-          // const myLectureImages = document.querySelectorAll(
-          //   ".myLectureImgBox img"
-          // );
-
-          // myLectureImages.forEach((img) => {
-          //   img.src = imgSrc;
-          //   img.style.width = "100%";
-          //   img.style.height = "100%";
-          //   img.style.objectFit = "cover";
-          //   img.style.borderRadius = "inherit";
-          // });
         } else {
           document.querySelector(".progress-container").classList.add("noInfo");
           document.querySelector(".progress-container").textContent =
@@ -230,17 +217,6 @@ function StudyMylectures(user) {
 
         progressInfoBox.appendChild(progressInfo1);
       });
-      // // 이미지 박스에 맞게 이미지 설정
-      // const imgSrc = item.lecture.lectureImage;
-      // const progressImages = document.querySelectorAll(".progressImg");
-
-      // progressImages.forEach((img) => {
-      //   img.src = imgSrc;
-      //   img.style.width = "100%";
-      //   img.style.height = "100%";
-      //   img.style.objectFit = "cover";
-      //   img.style.borderRadius = "inherit";
-      // });
     })
     .catch((error) => {
       console.log("에러 발생 : ", error);
