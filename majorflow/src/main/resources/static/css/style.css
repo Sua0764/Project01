@@ -628,8 +628,13 @@ body {
   grid-template-columns: 1fr 1fr;
   gap: 20px;
 }
+
 .tasteCourseClick {
   margin: 20px 0 20px 0;
+}
+
+.tasteCourseClick > div {
+  margin: 0px 0 10px 0;
 }
 
 .tasteCourseClickImg {
