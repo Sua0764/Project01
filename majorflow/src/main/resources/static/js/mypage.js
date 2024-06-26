@@ -204,7 +204,7 @@ function StudyMylectures(user) {
 
           // 모달 열기 및 비디오 재생
           modal.style.display = "block";
-          modalVideo.poster = item.lecture.item.lecture.thumbnailImg; // 썸네일 이미지 설정
+          modalVideo.poster = item.lecture.thumbnailImg; // 썸네일 이미지 설정
           modalVideo.src = item.lecture.videoPath;
           modalVideo.load();
           setTimeout(() => {

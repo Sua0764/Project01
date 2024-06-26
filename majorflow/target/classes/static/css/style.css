@@ -528,6 +528,7 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
+  margin-bottom: 40px;
 }
 .allCourseClick {
   position: relative; /* 텍스트를 이미지 위에 배치하기 위해 relative 설정 */
@@ -944,7 +945,6 @@ body {
 }
 
 .footer {
-  margin-top: 70px; /* FOOTER와 글쓰기 버튼 사이 간격 늘리기 */
   text-align: center;
   padding: 20px 0;
   background-color: #f1f1f1;
@@ -1421,13 +1421,13 @@ body {
 .reviewBox {
   width: 100%;
   height: 300px;
-  background-color: #2f2f2f;
+  background-color: #d5d7d8;
 }
 .reviewBox2-content {
   width: 100%;
   height: 300px;
   background-color: white;
-  border: 10px solid #e3c04d;
+  border: 5px solid black;
   border-radius: 25px;
   position: relative;
   top: -150px;
@@ -1549,7 +1549,6 @@ body {
 */
 .reviewBox6 {
   width: 85%;
-  height: 1000px;
   margin: auto;
 }
 .reviewBox6-1 {
@@ -1641,17 +1640,9 @@ body {
 .reviewBox9Grid-2 {
   display: flex;
 }
-.reviewWriteBtn {
-  width: 178px;
-  height: 66px;
-  border: 1px solid black;
-  font-weight: bold;
-  font-size: 30px;
-  text-align: center;
-  line-height: 66px;
-  float: right;
-  margin: 30px 80px;
-  border-radius: 25px;
+.reviewWriteBtnWrapper {
+  display: flex;
+  justify-content: end;
 }
 .star_rating {
   width: 100%;
