@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
   axios
     .get("http://localhost:8080/lectures")
     .then((response) => {
+      console.log("데이터 : ", response.data);
       const lectures = response.data;
       const enrollment = document.querySelector(".enrollment");
 
@@ -37,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const teacherNameDiv = document.createElement("div");
         teacherNameDiv.classList.add("teacherEnrollname");
-        teacherNameDiv.textContent = lecture.teacherId;
+        teacherNameDiv.textContent = lecture.teacher.teacherName + " 강사";
 
         const hobbyPriceDiv = document.createElement("div");
         hobbyPriceDiv.classList.add("enrollPrice");
