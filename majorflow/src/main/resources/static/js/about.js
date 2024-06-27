@@ -8,6 +8,7 @@ document.querySelector(".teacherBtn").addEventListener("click", () => {
   document.querySelector(".teacherBox").classList.remove("hidden");
   document.querySelector(".historyBox").classList.add("hidden");
   document.querySelector(".singleTeacherBox").classList.add("hidden");
+  document.querySelector(".box3").classList.add("hidden");
   axios
     .get("http://localhost:8080/teacher/all")
     .then((response) => {
@@ -119,6 +120,7 @@ document.querySelector(".historyBtn").addEventListener("click", () => {
   document.querySelector(".teacherBox").classList.add("hidden");
   document.querySelector(".historyBox").classList.remove("hidden");
   document.querySelector(".singleTeacherBox").classList.add("hidden");
+  document.querySelector(".box3").classList.remove("hidden");
 });
 
 document.querySelectorAll(".subMenu > div").forEach((div) => {
