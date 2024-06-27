@@ -810,7 +810,7 @@ body {
 }
 .noticeBox3 {
   display: grid;
-  grid-template-columns: 8fr 1.5fr 0.5fr;
+  grid-template-columns: 8fr 2fr;
   width: 100%;
   height: 88px;
 }
@@ -821,6 +821,15 @@ body {
   line-height: 88px;
   color: #333; /* 텍스트 색상 변경 */
 }
+
+.noticeBox3Date {
+  font-size: 24px; /* 텍스트 크기 축소 */
+  font-weight: bold;
+  margin-right: 30px;
+  line-height: 88px;
+  color: #333; /* 텍스트 색상 변경 */
+}
+
 .noticeBox3-2 {
   cursor: pointer;
   width: 2rem;
@@ -1045,10 +1054,9 @@ body {
   margin: 0px 0px 30px 0px;
 }
 
-.enrollPrice > div {
-  display: inline-block;
-  padding: 20px 40px 20px 0px;
-  margin-right: 50px;
+.classEnrollName {
+  font-size: 24px;
+  font-weight: 500;
 }
 
 .cartEnrollBtn {
@@ -1918,7 +1926,9 @@ body {
 .reviewWriteBtn,
 .moveToCartBtn,
 .cartBox6,
-.studyLectureBtn {
+.studyLectureBtn,
+.alertClose,
+#alertConfirm {
   width: 200px;
   font-size: 16px;
   font-weight: 600;
@@ -1950,7 +1960,9 @@ body {
 .moveToCartBtn:hover,
 .cartBox6:hover,
 .studyLectureBtn:hover,
-.progressStudyBtn:hover {
+.progressStudyBtn:hover,
+.alertClose:hover,
+#alertConfirm:hover {
   background-position: 100% 0;
   moz-transition: all 0.4s ease-in-out;
   -o-transition: all 0.4s ease-in-out;
@@ -1962,9 +1974,79 @@ body {
 .reviewWriteBtn:focus,
 .moveToCartBtn:focus,
 .cartBox6:focus,
-.studyLectureBtn:foucs,
-.progressStudyBtn:focus {
+.studyLectureBtn:focus,
+.progressStudyBtn:focus,
+.alertClose:focus,
+#alertConfirm:focus {
   outline: none;
+}
+
+/* alert 모달창 */
+.alertModal {
+  display: none; /* 기본적으로 숨김 처리 */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5); /* 반투명 배경 */
+}
+
+.alertModal-content {
+  background-color: white;
+  height: 200px;
+  margin: 15% auto;
+  padding: 30px;
+  width: 80%;
+  max-width: 600px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  items-align: center;
+}
+.alertModalBtn {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 20px 0;
+  grid-column-gap: 70px;
+}
+
+#alertModalMessage {
+  font-size: 24px;
+  text-align: center;
+}
+
+.alertClose {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  weight: 50px;
+  border-radius: 25px;
+}
+
+.alertClose:hover,
+.alertClose:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#alertConfirm {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  weight: 50px;
+  border-radius: 25px;
+}
+
+#alertConfirm:hover,
+#alertConfirm:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .hidden {
