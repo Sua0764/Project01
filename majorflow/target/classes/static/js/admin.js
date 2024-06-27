@@ -1,5 +1,6 @@
 const urlAdmin = "http://localhost:8080/user/user";
 const urlLectures = "http://localhost:8080/edutech/get";
+const urlLogout = "http://localhost:8080/user/logout";
 
 document.querySelector(".noticeWriteBtn").addEventListener("click", () => {
   document.querySelector(".noticeWriteBox").classList.remove("hidden");
@@ -24,8 +25,9 @@ function sessionCurrent() {
         document.querySelector(".menuLoginBtn").classList.add("hidden");
         document.querySelector(".menuLogoutBtn").classList.remove("hidden");
       } else {
-        alert("로그인이 필요합니다.");
-        window.location.href = "login.html";
+        openModal("로그인이 필요합니다", () => {
+          window.location.href = "login.html";
+        });
       }
     })
     .catch((error) => {
@@ -33,22 +35,22 @@ function sessionCurrent() {
     });
 }
 
-document.querySelectorAll(".subMenu > div").forEach((div) => {
-  div.addEventListener("click", () => {
-    document
-      .querySelectorAll(".subMenu > div")
-      .forEach((item) => item.classList.remove("active"));
-
-    // 클릭된 div에 active 클래스 추가
-    div.classList.add("active");
-  });
-});
-
-function openModal(message) {
+function openModal(message, callback) {
   const alertModal = document.getElementById("myAlertModal");
   const alertModalMessage = document.getElementById("alertModalMessage");
+  const alertConfirmButton = document.getElementById("alertConfirm");
+
   alertModalMessage.textContent = message;
   alertModal.style.display = "block";
+
+  // 기존 이벤트 리스너 제거
+  alertConfirmButton.replaceWith(alertConfirmButton.cloneNode(true));
+
+  // 새 이벤트 리스너 추가
+  document.getElementById("alertConfirm").addEventListener("click", () => {
+    closeModal();
+    if (callback) callback();
+  });
 }
 
 function closeModal() {
@@ -58,28 +60,25 @@ function closeModal() {
 
 // 로그아웃 버튼 클릭 시 확인 모달 열기
 document.querySelector(".menuLogoutBtn").addEventListener("click", () => {
-  openModal("로그아웃하시겠습니까?");
+  openModal("로그아웃하시겠습니까?", () => {
+    axios
+      .post(urlLogout, {}, { withCredentials: true })
+      .then((response) => {
+        console.log("데이터: ", response);
+        if (response.status == 200) {
+          openModal("로그아웃 되었습니다", () => {
+            // 여기에 로그아웃 성공 후의 추가 동작을 넣으세요
+            document.querySelector(".menuLoginBtn").classList.remove("hidden");
+            document.querySelector(".menuLogoutBtn").classList.add("hidden");
+          });
+        }
+      })
+      .catch((error) => {
+        console.log("에러 발생: ", error);
+      });
+  });
 });
 
-// 모달 내 확인 버튼 클릭 시 로그아웃 처리
-document.getElementById("alertConfirm").addEventListener("click", () => {
-  closeModal(); // 모달 닫기
-  axios
-    .post(urlLogout, {}, { withCredentials: true })
-    .then((response) => {
-      console.log("데이터: ", response);
-      if (response.status == 200) {
-        openModal("로그아웃 되었습니다"); // 모달 열기
-        closeModal();
-        // 여기에 로그아웃 성공 후의 추가 동작을 넣으세요
-        document.querySelector(".menuLoginBtn").classList.remove("hidden");
-        document.querySelector(".menuLogoutBtn").classList.add("hidden");
-      }
-    })
-    .catch((error) => {
-      console.log("에러 발생: ", error);
-    });
-});
 // 모달 내 취소 버튼 클릭 시 모달 닫기
 document.querySelector(".alertClose").addEventListener("click", () => {
   closeModal(); // 모달 닫기

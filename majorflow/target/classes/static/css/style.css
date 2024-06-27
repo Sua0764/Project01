@@ -267,8 +267,8 @@ body {
 }
 .box3 {
   width: 100%;
-  height: 500px;
-  margin-top: 50px;
+  height: 305px;
+  margin-top: 0; /* box3와 footer 사이 간격 제거 */
   background-image: url("/img/단체사진.png");
   background-size: contain;
   background-position: center;
@@ -959,15 +959,52 @@ body {
 }
 
 .footer {
+  margin-top: 0; /* box3와 footer 사이 간격 제거 */
   text-align: center;
-  padding: 20px 0;
-  background-color: #f1f1f1;
+  padding: 20px 0; /* 기본 패딩 설정 */
+  background-color: #222222;
 }
 
-.footer h3 {
+.footer-content {
+  display: flex;
+  flex-direction: column; /* 수직 정렬 */
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-circles {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px; /* 텍스트와의 간격 조정 */
+}
+
+.footer-circle {
+  width: 40px; /* 크기를 더 크게 설정 */
+  height: 40px; /* 크기를 더 크게 설정 */
+  background-size: cover; /* 이미지가 요소 크기에 맞게 확대 */
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  margin: 0 10px;
+}
+
+.footer-circle.git {
+  background-image: url("/img/깃아이콘.png"); /* 깃아이콘 이미지 경로 */
+}
+
+.footer-circle.figma {
+  background-image: url("/img/피그마아이콘.png"); /* 피그마아이콘 이미지 경로 */
+}
+
+.footer-info {
+  text-align: center;
+  padding: 20px 0; /* 높이를 늘리기 위해 패딩 추가 */
+}
+
+.footer-info p {
   margin: 0;
   font-size: 16px;
-  color: #333;
+  color: #808080;
 }
 
 /* 모달창 스타일 추가 */
@@ -1214,15 +1251,6 @@ body {
   text-align: right;
   margin: 20px 0;
 }
-
-.footer {
-  width: 100%;
-  background-color: #222;
-  color: white;
-  text-align: center;
-  padding: 20px 0;
-}
-
 /* new 수강신청 현황 */
 
 .myLectureBoxGrid {
