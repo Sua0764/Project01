@@ -98,11 +98,14 @@ function displayAdmin(data) {
   const tbody = document.querySelector(".tbody");
 
   data.forEach((userData) => {
+    const userId = userData.userId;
+
     const tr = document.createElement("tr");
 
     const adminUserId = document.createElement("td");
     adminUserId.classList.add("adminUserId");
     adminUserId.textContent = userData.userId;
+    adminUserId.dataset.userId = userId; // Store userId in a data attribute
 
     const adminUserName = document.createElement("td");
     adminUserName.classList.add("adminUserName");
@@ -147,7 +150,183 @@ function displayAdmin(data) {
     tr.appendChild(adminUserGenre);
     tbody.appendChild(tr);
   });
+
+  tbody.addEventListener("click", function (event) {
+    const target = event.target;
+    if (target.classList.contains("adminUserId")) {
+      const userId = target.dataset.userId; // Retrieve userId from data attribute
+      modal.style.display = "block";
+      axios
+        .get("http://localhost:8080/edutech/user/" + userId + "/lectures")
+        .then((response) => {
+          console.log("데이터 :", response.data);
+          const lectureInfo = response.data;
+          const userCourse = document.querySelector(".userCourse");
+
+          // Clear previous content
+          userCourse.innerHTML = "";
+
+          const userCourseText = document.createElement("div");
+          userCourseText.classList.add("userCourseText");
+          userCourseText.textContent = userId + "님이 수강중인 강의";
+
+          const userCourseGrid = document.createElement("div");
+          userCourseGrid.classList.add("userCourseGrid");
+
+          userCourse.appendChild(userCourseText);
+          userCourse.appendChild(userCourseGrid);
+          lectureInfo.forEach((info) => {
+            const courseTeacherImg = document.createElement("div");
+            courseTeacherImg.classList.add("courseTeacherImg");
+
+            const courseTitle = document.createElement("div");
+            courseTitle.classList.add("courseTitle");
+            courseTitle.textContent = info.lecture.lectureName;
+
+            const courseTeacherName = document.createElement("div");
+            courseTeacherName.classList.add("courseTeacherName");
+            courseTeacherName.textContent = info.lecture.teacher.teacherName;
+
+            const courseLecturePrice = document.createElement("div");
+            courseLecturePrice.classList.add("courseLecturePrice");
+            courseLecturePrice.textContent = info.lecture.price;
+
+            userCourseGrid.appendChild(courseTeacherImg);
+            userCourseGrid.appendChild(courseTitle);
+            userCourseGrid.appendChild(courseTeacherName);
+            userCourseGrid.appendChild(courseLecturePrice);
+          });
+        });
+    }
+  });
 }
+function displayAdmin(data) {
+  const tbody = document.querySelector(".tbody");
+
+  data.forEach((userData) => {
+    const userId = userData.userId;
+
+    const tr = document.createElement("tr");
+
+    const adminUserId = document.createElement("td");
+    adminUserId.classList.add("adminUserId");
+    adminUserId.textContent = userData.userId;
+    adminUserId.dataset.userId = userId; // Store userId in a data attribute
+
+    const adminUserName = document.createElement("td");
+    adminUserName.classList.add("adminUserName");
+    adminUserName.textContent = userData.name;
+
+    const adminUserNickname = document.createElement("td");
+    adminUserNickname.classList.add("adminUserNickname");
+    adminUserNickname.textContent = userData.nickname;
+
+    const adminUserGender = document.createElement("td");
+    adminUserGender.classList.add("adminUserGender");
+    adminUserGender.textContent = userData.gender;
+
+    const adminUserAddress = document.createElement("td");
+    adminUserAddress.classList.add("adminUserAddress");
+    adminUserAddress.textContent = userData.address;
+
+    const adminUserBirthdate = document.createElement("td");
+    adminUserBirthdate.classList.add("adminUserBirthdate");
+    adminUserBirthdate.textContent = userData.birthDate;
+
+    const adminUserEmail = document.createElement("td");
+    adminUserEmail.classList.add("adminUserEmail");
+    adminUserEmail.textContent = userData.email;
+
+    const adminUserPhoneNum = document.createElement("td");
+    adminUserPhoneNum.classList.add("adminUserPhoneNum");
+    adminUserPhoneNum.textContent = userData.phoneNumber;
+
+    const adminUserGenre = document.createElement("td");
+    adminUserGenre.classList.add("adminUserGenre");
+    adminUserGenre.textContent = userData.genre;
+
+    tr.appendChild(adminUserId);
+    tr.appendChild(adminUserName);
+    tr.appendChild(adminUserNickname);
+    tr.appendChild(adminUserGender);
+    tr.appendChild(adminUserAddress);
+    tr.appendChild(adminUserBirthdate);
+    tr.appendChild(adminUserEmail);
+    tr.appendChild(adminUserPhoneNum);
+    tr.appendChild(adminUserGenre);
+    tbody.appendChild(tr);
+  });
+
+  tbody.addEventListener("click", function (event) {
+    const target = event.target;
+    if (target.classList.contains("adminUserId")) {
+      const userId = target.dataset.userId; // Retrieve userId from data attribute
+      modal.style.display = "block";
+      axios
+        .get("http://localhost:8080/edutech/user/" + userId + "/lectures")
+        .then((response) => {
+          console.log("데이터 :", response.data);
+          const lectureInfo = response.data;
+          const userCourse = document.querySelector(".userCourse");
+
+          // Clear previous content
+          userCourse.innerHTML = "";
+
+          const userCourseText = document.createElement("div");
+          userCourseText.classList.add("userCourseText");
+          userCourseText.textContent = userId + "님이 수강중인 강의";
+
+          const userCourseGrid = document.createElement("div");
+          userCourseGrid.classList.add("userCourseGrid");
+
+          userCourse.appendChild(userCourseText);
+          userCourse.appendChild(userCourseGrid);
+          lectureInfo.forEach((info) => {
+            const courseTeacherImgDiv = document.createElement("div");
+            courseTeacherImgDiv.classList.add("courseTeacherImg");
+
+            const courseTeacherImg = document.createElement("img");
+            courseTeacherImg.src = info.lecture.teacher.teacherImgPath;
+
+            const courseTitle = document.createElement("div");
+            courseTitle.classList.add("courseTitle");
+            courseTitle.textContent =
+              info.lecture.lectureName + " " + info.lecture.lectureClass;
+
+            const courseTeacherName = document.createElement("div");
+            courseTeacherName.classList.add("courseTeacherName");
+            courseTeacherName.textContent = info.lecture.teacher.teacherName;
+
+            const courseLecturePrice = document.createElement("div");
+            courseLecturePrice.classList.add("courseLecturePrice");
+            courseLecturePrice.textContent = info.lecture.price + "원";
+
+            userCourseGrid.appendChild(courseTeacherImgDiv);
+            courseTeacherImgDiv.appendChild(courseTeacherImg);
+            userCourseGrid.appendChild(courseTitle);
+            userCourseGrid.appendChild(courseTeacherName);
+            userCourseGrid.appendChild(courseLecturePrice);
+          });
+        });
+    }
+  });
+}
+
+/* 유저가 수강중인 강의 보기 모달 */
+
+const tbody = document.querySelector(".tbody");
+const modal = document.getElementById("courseModal");
+const closeButton = document.querySelector(".courseModalClose");
+
+closeButton.addEventListener("click", function () {
+  modal.style.display = "none";
+});
+
+modal.addEventListener("click", function (event) {
+  if (event.target === modal) {
+    modal.style.display = "none";
+  }
+});
 
 // 강의별 수강중인 학생 목록 가져오기
 axios
@@ -196,29 +375,6 @@ document.querySelectorAll(".courseUserGrid").forEach((courseSection) => {
     lectureUserList.style.display =
       lectureUserList.style.display === "block" ? "none" : "block";
   });
-});
-
-/* 유저가 수강중인 강의 보기 모달 */
-
-const tbody = document.querySelector(".tbody");
-const modal = document.getElementById("courseModal");
-const closeButton = document.querySelector(".courseModalClose");
-
-tbody.addEventListener("click", function (event) {
-  const target = event.target;
-  if (target.classList.contains("adminUserId")) {
-    modal.style.display = "block";
-  }
-});
-
-closeButton.addEventListener("click", function () {
-  modal.style.display = "none";
-});
-
-modal.addEventListener("click", function (event) {
-  if (event.target === modal) {
-    modal.style.display = "none";
-  }
 });
 
 /* 공지사항 등록 */

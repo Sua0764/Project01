@@ -186,15 +186,20 @@ table {
 
 .userCourseGrid {
   display: grid;
-  grid-template-columns: 1fr 7fr 1fr 1fr;
+  grid-template-columns: 1fr 5fr 2fr 2fr;
   padding: 20px 20px;
   justify-items: center;
+  gap: 20px;
 }
 
 .courseTeacherImg {
   width: 120px;
-  height: 130px;
+  height: 145px;
   border: 1px solid black;
+}
+
+.courseTeacherImg > img {
+  width: inherit;
 }
 
 .courseTitle,
