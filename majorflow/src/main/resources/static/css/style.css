@@ -308,7 +308,6 @@ body {
   font-weight: bold;
 }
 
-/* padding 제거 오겸비 수정 */
 .rightMenu {
   cursor: pointer;
 }
@@ -325,7 +324,6 @@ body {
   color: gray;
 }
 
-/* rightMenuBx 추가 오겸비 수정 */
 .rightMenuBx {
   display: flex;
   justify-content: space-evenly;
@@ -348,8 +346,6 @@ body {
   justify-content: start;
   align-items: center;
 }
-
-/* margin 오겸비 수정 */
 
 .subMenu > div {
   width: 250px;
@@ -663,8 +659,6 @@ body {
   margin-bottom: 40px;
 }
 
-/* margin 오겸비 수정 */
-
 .tasteCourseClick {
   margin: 20px 0 20px 0;
 }
@@ -699,8 +693,6 @@ body {
   font-family: "SUIT-Regular";
   font-size: 20px;
 }
-
-/* margin 추가 오겸비 수정 */
 
 .coursePriceGuide {
   width: 90%;
@@ -840,7 +832,6 @@ body {
 
 /*공지사항*/
 
-/* margin 추가 오겸비 수정 */
 .noticeBox2 {
   width: 90%; /* 가로 길이 조정 */
   height: 110px;
@@ -855,7 +846,7 @@ body {
 }
 
 .noticeBox2.active {
-  height: 330px;
+  height: auto;
   transition: height 0.3s ease;
 }
 .noticeBox3 {
@@ -864,7 +855,7 @@ body {
   width: 100%;
   height: 88px;
 }
-/* padding-left 추가 오겸비 수정 */
+
 .noticeBox3-1 {
   font-size: 24px; /* 텍스트 크기 축소 */
   font-weight: bold;
@@ -906,17 +897,17 @@ body {
 .noticeBoxLine {
   width: 100%;
   height: 1px;
-  margin-top: 10px;
+  margin-top: 5px;
   margin-bottom: 20px;
   border: 1px solid white; /* 연한 색상으로 변경 */
 }
-/* padding-left 추가 오겸비 수정 */
+
 .noticeBox4 {
   font-size: 18px; /* 텍스트 크기 축소 */
   height: 140px;
   padding-left: 20px;
 }
-/* padding 추가 오겸비 수정 */
+
 .noticeBox5 {
   display: flex;
   align-items: center; /* 수직 가운데 정렬 */
@@ -949,6 +940,27 @@ body {
 .noticeBox5-1:hover {
   background-color: #0056b3;
   transform: scale(1.05);
+}
+
+.noticeReply {
+  display: grid;
+  grid-template-columns: 0.5fr 2fr 0.5fr;
+  font-size: 15px;
+  margin: 0 20px 20px 20px;
+  border-radius: 10px;
+  background-color: #fff;
+  padding: 10px;
+
+  width: 95%;
+  height: 80px;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+.noticeReply > div {
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #aaaaaa;
 }
 
 .commentBox {
@@ -1128,6 +1140,7 @@ body {
 
 .lectureEnrollimg > img {
   width: 400px;
+  height: 266px;
   border-radius: 25px;
 }
 
@@ -1568,7 +1581,7 @@ body {
   justify-items: center;
 }
 .reviewBox4 {
-  width: 240px;
+  width: 300px;
   height: 47px;
   text-align: center;
   font-size: 30px;
