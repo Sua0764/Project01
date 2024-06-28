@@ -100,6 +100,24 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log("에러발생: ", error);
       });
 
+    function openModal(message, callback) {
+      const alertModal = document.getElementById("myAlertModal");
+      const alertModalMessage = document.getElementById("alertModalMessage");
+      alertModalMessage.textContent = message;
+      alertModal.style.display = "block";
+
+      const confirmButton = document.getElementById("alertConfirm");
+      confirmButton.onclick = function () {
+        callback && callback(); // 콜백이 있을 경우 실행
+        closeModal(); // 모달 닫기
+      };
+    }
+
+    function closeModal() {
+      const alertModal = document.getElementById("myAlertModal");
+      alertModal.style.display = "none";
+    }
+
     function handleAlertConfirm() {
       const alertModalMessage =
         document.getElementById("alertModalMessage").textContent;
@@ -145,14 +163,9 @@ document.addEventListener("DOMContentLoaded", function () {
           });
       } else if (alertModalMessage === "구매하시겠습니까?") {
         saveLecture(userId, cartItems);
-        closeModal(); // 모달 닫기
-        openModal("구매 완료! 마이페이지에서 확인할 수 있습니다.");
-        window.location.href = "mypage.html";
-      } else if (
-        alertModalMessage === "구매 완료! 마이페이지에서 확인할 수 있습니다."
-      ) {
-        closeModal();
-        window.location.reload();
+        openModal("구매 완료! 마이페이지에서 확인할 수 있습니다.", () => {
+          window.location.href = "mypage.html";
+        });
       }
     }
 
