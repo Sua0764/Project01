@@ -160,7 +160,6 @@ document.addEventListener("DOMContentLoaded", function () {
           });
       } else if (alertModalMessage === "구매하시겠습니까?") {
         saveLecture(userId, cartItems);
-        window.location.href = "mypage.html";
       }
     }
 
@@ -201,6 +200,7 @@ function saveLecture(userId, cartItem) {
               `[data-item-id="${item.id}"]`
             );
             if (cartBox1) cartBox1.remove();
+            window.location.href = "mypage.html";
           })
           .catch((error) => {
             console.log("에러 발생:", error);
