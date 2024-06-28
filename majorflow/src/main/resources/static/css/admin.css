@@ -23,7 +23,6 @@ body {
   background-size: cover;
   background-position: center;
 }
-
 .box2 {
   width: 100%;
   height: auto;
@@ -59,7 +58,6 @@ body {
 }
 
 .rightMenu {
-  padding: 10px;
   cursor: pointer;
 }
 
@@ -96,7 +94,7 @@ body {
 .subMenu > div {
   width: 250px;
   height: 50px;
-  margin: 20px 20px 20px 0px;
+  margin: 35px 20px 20px 0px;
   color: white;
   box-sizing: border-box;
   border-radius: 30px 30px 0px 30px;
@@ -124,16 +122,14 @@ body {
   height: 50px;
 }
 
-.cartIcon,
 .mypageIcon {
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
 }
 
-.cartIcon > img,
-.mypageIcon > img {
-  width: 30px;
-  height: 30px;
+.cartIcon {
+  width: 20px;
+  height: 25px;
 }
 
 /* 관리자페이지  */
@@ -333,7 +329,7 @@ table {
   border: none;
   background-size: 300% 100%;
   border-radius: 50px;
-  moz-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
   -o-transition: all 0.4s ease-in-out;
   -webkit-transition: all 0.4s ease-in-out;
   transition: all 0.4s ease-in-out;
@@ -349,13 +345,177 @@ table {
 
 .noticeWriteBox3:hover {
   background-position: 100% 0;
-  moz-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
   -o-transition: all 0.4s ease-in-out;
   -webkit-transition: all 0.4s ease-in-out;
   transition: all 0.4s ease-in-out;
 }
 
 noticeWriteBox3:focus {
+  outline: none;
+}
+
+.rightMenuBx {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.footer {
+  margin-top: 0; /* box3와 footer 사이 간격 제거 */
+  text-align: center;
+  padding: 40px 0 20px 0; /* 기본 패딩 설정 */
+  background-color: #222222;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column; /* 수직 정렬 */
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-circles {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px; /* 텍스트와의 간격 조정 */
+}
+
+.footer-circle {
+  width: 40px; /* 크기를 더 크게 설정 */
+  height: 40px; /* 크기를 더 크게 설정 */
+  background-size: cover; /* 이미지가 요소 크기에 맞게 확대 */
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  margin: 0 10px;
+}
+
+.footer-circle.git {
+  background-image: url("/img/깃아이콘.png"); /* 깃아이콘 이미지 경로 */
+}
+
+.footer-circle.figma {
+  background-image: url("/img/피그마아이콘.png"); /* 피그마아이콘 이미지 경로 */
+}
+
+.footer-info {
+  text-align: center;
+  padding: 20px 0; /* 높이를 늘리기 위해 패딩 추가 */
+}
+
+.footer-info p {
+  margin: 0;
+  font-size: 16px;
+  color: #808080;
+}
+
+/* alert 모달창 */
+.alertModal {
+  display: none; /* 기본적으로 숨김 처리 */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5); /* 반투명 배경 */
+}
+
+.alertModal-content {
+  border: 1px solid #0e0e0e;
+  background-color: #fff;
+  height: 220px;
+  margin: 15% auto;
+  padding: 30px;
+  width: 80%;
+  max-width: 400px;
+  border-radius: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  align-items: center;
+}
+.alertModalBtn {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 10px 30px;
+  justify-items: center;
+}
+
+.alertModalBtnLogin {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+#alertModalMessage {
+  font-family: "SUIT-Regular";
+  font-size: 24px;
+  text-align: center;
+  margin-top: 15px;
+}
+
+.alertClose {
+  font-family: "SUIT-Regular";
+  color: #aaa;
+  float: right;
+  font-size: 23px;
+  font-weight: 50px;
+  border-radius: 25px;
+  width: 80px;
+  height: 40px;
+  margin: 30px 0;
+  -moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+  box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
+}
+
+.alertClose:hover {
+  font-family: "SUIT-Regular";
+  color: #0e0e0e;
+  text-decoration: none;
+  cursor: pointer;
+  background-position: 100% 0;
+  -moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+#alertConfirmLogin,
+#alertConfirm {
+  font-family: "SUIT-Regular";
+  color: #aaa;
+  float: right;
+  font-size: 23px;
+  font-weight: 50px;
+  border-radius: 25px;
+  width: 80px;
+  height: 40px;
+  margin: 30px 0;
+  -moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+  box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
+}
+
+#alertConfirmLogin:hover,
+#alertConfirm:hover {
+  font-family: "SUIT-Regular";
+  color: #0e0e0e;
+  text-decoration: none;
+  cursor: pointer;
+  background-position: 100% 0;
+  -moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+.alertClose:focus,
+#alertConfirm:focus {
   outline: none;
 }
 

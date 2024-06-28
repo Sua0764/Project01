@@ -51,7 +51,6 @@ public class SecurityConfig{
                                 new AntPathRequestMatcher("/teacher/**"),
                                 new AntPathRequestMatcher("/admin/**"),
                                 new AntPathRequestMatcher("/edutech/**")
-
                         ).permitAll()
                         .anyRequest().authenticated())
                 .formLogin(form->form.loginPage("/login").defaultSuccessUrl("/articles"))

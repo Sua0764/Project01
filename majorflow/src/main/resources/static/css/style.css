@@ -1,4 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200..900&display=swap");
+@font-face {
+  font-family: "SUIT-Regular";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
 
 * {
   margin: 0;
@@ -165,7 +173,7 @@
   font-size: 30px;
   font-weight: 500;
   position: absolute;
-  bottom: -500px;
+  bottom: -480px;
   left: 0px;
   transform: translateX(-100%);
   opacity: 0;
@@ -259,7 +267,6 @@ body {
   background-size: cover;
   background-position: center;
 }
-
 .box2 {
   width: 100%;
   height: auto;
@@ -268,13 +275,14 @@ body {
 .box3 {
   width: 100%;
   height: 305px;
-  margin-top: 0; /* box3와 footer 사이 간격 제거 */
+  margin-top: 0;
   background-image: url("/img/단체사진.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
   background-color: transparent;
 }
+
 .wbox {
   width: 70%;
   margin: 0 auto;
@@ -292,10 +300,12 @@ body {
 .mainMenu > div {
   color: white;
   margin-top: 30px;
+  font-weight: bold;
 }
 
 .centerMenu {
   padding: 40px;
+  font-weight: bold;
 }
 
 /* padding 제거 오겸비 수정 */
@@ -368,13 +378,17 @@ body {
 }
 
 .logo {
-  width: 50px;
-  height: 50px;
+  width: 110px;
+  height: 40px;
 }
 
-.cartIcon,
 .mypageIcon {
   width: 25px;
+  height: 25px;
+}
+
+.cartIcon {
+  width: 20px;
   height: 25px;
 }
 
@@ -402,15 +416,19 @@ body {
 }
 
 .historyText1 {
-  margin: 30px 40px 30px 40px;
+  margin: 30px 20px 30px 40px;
   font-size: 20px;
   line-height: 40px;
+  font-family: "Noto Serif KR", serif;
+  font-weight: 500;
 }
 
 .historyText2 {
-  margin: 30px 40px 30px 0px;
+  margin: 30px 20px 30px 0px;
   font-size: 20px;
   line-height: 40px;
+  font-family: "Noto Serif KR", serif;
+  font-weight: 500;
 }
 
 /* 강사진 페이지 설정*/
@@ -426,6 +444,7 @@ body {
 .teacher {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  margin-left: 60px;
 }
 
 .teacherInfo {
@@ -452,7 +471,9 @@ body {
 }
 
 .teacherName {
-  margin: 10px 0px 5px 0px;
+  margin: 15px 0px 5px 10px;
+  font-size: 25px;
+  font-family: "SUIT-Regular";
 }
 
 .teacherSubject {
@@ -562,7 +583,7 @@ body {
 .textContainer {
   position: absolute;
   left: 20px; /* 좌측에서 20px 떨어진 위치 */
-  bottom: 40px; /* 아래에서 40px 떨어진 위치 */
+  bottom: 20px;
   color: white;
   font-weight: bold;
   transition: transform 0.3s ease; /* 위치 변경 애니메이션 */
@@ -576,11 +597,20 @@ body {
   font-size: 30px; /* 기타 텍스트 크기 증가 */
 }
 
+.textContainer .lecClass {
+  font-size: 17px;
+  margin: 14px 0 0 6px;
+}
+.mainTextBx {
+  display: flex;
+}
+
 .textContainer .subText {
   font-size: 16px; /* 서브 텍스트 크기 설정 */
   font-weight: normal; /* 서브 텍스트 굵기 얇게 */
   opacity: 0; /* 기본 상태에서는 보이지 않음 */
   transition: opacity 0.3s ease; /* 자연스럽게 나타나는 애니메이션 */
+  margin-top: 10px;
 }
 
 .allCourseClick:hover .textContainer {
@@ -610,7 +640,9 @@ body {
 .detailedBox2 {
   width: 100%;
   display: grid;
-  grid-template-columns: 1.8fr 1.2fr;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  align-items: center;
 }
 .detailedBox2Img {
   width: 500px;
@@ -622,23 +654,19 @@ body {
   width: 600px;
   height: 650px;
 }
-.detailedBox2Text2 {
-  width: 100%;
-  height: 800px;
-}
 
 .tasteCourse {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 20px;
+  gap: 20px 145px;
+  margin-left: 145px;
+  margin-bottom: 40px;
 }
+
+/* margin 오겸비 수정 */
 
 .tasteCourseClick {
   margin: 20px 0 20px 0;
-}
-
-.tasteCourseClick > div {
-  margin: 0px 0 10px 0;
 }
 
 .tasteCourseClickImg {
@@ -659,11 +687,25 @@ body {
   border-radius: 15px;
 }
 
+.tasteName {
+  margin: 15px 0 0 10px;
+  font-family: "SUIT-Regular";
+  font-size: 25px;
+  font-weight: 600;
+}
+
+.tasteTeacher {
+  margin: 10px 0 0 10px;
+  font-family: "SUIT-Regular";
+  font-size: 20px;
+}
+
+/* margin 추가 오겸비 수정 */
+
 .coursePriceGuide {
-  width: 80%;
-  height: 880px;
-  margin-bottom: 30px;
-  margin-left: 150px; /* 왼쪽 여백 추가 */
+  width: 90%;
+  height: 800px;
+  margin: 0 auto;
   border-radius: 15px; /* 둥근 모서리 */
   background: linear-gradient(
     to bottom,
@@ -693,6 +735,7 @@ body {
     #2575fc
   ); /* 테두리 그라데이션 */
 }
+
 .coursePriceGuide:hover {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2); /* 호버 시 그림자 강화 */
 }
@@ -753,7 +796,7 @@ body {
   position: relative;
   width: 100%;
   height: 100%;
-  background: grey;
+  background: #0e0e0e;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   opacity: 0;
   transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
@@ -797,11 +840,13 @@ body {
 
 /*공지사항*/
 
+/* margin 추가 오겸비 수정 */
 .noticeBox2 {
   width: 90%; /* 가로 길이 조정 */
   height: 110px;
   border-radius: 25px;
   padding: 15px;
+  margin: 0 60px;
   position: relative;
   overflow: hidden;
   transition: height 0.3s ease, background-color 0.3s ease;
@@ -815,26 +860,23 @@ body {
 }
 .noticeBox3 {
   display: grid;
-  grid-template-columns: 8fr 2fr;
+  grid-template-columns: 8fr 1.5fr 0.5fr;
   width: 100%;
   height: 88px;
 }
+/* padding-left 추가 오겸비 수정 */
 .noticeBox3-1 {
   font-size: 24px; /* 텍스트 크기 축소 */
   font-weight: bold;
   margin-right: 30px;
   line-height: 88px;
   color: #333; /* 텍스트 색상 변경 */
+  padding-left: 20px;
 }
-
 .noticeBox3Date {
-  font-size: 24px; /* 텍스트 크기 축소 */
-  font-weight: bold;
-  margin-right: 30px;
+  text-align: center;
   line-height: 88px;
-  color: #333; /* 텍스트 색상 변경 */
 }
-
 .noticeBox3-2 {
   cursor: pointer;
   width: 2rem;
@@ -868,14 +910,18 @@ body {
   margin-bottom: 20px;
   border: 1px solid white; /* 연한 색상으로 변경 */
 }
+/* padding-left 추가 오겸비 수정 */
 .noticeBox4 {
   font-size: 18px; /* 텍스트 크기 축소 */
-  height: 150px;
+  height: 140px;
+  padding-left: 20px;
 }
+/* padding 추가 오겸비 수정 */
 .noticeBox5 {
   display: flex;
   align-items: center; /* 수직 가운데 정렬 */
   gap: 10px; /* 이미지와 텍스트 사이 간격 조정 */
+  padding: 0 1em;
 }
 
 .noticeBox5 img {
@@ -897,6 +943,7 @@ body {
   line-height: 30px;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease;
+  font-family: "SUIT-Regular";
 }
 
 .noticeBox5-1:hover {
@@ -961,7 +1008,7 @@ body {
 .footer {
   margin-top: 0; /* box3와 footer 사이 간격 제거 */
   text-align: center;
-  padding: 20px 0; /* 기본 패딩 설정 */
+  padding: 40px 0 20px 0; /* 기본 패딩 설정 */
   background-color: #222222;
 }
 
@@ -1085,18 +1132,21 @@ body {
 }
 
 .lectureEnrollname {
+  font-family: "SUIT-Regular";
   font-size: 30px;
   padding: 5px 0px 5px 0px;
   margin: 30px 0px 0px 0px;
 }
 
 .teacherEnrollname {
+  font-family: "SUIT-Regular";
   font-size: 20px;
-  padding: 5px 0px 5px 0px;
+  padding: 5px 0px 5px 1px;
   margin: 0px 0px 30px 0px;
 }
 
 .classEnrollName {
+  font-family: "SUIT-Regular";
   font-size: 24px;
   font-weight: 500;
 }
@@ -1343,7 +1393,7 @@ body {
 }
 
 .progressInfoBox {
-  height: 350px;
+  height: 290px;
   border: 1px solid gray;
   border-radius: 30px;
   padding: 20px;
@@ -1392,7 +1442,7 @@ body {
   border: none;
   background-size: 300% 100%;
   border-radius: 20px;
-  moz-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
   -o-transition: all 0.4s ease-in-out;
   -webkit-transition: all 0.4s ease-in-out;
   transition: all 0.4s ease-in-out;
@@ -1422,6 +1472,7 @@ body {
 }
 
 /* 강의실 */
+
 .gradeTitle {
   font-size: 40px;
   font-weight: bold;
@@ -1459,7 +1510,7 @@ body {
 }
 
 /* 모달 스타일 */
-.modal {
+.gradeModal {
   display: none;
   position: fixed;
   z-index: 1;
@@ -1473,7 +1524,7 @@ body {
   background-color: rgba(0, 0, 0, 0.4);
 }
 
-.modal-content {
+.gradeModal-content {
   background-color: #fefefe;
   margin: 5% auto;
   padding: 20px;
@@ -1484,7 +1535,7 @@ body {
 .close {
   color: #aaa;
   float: right;
-  font-size: 28px;
+  font-size: 40px;
   font-weight: bold;
 }
 
@@ -1642,7 +1693,7 @@ body {
 }
 .reviewBox7 {
   width: 100%;
-  height: 310px;
+  height: 315px;
   border-radius: 25px;
   background-color: #bbd0e9;
   padding: 15px;
@@ -1657,7 +1708,7 @@ body {
   height: 43px;
   text-align: center;
   line-height: 43px;
-  margin-top: 20px;
+  margin: 20px 0 0 15px;
   font-size: 30px;
   font-weight: bold;
 }
@@ -1693,9 +1744,14 @@ body {
   grid-template-columns: 9.5fr 0.5fr;
   margin-top: 30px;
 }
+.likeBtn {
+  cursor: pointer;
+  width: 20px;
+  height: 25px;
+}
 .likeBtn:hover {
   cursor: pointer;
-  width: 30px;
+  width: 25px;
   height: 30px;
 }
 .reviewBox9Grid-1 {
@@ -1721,6 +1777,7 @@ body {
 .reviewWriteBtnWrapper {
   display: flex;
   justify-content: end;
+  margin: 0 80px 25px 0;
 }
 .star_rating {
   width: 100%;
@@ -1959,9 +2016,8 @@ body {
 .reviewWriteBtn,
 .moveToCartBtn,
 .cartBox6,
-.studyLectureBtn,
-.alertClose,
-#alertConfirm {
+.studyLectureBtn {
+  font-family: "SUIT-Regular";
   width: 200px;
   font-size: 16px;
   font-weight: 600;
@@ -1974,7 +2030,7 @@ body {
   border: none;
   background-size: 300% 100%;
   border-radius: 50px;
-  moz-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
   -o-transition: all 0.4s ease-in-out;
   -webkit-transition: all 0.4s ease-in-out;
   transition: all 0.4s ease-in-out;
@@ -1993,11 +2049,10 @@ body {
 .moveToCartBtn:hover,
 .cartBox6:hover,
 .studyLectureBtn:hover,
-.progressStudyBtn:hover,
-.alertClose:hover,
-#alertConfirm:hover {
+.progressStudyBtn:hover {
+  font-family: "SUIT-Regular";
   background-position: 100% 0;
-  moz-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
   -o-transition: all 0.4s ease-in-out;
   -webkit-transition: all 0.4s ease-in-out;
   transition: all 0.4s ease-in-out;
@@ -2008,9 +2063,7 @@ body {
 .moveToCartBtn:focus,
 .cartBox6:focus,
 .studyLectureBtn:focus,
-.progressStudyBtn:focus,
-.alertClose:focus,
-#alertConfirm:focus {
+.progressStudyBtn:focus {
   outline: none;
 }
 
@@ -2028,58 +2081,100 @@ body {
 }
 
 .alertModal-content {
-  background-color: white;
-  height: 200px;
+  border: 1px solid #0e0e0e;
+  background-color: #fff;
+  height: 220px;
   margin: 15% auto;
   padding: 30px;
   width: 80%;
-  max-width: 600px;
-  border-radius: 10px;
+  max-width: 400px;
+  border-radius: 30px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  items-align: center;
+  align-items: center;
 }
 .alertModalBtn {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  margin: 20px 0;
-  grid-column-gap: 70px;
+  margin: 10px 30px;
+  justify-items: center;
+}
+
+.alertModalBtnLogin {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
 }
 
 #alertModalMessage {
+  font-family: "SUIT-Regular";
   font-size: 24px;
   text-align: center;
+  margin-top: 15px;
 }
 
 .alertClose {
+  font-family: "SUIT-Regular";
   color: #aaa;
   float: right;
-  font-size: 28px;
-  font-weight: bold;
-  weight: 50px;
+  font-size: 23px;
+  font-weight: 50px;
   border-radius: 25px;
+  width: 80px;
+  height: 40px;
+  margin: 30px 0;
+  -moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+  box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
 }
 
-.alertClose:hover,
-.alertClose:focus {
-  color: black;
+.alertClose:hover {
+  font-family: "SUIT-Regular";
+  color: #0e0e0e;
   text-decoration: none;
   cursor: pointer;
+  background-position: 100% 0;
+  -moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
 }
 
+#alertConfirmLogin,
 #alertConfirm {
+  font-family: "SUIT-Regular";
   color: #aaa;
   float: right;
-  font-size: 28px;
-  font-weight: bold;
-  weight: 50px;
+  font-size: 23px;
+  font-weight: 50px;
   border-radius: 25px;
+  width: 80px;
+  height: 40px;
+  margin: 30px 0;
+  -moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+  box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
 }
 
-#alertConfirm:hover,
-#alertConfirm:focus {
-  color: black;
+#alertConfirmLogin:hover,
+#alertConfirm:hover {
+  font-family: "SUIT-Regular";
+  color: #0e0e0e;
   text-decoration: none;
   cursor: pointer;
+  background-position: 100% 0;
+  -moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+.alertClose:focus,
+#alertConfirm:focus {
+  outline: none;
 }
 
 .hidden {

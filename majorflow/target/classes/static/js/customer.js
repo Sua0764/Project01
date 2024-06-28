@@ -1,5 +1,8 @@
 const urlLogout = "http://localhost:8080/user/logout";
 const urlNotice = "http://localhost:8080/board/getAll";
+let currentUser = {};
+let boardId = -1;
+let boardContents = [];
 
 // 공지사항 박스 클릭 이벤트 설정
 function setNoticeBoxEventListeners() {
@@ -46,6 +49,10 @@ function fetchNoticeData() {
     .get(urlNotice)
     .then(function (response) {
       console.log("공지사항 데이터:", response.data);
+      response.data.sort(
+        (a, b) => new Date(b.freeBoardTime) - new Date(a.freeBoardTime)
+      );
+      boardContents = response.data;
       updateNoticeBox(response.data);
     })
     .catch(function (error) {
@@ -65,6 +72,8 @@ function updateNoticeBox(data) {
       const formattedDate = `${date.getFullYear()}-${padZero(
         date.getMonth() + 1
       )}-${padZero(date.getDate())}`;
+
+      const noticeId = notice.freeBoardId;
 
       // 공지사항 항목 생성
       const noticeBox2 = document.createElement("div");
@@ -92,6 +101,9 @@ function updateNoticeBox(data) {
       noticeText.classList.add("noticeBox4");
       noticeText.textContent = notice.text;
 
+      const noticeReply = document.createElement("div");
+      noticeReply.classList.add("noticeReply");
+
       const noticeBox5 = document.createElement("div");
       noticeBox5.classList.add("noticeBox5");
 
@@ -112,6 +124,7 @@ function updateNoticeBox(data) {
       noticeBox2.appendChild(noticeBox3);
       noticeBox2.appendChild(noticeBoxLine);
       noticeContent.appendChild(noticeText);
+      noticeContent.appendChild(noticeReply);
       noticeBox5.appendChild(commentIcon);
       noticeBox5.appendChild(commentBtn);
       noticeContent.appendChild(noticeBox5);
@@ -119,6 +132,38 @@ function updateNoticeBox(data) {
       noticeBox2.appendChild(toggleBtn);
 
       noticeContentWrapper.appendChild(noticeBox2);
+
+      getReply(noticeId);
+
+      function getReply(id) {
+        axios
+          .get("http://localhost:8080/reply/get", { withCredentials: true })
+          .then((response) => {
+            console.log("댓글 데이터 : ", response.data);
+            const replyData = response.data;
+            replyData.forEach((r) => {
+              if (id == r.freeBoard.freeBoardId) {
+                console.log(r);
+
+                const replyBox1 = document.createElement("div");
+                replyBox1.classList.add("replyBox1");
+                replyBox1.textContent = r.user.userId;
+
+                const replyBox2 = document.createElement("div");
+                replyBox2.classList.add("replyBox2");
+                replyBox2.textContent = r.replyText;
+
+                const replyBox3 = document.createElement("div");
+                replyBox3.classList.add("replyBox3");
+                replyBox3.textContent = r.replyTime;
+
+                noticeReply.appendChild(replyBox1);
+                noticeReply.appendChild(replyBox2);
+                noticeReply.appendChild(replyBox3);
+              }
+            });
+          });
+      }
     });
   } else {
     noticeContentWrapper.innerHTML = "공지사항이 없습니다.";
@@ -140,12 +185,12 @@ function sessionCurrent() {
     .then((response) => {
       console.log("세션 데이터: ", response.data);
       if (response.status == 200 && response.data.userId !== "anonymousUser") {
-        console.log("세션 유지");
-        document.querySelector(".menuLoginBtn").classList.add("hidden");
-        document.querySelector(".menuLogoutBtn").classList.remove("hidden");
-      } else {
-        document.querySelector(".menuLogoutBtn").classList.add("hidden");
-        document.querySelector(".menuLoginBtn").classList.remove("hidden");
+        currentUser = {
+          userId: response.data.userId,
+          authority: {
+            authorityName: response.data.authority[0].authority,
+          },
+        };
       }
     })
     .catch((error) => {
@@ -192,7 +237,6 @@ document.getElementById("alertConfirm").addEventListener("click", () => {
       alert("로그아웃에 실패했습니다. 다시 시도해주세요.");
     });
 });
-
 // 모달 내 취소 버튼 클릭 시 모달 닫기
 document.querySelector(".alertClose").addEventListener("click", () => {
   closeModal();
@@ -203,8 +247,9 @@ function setCommentModalEventListeners() {
   const modal = document.getElementById("commentModal");
   const closeBtn = document.querySelector(".close-btn");
 
-  commentBtns.forEach((btn) => {
+  commentBtns.forEach((btn, index) => {
     btn.addEventListener("click", () => {
+      boardId = index;
       document.getElementById("commentInput").value = ""; // 댓글 입력창 초기화
       modal.classList.remove("hidden");
       modal.style.display = "block";
@@ -236,5 +281,42 @@ function setCommentModalEventListeners() {
   });
 }
 
+commentSubmit.addEventListener("click", () => {
+  // const replyUserId = document.querySelector(".replyUserId");
+  const replyContent = document.querySelector(".commentInput");
+  const replyUser = "";
+  const content = replyContent.value;
+
+  const now = new Date();
+  const replyTime = now.toISOString();
+
+  const data = {
+    user: currentUser,
+    replyText: content,
+    replyTime: replyTime,
+    freeBoard: {
+      freeBoardId: boardContents[boardId].freeBoardId,
+    },
+  };
+  console.log("태스트: ", boardId, boardContents);
+
+  axios
+    .post("http://localhost:8080/reply/save", data, {
+      withCredentials: true,
+    })
+    .then((response) => {
+      console.log("데이터 저장 성공 : ", response);
+      // openModal(`댓글이 등록되었습니다.`, () => {
+      //   window.location.reload();
+      // });
+      replyContent.value = "";
+    })
+    .catch((error) => {
+      console.log("에러 발생 : ", error);
+      openModal("댓글 등록에 실패했습니다.");
+    });
+});
+
 // 초기 모달 이벤트 리스너 설정
 setCommentModalEventListeners();
+sessionCurrent();

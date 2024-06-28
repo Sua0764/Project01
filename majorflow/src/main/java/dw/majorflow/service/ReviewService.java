@@ -26,7 +26,6 @@ public class ReviewService {
         return reviewRepository.findAll();
     }
 
-
     public List<ReviewDto> getReviewAllByDto() {
         List<Review> reviewList = reviewRepository.findAll();
         List<ReviewDto> reviewDtoList = new ArrayList<>();
