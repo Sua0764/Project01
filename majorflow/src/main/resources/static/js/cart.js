@@ -40,9 +40,6 @@ document.addEventListener("DOMContentLoaded", function () {
           ".cartItemsContainer"
         );
 
-        // 기존의 장바구니 아이템을 삭제
-        cartItemsContainer.innerHTML = "";
-
         // 장바구니 아이템들을 UI에 추가
         cartItems.forEach((item) => {
           console.log(item);
@@ -163,9 +160,7 @@ document.addEventListener("DOMContentLoaded", function () {
           });
       } else if (alertModalMessage === "구매하시겠습니까?") {
         saveLecture(userId, cartItems);
-        openModal("구매 완료! 마이페이지에서 확인할 수 있습니다.", () => {
-          window.location.href = "mypage.html";
-        });
+        window.location.href = "mypage.html";
       }
     }
 
