@@ -2,6 +2,16 @@ const urlAdmin = "http://localhost:8080/user/user";
 const urlLectures = "http://localhost:8080/edutech/get";
 const urlLogout = "http://localhost:8080/user/logout";
 
+/* 유저가 수강중인 강의 보기 모달 */
+const tbody = document.querySelector(".tbody");
+const modal = document.getElementById("courseModal");
+const closeButton = document.querySelector(".courseModalClose");
+
+/* 공지사항 등록 */
+const noticeTitle = document.querySelector(".noticeWriteBox1");
+const noticeContent = document.querySelector(".noticeWriteBox2");
+const submitButton = document.querySelector(".noticeWriteBox3");
+
 document.querySelector(".noticeWriteBtn").addEventListener("click", () => {
   document.querySelector(".noticeWriteBox").classList.remove("hidden");
   document.querySelector(".adminPageBox").classList.add("hidden");
@@ -22,52 +32,6 @@ document.querySelectorAll(".subMenu > div").forEach((div) => {
     div.classList.add("active");
   });
 });
-
-sessionCurrent();
-
-function sessionCurrent() {
-  axios
-    .get("http://localhost:8080/user/current", { withCredentials: true })
-    .then((response) => {
-      console.log("데이터: ", response);
-      if (response.status == 200 && response.data.userId !== "anonymousUser") {
-        console.log("세션 유지");
-        const userId = response.data.userId;
-        document.querySelector(".menuLoginBtn").classList.add("hidden");
-        document.querySelector(".menuLogoutBtn").classList.remove("hidden");
-      } else {
-        openModal("로그인이 필요합니다.", () => {
-          window.location.href = "login.html";
-        });
-      }
-    })
-    .catch((error) => {
-      console.log("에러 발생: ", error);
-    });
-}
-
-function openModal(message, callback) {
-  const alertModal = document.getElementById("myAlertModal");
-  const alertModalMessage = document.getElementById("alertModalMessage");
-  alertModalMessage.textContent = message;
-  alertModal.style.display = "block";
-
-  const confirmButton = document.getElementById("alertConfirm");
-  confirmButton.onclick = function () {
-    callback && callback(); // 콜백이 있을 경우 실행
-    closeModal(); // 모달 닫기
-  };
-}
-
-function closeModal() {
-  const alertModal = document.getElementById("myAlertModal");
-  alertModal.style.display = "none";
-}
-
-// 로그아웃 버튼 클릭 시 확인 모달 열기
-//document.querySelector(".menuLogoutBtn").addEventListener("click", () => {
-//  openModal("로그아웃하시겠습니까?");
-//});
 
 document.querySelector(".menuLogoutBtn").addEventListener("click", () => {
   openModal("로그아웃하시겠습니까?", () => {
@@ -95,6 +59,64 @@ document.querySelector(".alertClose").addEventListener("click", () => {
   closeModal(); // 모달 닫기
 });
 
+closeButton.addEventListener("click", function () {
+  modal.style.display = "none";
+});
+
+modal.addEventListener("click", function (event) {
+  if (event.target === modal) {
+    modal.style.display = "none";
+  }
+});
+
+document.querySelectorAll(".courseUserGrid").forEach((courseSection) => {
+  courseSection.addEventListener("click", () => {
+    courseSection.classList.toggle("active");
+    const lectureUserList = courseSection.nextElementSibling;
+    lectureUserList.style.display =
+      lectureUserList.style.display === "block" ? "none" : "block";
+  });
+});
+
+// 글쓰기 버튼에 이벤트 리스너 추가
+submitButton.addEventListener("click", () => {
+  // 입력된 제목과 내용 가져오기
+  const title = noticeTitle.value;
+  const content = noticeContent.value;
+
+  // 현재 날짜 및 시간 생성
+  const now = new Date();
+  const freeBoardTime = now.toISOString();
+
+  // 데이터 객체 생성
+  const data = {
+    title: title,
+    text: content,
+    freeBoardTime: freeBoardTime,
+  };
+
+  // axios를 사용하여 서버에 데이터 전송
+  axios
+    .post("http://localhost:8080/board/save", data, {
+      withCredentials: true,
+    })
+    .then((response) => {
+      console.log("데이터 저장 성공:", response);
+      openModal(`공지사항이 등록되었습니다.`, () => {
+        window.location.href = "customer.html";
+      });
+      noticeTitle.value = "";
+      noticeContent.value = "";
+    })
+    .catch((error) => {
+      console.log("에러 발생:", error);
+      alert("공지사항 등록에 실패했습니다. 다시 시도해주세요.");
+    });
+});
+
+sessionCurrent();
+
+// 강의별 수강중인 학생 목록 가져오기
 axios
   .get(urlAdmin)
   .then((response) => {
@@ -104,6 +126,37 @@ axios
   .catch((error) => {
     console.log("에러 발생: ", error);
   });
+
+axios
+  .get(urlLectures)
+  .then((response) => {
+    console.log("유저 데이터: ", response.data);
+    displayCourseUsers(response.data);
+  })
+  .catch((error) => {
+    console.log("강의 데이터 가져오기 에러 발생: ", error);
+  });
+
+function sessionCurrent() {
+  axios
+    .get("http://localhost:8080/user/current", { withCredentials: true })
+    .then((response) => {
+      console.log("데이터: ", response);
+      if (response.status == 200 && response.data.userId !== "anonymousUser") {
+        console.log("세션 유지");
+        const userId = response.data.userId;
+        document.querySelector(".menuLoginBtn").classList.add("hidden");
+        document.querySelector(".menuLogoutBtn").classList.remove("hidden");
+      } else {
+        openModal("로그인이 필요합니다.", () => {
+          window.location.href = "login.html";
+        });
+      }
+    })
+    .catch((error) => {
+      console.log("에러 발생: ", error);
+    });
+}
 
 function displayAdmin(data) {
   const tbody = document.querySelector(".tbody");
@@ -217,33 +270,6 @@ function displayAdmin(data) {
   });
 }
 
-/* 유저가 수강중인 강의 보기 모달 */
-
-const tbody = document.querySelector(".tbody");
-const modal = document.getElementById("courseModal");
-const closeButton = document.querySelector(".courseModalClose");
-
-closeButton.addEventListener("click", function () {
-  modal.style.display = "none";
-});
-
-modal.addEventListener("click", function (event) {
-  if (event.target === modal) {
-    modal.style.display = "none";
-  }
-});
-
-// 강의별 수강중인 학생 목록 가져오기
-axios
-  .get(urlLectures)
-  .then((response) => {
-    console.log("유저 데이터: ", response.data);
-    displayCourseUsers(response.data);
-  })
-  .catch((error) => {
-    console.log("강의 데이터 가져오기 에러 발생: ", error);
-  });
-
 function displayCourseUsers(lectureData) {
   lectureData.forEach((purchasedLecture) => {
     const lectureName = purchasedLecture.lecture.lectureName;
@@ -273,56 +299,20 @@ function displayCourseUsers(lectureData) {
   });
 }
 
-document.querySelectorAll(".courseUserGrid").forEach((courseSection) => {
-  courseSection.addEventListener("click", () => {
-    courseSection.classList.toggle("active");
-    const lectureUserList = courseSection.nextElementSibling;
-    lectureUserList.style.display =
-      lectureUserList.style.display === "block" ? "none" : "block";
-  });
-});
+function openModal(message, callback) {
+  const alertModal = document.getElementById("myAlertModal");
+  const alertModalMessage = document.getElementById("alertModalMessage");
+  alertModalMessage.textContent = message;
+  alertModal.style.display = "block";
 
-/* 공지사항 등록 */
-
-// HTML 요소 선택
-const noticeTitle = document.querySelector(".noticeWriteBox1");
-const noticeContent = document.querySelector(".noticeWriteBox2");
-const submitButton = document.querySelector(".noticeWriteBox3");
-
-// 글쓰기 버튼에 이벤트 리스너 추가
-submitButton.addEventListener("click", () => {
-  // 입력된 제목과 내용 가져오기
-  const title = noticeTitle.value;
-  const content = noticeContent.value;
-
-  // 현재 날짜 및 시간 생성
-  const now = new Date();
-  const freeBoardTime = now.toISOString(); // ISO 형식의 날짜 문자열 생성 (예: "2024-06-26T15:30:00.000Z")
-
-  // 데이터 객체 생성
-  const data = {
-    title: title,
-    text: content, // 수정된 부분
-    freeBoardTime: freeBoardTime, // 등록 날짜 추가
+  const confirmButton = document.getElementById("alertConfirm");
+  confirmButton.onclick = function () {
+    callback && callback(); // 콜백이 있을 경우 실행
+    closeModal(); // 모달 닫기
   };
+}
 
-  // axios를 사용하여 서버에 데이터 전송
-  axios
-    .post("http://localhost:8080/board/save", data, {
-      withCredentials: true,
-    })
-    .then((response) => {
-      console.log("데이터 저장 성공:", response);
-      // 성공 시 추가 작업 (예: 알림 표시, 입력 필드 초기화 등)
-      openModal(`공지사항이 등록되었습니다.`, () => {
-        window.location.href = "customer.html";
-      });
-      noticeTitle.value = "";
-      noticeContent.value = "";
-    })
-    .catch((error) => {
-      console.log("에러 발생:", error);
-      // 오류 처리 (예: 오류 메시지 표시)
-      alert("공지사항 등록에 실패했습니다. 다시 시도해주세요.");
-    });
-});
+function closeModal() {
+  const alertModal = document.getElementById("myAlertModal");
+  alertModal.style.display = "none";
+}

@@ -196,10 +196,6 @@ document.querySelector("#phoneNumber").addEventListener("change", (e) => {
   console.log(e.target.value);
   signupPhoneNumber = e.target.value;
 });
-// document.querySelector(inputGender).addEventListener("change", (e) => {
-//   console.log(e.target.value);
-//   signupGender = e.target.value;
-// });
 document.querySelector("#email").addEventListener("change", (e) => {
   console.log(e.target.value);
   signupEmail = e.target.value;
@@ -208,11 +204,6 @@ document.querySelector("#nickname").addEventListener("change", (e) => {
   console.log(e.target.value);
   signupNickname = e.target.value;
 });
-// document.querySelector(inputGenre).addEventListener("change", (e) => {
-//   console.log(e.target.value);
-//   signupGenre = e.target.value;
-// });
-
 function limitCheckboxSelection() {
   const checkboxes = document.querySelectorAll('input[name="genre"]:checked');
   const errorElement = document.getElementById("genre-error");
