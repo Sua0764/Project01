@@ -48,9 +48,8 @@ function displayLecture(data) {
   const backBtn = document.createElement("div");
   const backBtnImg = document.createElement("img");
   const detailedBox = document.createElement("div");
-  const detailedBox2Img = document.createElement("div");
-  const detailedBox2Text = document.createElement("div");
-  const detailedBox2Text2 = document.createElement("div");
+  const detailedBox2Img = document.createElement("img");
+  const detailedBox2Text = document.createElement("img");
 
   backBtn.classList.add("backBtn");
   backBtnImg.classList.add("backBtnImg");
@@ -58,13 +57,13 @@ function displayLecture(data) {
   detailedBox2.classList.add("detailedBox2");
   detailedBox2Img.classList.add("detailedBox2Img");
   detailedBox2Text.classList.add("detaildBox2Text");
-  detailedBox2Text2.classList.add("detaildBox2Text2");
 
   //이미지 속성 추가 필요
   backBtnImg.src = "/img/뒤로가기검정.png";
   backBtnImg.alt = "뒤로가기";
   detailedBox.textContent = data.lectureName;
-  detailedBox2Text.textContent = data.lectureText;
+  detailedBox2Img.src = data.lectureImage;
+  detailedBox2Text.src = data.lectureCourse;
 
   backBtn.appendChild(backBtnImg);
   allCourseDetailBox.appendChild(backBtn);
@@ -72,7 +71,7 @@ function displayLecture(data) {
   allCourseDetailBox.appendChild(detailedBox2);
   detailedBox2.appendChild(detailedBox2Img);
   detailedBox2.appendChild(detailedBox2Text);
-  detailedBox2.appendChild(detailedBox2Text2);
+
   backBtn.addEventListener("click", () => {
     window.location.href = "course.html";
   });
@@ -149,4 +148,5 @@ document.getElementById("alertConfirm").addEventListener("click", () => {
 document.querySelector(".alertClose").addEventListener("click", () => {
   closeModal(); // 모달 닫기
 });
+
 sessionCurrent();

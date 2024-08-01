@@ -23,8 +23,6 @@ document.querySelectorAll(".subMenu > div").forEach((div) => {
   });
 });
 
-sessionCurrent();
-
 function sessionCurrent() {
   axios
     .get("http://localhost:8080/user/current", { withCredentials: true })
@@ -326,3 +324,5 @@ submitButton.addEventListener("click", () => {
       alert("공지사항 등록에 실패했습니다. 다시 시도해주세요.");
     });
 });
+
+sessionCurrent();

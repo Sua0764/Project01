@@ -10,6 +10,7 @@ public class ViewController {
     public String article() {
         return "article";
     }
+
     @GetMapping("/majorflow/index.html")
     public String index() {
         return "index";

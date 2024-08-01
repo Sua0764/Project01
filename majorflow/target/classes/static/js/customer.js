@@ -276,13 +276,15 @@ function setCommentModalEventListeners() {
   document.getElementById("commentSubmit").addEventListener("click", () => {
     const comment = document.getElementById("commentInput").value;
     if (comment) {
-      openModal("댓글이 등록되었습니다: " + comment);
+      // openModal("댓글이 등록되었습니다: " + comment);
       document.getElementById("commentInput").value = ""; // 댓글 입력창 초기화
       modal.classList.add("hidden");
       modal.style.display = "none";
-    } else if (comment == null) {
-      alert("댓글을 입력하세요.");
+      window.location.reload();
     }
+    // else {
+    //   alert("댓글을 입력하세요.");
+    // }
   });
 }
 
@@ -303,7 +305,7 @@ commentSubmit.addEventListener("click", () => {
       freeBoardId: boardContents[boardId].freeBoardId,
     },
   };
-  console.log("태스트: ", boardId, boardContents);
+  console.log("테스트: ", boardId, boardContents);
 
   axios
     .post("http://localhost:8080/reply/save", data, {

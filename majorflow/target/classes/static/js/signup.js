@@ -37,19 +37,20 @@ function registerAddr() {
 
   if (zonecode && roadAddress && roadAddressDetail) {
     signupAddress = `(${zonecode}) ${roadAddress} ${roadAddressDetail}`;
-    alert(
-      "주소가 등록되었습니다:\n" +
-        "우편번호: " +
-        zonecode +
-        "\n" +
-        "도로명주소: " +
-        roadAddress +
-        "\n" +
-        "상세주소: " +
-        roadAddressDetail
+    openModal(
+      "주소가 등록되었습니다:\n"
+      //      +
+      //        "우편번호: " +
+      //        zonecode +
+      //        "\n" +
+      //        "도로명주소: " +
+      //        roadAddress +
+      //        "\n" +
+      //        "상세주소: " +
+      //        roadAddressDetail
     );
   } else {
-    alert("모든 주소 정보를 입력해 주세요.");
+    openModal("모든 주소 정보를 입력해 주세요.");
   }
 }
 
@@ -143,7 +144,7 @@ function register() {
   for (const field of requiredFields) {
     const inputElement = document.getElementById(field.id);
     if (!inputElement || !inputElement.value.trim()) {
-      alert(field.message);
+      openModal(field.message);
       inputElement.focus();
       return;
     }
@@ -154,21 +155,21 @@ function register() {
 
   // 비밀번호 길이 검사
   if (password.length < 6 || password.length > 20) {
-    action_popup.alert("비밀번호는 6~20자가 되어야합니다.");
+    action_popup.openModal("비밀번호는 6~20자가 되어야합니다.");
     document.getElementById("password").focus();
     return;
   }
 
   // 비밀번호와 비밀번호 확인 일치 여부 검사
   if (password !== confirmPassword) {
-    alert("비밀번호와 비밀번호 확인 항목이 일치하지 않습니다.");
+    openModal("비밀번호와 비밀번호 확인 항목이 일치하지 않습니다.");
     document.getElementById("confirmPassword").focus();
     return;
   }
 
   const genderChecked = document.querySelector('input[name="gender"]:checked');
   if (!genderChecked) {
-    alert("성별은 필수입력 항목입니다.");
+    openModal("성별은 필수입력 항목입니다.");
     return;
   }
 
@@ -277,7 +278,7 @@ function signupRegister() {
       .then((response) => {
         console.log("데이터 : ", response);
         if (response.status == 201) {
-          alert("회원가입 완료");
+          openModal("회원가입 완료");
           window.location.href = "login.html";
         }
       })
@@ -351,3 +352,21 @@ var action_popup = {
     }, this.timer);
   },
 };
+
+function openModal(message, callback) {
+  const alertModal = document.getElementById("myAlertModal");
+  const alertModalMessage = document.getElementById("alertModalMessage");
+  alertModalMessage.textContent = message;
+  alertModal.style.display = "block";
+
+  const confirmButton = document.getElementById("alertConfirmLogin");
+  confirmButton.onclick = function () {
+    callback && callback(); // 콜백이 있을 경우 실행
+    closeModal(); // 모달 닫기
+  };
+}
+
+function closeModal() {
+  const alertModal = document.getElementById("myAlertModal");
+  alertModal.style.display = "none";
+}
